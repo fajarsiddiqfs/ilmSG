@@ -1743,6 +1743,30 @@ body::after {
 }
 .vm-yt-btn:active { background: var(--teal); color: #fff; }
 
+
+/* ═══ SKELETON LOADING CARDS ═══ */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}
+.vp-skeleton { pointer-events: none; cursor: default; }
+.vp-sk-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: linear-gradient(90deg, var(--surface2) 25%, var(--border) 50%, var(--surface2) 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.4s infinite;
+}
+.vp-sk-line {
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--surface2) 25%, var(--border) 50%, var(--surface2) 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.4s infinite;
+  margin-bottom: 6px;
+}
+.vp-sk-title { height: 12px; width: 90%; }
+.vp-sk-meta  { height: 10px; width: 55%; }
+
 </style>
 </head>
 <body>
@@ -1924,7 +1948,7 @@ body::after {
       <div class="yt-frame-wrap" id="yt-wrap">
         <iframe
           id="yt-iframe"
-          src="https://www.youtube.com/embed/live_stream?channel=UCos52azQNBgW63_9uDJoPDA&autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1"
+          src="https://www.youtube.com/embed/kYqGbBqmp8g?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
           loading="lazy"
@@ -2821,148 +2845,239 @@ function addTyping() {
 // ══════════════════════════════════════
 // MAKKAH LIVE STREAM
 // ══════════════════════════════════════
-const STREAM_IDS = [
-  // Saudi Quran TV — Official channel live_stream endpoint
-  'live_stream?channel=UCos52azQNBgW63_9uDJoPDA',
-  // Fallback: known persistent Makkah live video IDs from same channel
-  'iAXTvT_IJHE',
-  '0Y6LdO6OTJQ',
-];
-let streamIdx = 0;
+// Makkah 24/7 live stream — https://www.youtube.com/watch?v=kYqGbBqmp8g
+const LIVE_VIDEO_ID = 'kYqGbBqmp8g';
 
-function buildStreamSrc(id) {
-  const base = 'https://www.youtube.com/embed/';
-  const params = '&autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=0';
-  if (id.startsWith('live_stream')) return base + id + params.replace('&','?');
-  return base + id + '?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1';
+function buildStreamSrc() {
+  return 'https://www.youtube.com/embed/' + LIVE_VIDEO_ID +
+    '?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1';
 }
 
 function reloadStream() {
-  streamIdx = (streamIdx + 1) % STREAM_IDS.length;
   const iframe = document.getElementById('yt-iframe');
-  if (iframe) {
-    document.getElementById('stream-offline').style.display = 'none';
-    iframe.src = buildStreamSrc(STREAM_IDS[streamIdx]);
-  }
+  if (!iframe) return;
+  const off = document.getElementById('stream-offline');
+  if (off) off.style.display = 'none';
+  // Force reload by clearing then resetting src
+  iframe.src = '';
+  setTimeout(function() { iframe.src = buildStreamSrc(); }, 100);
 }
 
-// Show offline state if iframe errors after timeout
 function initStreamMonitor() {
   const iframe = document.getElementById('yt-iframe');
   if (!iframe) return;
-  // Build correct initial src
-  iframe.src = buildStreamSrc(STREAM_IDS[0]);
+  iframe.src = buildStreamSrc();
 }
 
 
 
+// ══════════════════════════════════════
 // ══════════════════════════════════════
 // VIDEO PLAYLISTS
 // ══════════════════════════════════════
 
-// Each entry: [videoId, title, playlist_label, duration_or_desc]
-// Video IDs sourced from the provided playlists: PLoBuEb7Cp3UOys8bfqhvXQYy-EcuywTy1 (Quran),
-// PLoBuEb7Cp3UNW1dTseOghgWSdcntZJX-4 (Podcast), PLoBuEb7Cp3UMLeNZ9Mo76JqCksERMuvj4 (Series)
-const PLAYLISTS = {
-  quran: {
-    id: 'vp-quran',
-    listId: 'PLoBuEb7Cp3UOys8bfqhvXQYy-EcuywTy1',
-    label: 'ilm Quran',
-    videos: [
-      ['RDxpv8LFvOY', 'Surah Al-Fatiha — Beautiful Recitation', 'Quran Recitation'],
-      ['xM9IdbjSZdM', 'Surah Al-Baqarah — Full Recitation', 'Quran Recitation'],
-      ['weZcSMsHvLs', 'Surah Ya-Sin — Friday Recitation', 'Quran Recitation'],
-      ['6MNGvbfmVhU', 'Surah Al-Mulk — Evening Recitation', 'Quran Recitation'],
-      ['U6uHCa9Gf20', 'Surah Ar-Rahman — Heart-Touching', 'Quran Recitation'],
-      ['0GNqPLolXa0', 'Surah Al-Kahf — Jumuah Recitation', 'Quran Recitation'],
-      ['l3naXVHpJLs', 'Surah Al-Waqiah — Wealth & Provision', 'Quran Recitation'],
-      ['z_Bt-1m3iMg', 'Ayatul Kursi — Verse of the Throne', 'Quran Recitation'],
-    ]
-  },
-  podcast: {
-    id: 'vp-podcast',
-    listId: 'PLoBuEb7Cp3UNW1dTseOghgWSdcntZJX-4',
-    label: 'ilm Podcast',
-    videos: [
-      ['_OLezoUvOEQ', 'Understanding Tawakkul — Trust in Allah', 'ilm Podcast'],
-      ['6SqcRlO5Mfk', 'The Importance of Salah in Daily Life', 'ilm Podcast'],
-      ['FLlf6iAWDgw', 'How to Strengthen Your Iman', 'ilm Podcast'],
-      ['I8BmNFnkNSM', 'The Seerah of the Prophet — Lessons', 'ilm Podcast'],
-      ['RrB7jqKb2uk', 'Dealing with Hardship in Islam', 'ilm Podcast'],
-      ['AoN9JwVwK6o', 'The Reality of the Hereafter', 'ilm Podcast'],
-      ['j56G83FPPiA', 'Purifying the Heart — Tazkiyah', 'ilm Podcast'],
-    ]
-  },
-  series: {
-    id: 'vp-series',
-    listId: 'PLoBuEb7Cp3UMLeNZ9Mo76JqCksERMuvj4',
-    label: 'ilm Original Series',
-    videos: [
-      ['2CUJa9kMHnI', 'Stories of the Prophets — Prophet Ibrahim', 'ilm Original Series'],
-      ['vC_m5_0pDKo', 'Names of Allah — Al-Rahman', 'ilm Original Series'],
-      ['GQJIiyZm7pI', 'The Day of Judgement — What Awaits Us', 'ilm Original Series'],
-      ['bW0fvJqoWbk', 'Companions of the Prophet — Abu Bakr', 'ilm Original Series'],
-      ['JWGHTe3PVBU', 'Islamic Ethics — Honesty & Integrity', 'ilm Original Series'],
-      ['jTIpSl9mJ5E', 'Understanding Jannah — Paradise in Islam', 'ilm Original Series'],
-      ['5OQzOqdl51k', 'The Night of Power — Laylatul Qadr', 'ilm Original Series'],
-    ]
+const PLAYLISTS = [
+  { id: 'vp-quran',   listId: 'PLoBuEb7Cp3UOys8bfqhvXQYy-EcuywTy1',  label: 'ilm Quran' },
+  { id: 'vp-podcast', listId: 'PLoBuEb7Cp3UNW1dTseOghgWSdcntZJX-4',  label: 'ilm Podcast' },
+  { id: 'vp-series',  listId: 'PLoBuEb7Cp3UMLeNZ9Mo76JqCksERMuvj4',   label: 'ilm Original Series' }
+];
+
+function showSkeletons(id, n) {
+  const c = document.getElementById(id);
+  if (!c) return;
+  c.innerHTML = '';
+  for (let i = 0; i < n; i++) {
+    const sk = document.createElement('div');
+    sk.className = 'vp-card vp-skeleton';
+    sk.innerHTML = '<div class="vp-thumb vp-sk-thumb"></div>' +
+      '<div class="vp-card-body"><div class="vp-sk-line vp-sk-title"></div>' +
+      '<div class="vp-sk-line vp-sk-meta"></div></div>';
+    c.appendChild(sk);
   }
-};
+}
 
-function renderPlaylists() {
-  Object.values(PLAYLISTS).forEach(pl => {
-    const container = document.getElementById(pl.id);
-    if (!container) return;
-    container.innerHTML = '';
-    pl.videos.forEach(([vid, title, label]) => {
-      const card = document.createElement('div');
-      card.className = 'vp-card';
-      card.dataset.vid    = vid;
-      card.dataset.title  = title;
-      card.dataset.label  = label;
-      card.dataset.listId = pl.listId;
+function buildCard(vid, title, label, listId) {
+  const card = document.createElement('div');
+  card.className = 'vp-card';
+  const thumbHq = 'https://i.ytimg.com/vi/' + vid + '/hqdefault.jpg';
+  const thumbMq = 'https://i.ytimg.com/vi/' + vid + '/mqdefault.jpg';
+  card.innerHTML =
+    '<div class="vp-thumb">' +
+      '<img src="' + thumbHq + '" alt="" loading="lazy">' +
+      '<div class="vp-play-overlay">' +
+        '<div class="vp-play-circle">' +
+          '<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>' +
+        '</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="vp-card-body">' +
+      '<div class="vp-card-title">' + title + '</div>' +
+      '<div class="vp-card-meta">' + label + '</div>' +
+    '</div>';
+  const img = card.querySelector('img');
+  img.onerror = function() {
+    if (this.src !== thumbMq) { this.src = thumbMq; return; }
+    this.parentElement.innerHTML =
+      '<div class="vp-thumb-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg></div>';
+  };
+  card.addEventListener('click', function() { openVideo(vid, title, label, listId); });
+  return card;
+}
 
-      const thumb = `https://i.ytimg.com/vi/${vid}/mqdefault.jpg`;
-      card.innerHTML = `
-        <div class="vp-thumb">
-          <img src="${thumb}" alt="" loading="lazy">
-          <div class="vp-play-overlay">
-            <div class="vp-play-circle">
-              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </div>
-          </div>
-        </div>
-        <div class="vp-card-body">
-          <div class="vp-card-title">${title}</div>
-          <div class="vp-card-meta">${label}</div>
-        </div>`;
+function parseRSSVideos(text) {
+  const videos = [];
+  const vidRegex = /<yt:videoId>([\w-]{11})<\/yt:videoId>/g;
+  const titleRegex = /<title>([^<]*)<\/title>/g;
+  const vids = [], titles = [];
+  let m;
+  while ((m = vidRegex.exec(text)) !== null) vids.push(m[1]);
+  let first = true;
+  while ((m = titleRegex.exec(text)) !== null) {
+    if (first) { first = false; continue; }
+    titles.push(m[1].replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&#39;/g,"'").replace(/&quot;/g,'"').trim());
+  }
+  for (let i = 0; i < vids.length; i++) videos.push({ vid: vids[i], title: titles[i] || 'Video ' + (i+1) });
+  return videos;
+}
 
-      card.querySelector('img').onerror = function() {
-        this.parentElement.innerHTML = `<div class="vp-thumb-placeholder">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5">
-            <rect x="2" y="3" width="20" height="14" rx="2"/>
-            <polyline points="8 21 12 17 16 21"/>
-          </svg></div>`;
-      };
-
-      card.addEventListener('click', () => {
-        openVideo(card.dataset.vid, card.dataset.title, card.dataset.label, card.dataset.listId);
-      });
-
-      container.appendChild(card);
+// Use Anthropic API with web_search to fetch YouTube RSS and extract video IDs
+async function fetchViaAnthropic(listId) {
+  const feedUrl = 'https://www.youtube.com/feeds/videos.xml?playlist_id=' + listId;
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 3000,
+        tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+        system: 'You fetch YouTube playlist RSS feeds and extract video data. Return ONLY a raw JSON array with no markdown, no explanation. Each item must have "vid" (11-char YouTube video ID) and "title" fields.',
+        messages: [{
+          role: 'user',
+          content: 'Fetch this URL and extract all YouTube video IDs and titles from the XML feed. Return only a JSON array like [{"vid":"XXXXXXXXXXX","title":"Video Title"},...]. URL: ' + feedUrl
+        }]
+      })
     });
+    const data = await res.json();
+    let text = '';
+    if (data.content) data.content.forEach(function(b) { if (b.type === 'text') text += b.text; });
+    const match = text.match(/\[[\s\S]*?\]/);
+    if (!match) return null;
+    const arr = JSON.parse(match[0]);
+    return Array.isArray(arr) && arr.length ? arr : null;
+  } catch(e) { return null; }
+}
+
+// Try CORS proxies as secondary method
+async function fetchViaProxy(listId) {
+  const feedUrl = 'https://www.youtube.com/feeds/videos.xml?playlist_id=' + listId;
+  const proxies = [
+    function(u) { return 'https://api.allorigins.win/get?url=' + encodeURIComponent(u); },
+    function(u) { return 'https://corsproxy.io/?' + encodeURIComponent(u); },
+    function(u) { return 'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(u); }
+  ];
+  for (var i = 0; i < proxies.length; i++) {
+    try {
+      var controller = new AbortController();
+      var tid = setTimeout(function() { controller.abort(); }, 7000);
+      var res = await fetch(proxies[i](feedUrl), { signal: controller.signal });
+      clearTimeout(tid);
+      if (!res.ok) continue;
+      var text = await res.text();
+      // allorigins wraps in JSON
+      if (text.trim().startsWith('{')) {
+        try { var j = JSON.parse(text); text = j.contents || j.data || text; } catch(e) {}
+      }
+      if (text.includes('yt:videoId')) {
+        var videos = parseRSSVideos(text);
+        if (videos.length) return videos;
+      }
+    } catch(e) { continue; }
+  }
+  return null;
+}
+
+async function fetchPlaylist(pl) {
+  showSkeletons(pl.id, 5);
+  var videos = null;
+
+  // 1. Try Anthropic API (has real internet, no CORS)
+  videos = await fetchViaAnthropic(pl.listId);
+
+  // 2. Fallback to CORS proxies
+  if (!videos || !videos.length) {
+    var raw = await fetchViaProxy(pl.listId);
+    if (raw) videos = raw;
+  }
+
+  var container = document.getElementById(pl.id);
+  if (!container) return;
+  container.innerHTML = '';
+
+  if (!videos || !videos.length) {
+    // Show a single embed card for the whole playlist
+    var card = document.createElement('div');
+    card.className = 'vp-card';
+    card.style.cssText = 'min-width:220px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:24px;text-align:center;';
+    card.innerHTML =
+      '<div style="width:48px;height:48px;border-radius:50%;background:var(--teal-bg);border:1.5px solid var(--teal-bg2);display:flex;align-items:center;justify-content:center;">' +
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="var(--teal)"><polygon points="5 3 19 12 5 21 5 3"/></svg>' +
+      '</div>' +
+      '<div style="font-size:0.82rem;font-weight:600;color:var(--text)">' + pl.label + '</div>' +
+      '<button style="font-size:0.7rem;font-weight:700;color:var(--teal);background:var(--teal-bg);border:1px solid var(--teal-bg2);padding:5px 14px;border-radius:20px;cursor:pointer;">Tap to watch</button>';
+    card.addEventListener('click', function() { openVideo('videoseries', pl.label, pl.label, pl.listId); });
+    container.appendChild(card);
+
+    var retryCard = document.createElement('div');
+    retryCard.className = 'vp-card';
+    retryCard.style.cssText = 'min-width:90px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:20px;text-align:center;';
+    retryCard.innerHTML =
+      '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2" stroke-linecap="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>' +
+      '<span style="font-size:0.7rem;color:var(--text3);font-weight:600;">Retry</span>';
+    retryCard.addEventListener('click', function() { fetchPlaylist(pl); });
+    container.appendChild(retryCard);
+    return;
+  }
+
+  videos.slice(0, 20).forEach(function(v) {
+    var vid   = v.vid   || v.videoId || v.id || '';
+    var title = v.title || v.name    || 'Untitled';
+    if (vid.length === 11) container.appendChild(buildCard(vid, title, pl.label, pl.listId));
   });
 }
 
+function renderPlaylists() {
+  PLAYLISTS.forEach(function(pl) { fetchPlaylist(pl); });
+}
+
 function openVideo(vid, title, label, listId) {
-  document.getElementById('vm-title').textContent = title;
-  document.getElementById('vm-sub').textContent = label;
-  document.getElementById('vm-iframe').src =
-    `https://www.youtube.com/embed/${vid}?autoplay=1&rel=0&modestbranding=1&playsinline=1&list=${listId}`;
-  document.getElementById('vm-yt-link').href =
-    `https://www.youtube.com/watch?v=${vid}&list=${listId}`;
-  document.getElementById('vid-overlay').classList.add('open');
+  var overlay = document.getElementById('vid-overlay');
+  var iframe  = document.getElementById('vm-iframe');
+  var titleEl = document.getElementById('vm-title');
+  var subEl   = document.getElementById('vm-sub');
+  var link    = document.getElementById('vm-yt-link');
+
+  titleEl.textContent = title;
+  subEl.textContent   = label;
+
+  // Clear src first so it reloads fresh (needed for autoplay on mobile)
+  iframe.src = '';
+
+  var isPlaylist = (vid === 'videoseries');
+  var embedSrc = isPlaylist
+    ? 'https://www.youtube.com/embed/videoseries?list=' + listId + '&autoplay=1&rel=0&modestbranding=1&playsinline=0&fs=1'
+    : 'https://www.youtube.com/embed/' + vid + '?autoplay=1&rel=0&modestbranding=1&playsinline=0&fs=1&list=' + listId;
+
+  link.href = isPlaylist
+    ? 'https://www.youtube.com/playlist?list=' + listId
+    : 'https://www.youtube.com/watch?v=' + vid + '&list=' + listId;
+
+  overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  // Delay src assignment until after modal animation completes
+  // This is critical for mobile autoplay to fire correctly
+  setTimeout(function() { iframe.src = embedSrc; }, 150);
 }
 
 function scrollCarousel(id, dir) {
@@ -3025,7 +3140,7 @@ renderPlaylists();
       </button>
     </div>
     <div class="vid-frame-wrap">
-      <iframe id="vm-iframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen; web-share" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+      <iframe id="vm-iframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen; web-share" allowfullscreen webkitallowfullscreen mozallowfullscreen frameborder="0" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;display:block;"></iframe>
     </div>
     <div class="vid-modal-actions">
       <a id="vm-yt-link" href="#" target="_blank" rel="noopener" class="vm-yt-btn">
