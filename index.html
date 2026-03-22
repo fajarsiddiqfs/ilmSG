@@ -9,6 +9,7 @@
 <title>ilm</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════
    ILM — DESIGN SYSTEM
@@ -1767,6 +1768,258 @@ body::after {
 .vp-sk-title { height: 12px; width: 90%; }
 .vp-sk-meta  { height: 10px; width: 55%; }
 
+
+/* ═══ APP FOOTER ═══ */
+.app-footer {
+  padding: 24px 16px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  margin-top: 8px;
+}
+.footer-reg {
+  font-size: 0.68rem;
+  color: var(--text3);
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.04em;
+  margin-bottom: 14px;
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.footer-links a {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--teal);
+  text-decoration: none;
+  padding: 4px 10px;
+  transition: opacity 0.15s;
+}
+.footer-links a:hover { opacity: 0.7; }
+.footer-links .fdot {
+  font-size: 0.55rem;
+  color: var(--border2);
+  line-height: 1;
+}
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.footer-copy {
+  font-size: 0.66rem;
+  color: var(--text3);
+  font-weight: 400;
+}
+.footer-made {
+  font-size: 0.66rem;
+  color: var(--text3);
+  font-weight: 400;
+  text-align: right;
+}
+.footer-made a {
+  color: var(--teal);
+  text-decoration: none;
+  font-weight: 600;
+}
+[data-theme="dark"] .app-footer {
+  background: var(--surface);
+  border-top-color: var(--border);
+}
+
+
+/* ═══ UTHMANI SCRIPT ═══ */
+.uthmani {
+  font-family: 'Scheherazade New', 'Amiri', serif;
+  direction: rtl;
+}
+.ayah-ar { font-family: 'Scheherazade New', 'Amiri', serif !important; font-size: 1.65rem !important; }
+.bismillah-block { font-family: 'Scheherazade New', 'Amiri', serif !important; }
+
+/* ═══ AUDIO PLAYER ═══ */
+.ayah-audio-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--surface2);
+  cursor: pointer;
+  transition: all 0.15s;
+  flex-shrink: 0;
+  color: var(--text2);
+}
+.ayah-audio-btn:active, .ayah-audio-btn.playing {
+  background: var(--teal); border-color: var(--teal); color: #fff;
+}
+.ayah-audio-btn svg { width: 12px; height: 12px; fill: currentColor; }
+.ayah-block-row {
+  display: flex; align-items: flex-start; gap: 10px; padding: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.ayah-block-body { flex: 1; min-width: 0; }
+.ayah-num-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 1px solid rgba(168,135,58,0.25); background: var(--gold-bg);
+  font-size: 0.62rem; font-weight: 700; color: var(--gold);
+  flex-shrink: 0; margin-top: 4px;
+}
+
+/* ═══ SECTION TABS (reusable for Zikir / Quran) ═══ */
+.sect-tabs {
+  display: flex; background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto; scrollbar-width: none;
+  position: sticky; top: var(--header-h); z-index: 150;
+}
+.sect-tabs::-webkit-scrollbar { display: none; }
+.sect-tab {
+  flex-shrink: 0; padding: 11px 14px;
+  border: none; background: transparent;
+  color: var(--text3); font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.07em;
+  cursor: pointer; border-bottom: 2px solid transparent;
+  transition: all 0.15s; white-space: nowrap;
+}
+.sect-tab.active { color: var(--teal); border-bottom-color: var(--teal); background: var(--surface); }
+.sect-panel { display: none; }
+.sect-panel.active { display: block; animation: pageIn 0.18s ease; }
+
+/* ═══ DUA / ZIKIR LIST ═══ */
+.dua-item {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 16px; margin-bottom: 10px;
+  box-shadow: var(--shadow);
+}
+.dua-tag {
+  display: inline-block; font-size: 0.6rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  padding: 2px 8px; border-radius: 12px; margin-bottom: 8px;
+  background: var(--teal-bg); color: var(--teal); border: 1px solid var(--teal-bg2);
+}
+.dua-ar {
+  font-family: 'Scheherazade New','Amiri',serif;
+  font-size: 1.3rem; color: var(--text); direction: rtl;
+  line-height: 1.9; margin-bottom: 8px; text-align: right;
+}
+.dua-transliteration {
+  font-size: 0.78rem; color: var(--teal); font-style: italic;
+  margin-bottom: 5px; line-height: 1.5;
+}
+.dua-translation {
+  font-size: 0.8rem; color: var(--text2); line-height: 1.6;
+  border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px;
+}
+.dua-source { font-size: 0.65rem; color: var(--text3); margin-top: 6px; font-weight: 600; }
+
+/* ═══ ASMAUL HUSNA ═══ */
+.husna-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 16px;
+}
+.husna-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 12px 10px; text-align: center;
+  box-shadow: var(--shadow);
+}
+.husna-num { font-size: 0.6rem; color: var(--text3); font-weight: 700; margin-bottom: 4px; }
+.husna-ar {
+  font-family: 'Scheherazade New','Amiri',serif;
+  font-size: 1.15rem; color: var(--teal); margin-bottom: 3px;
+}
+.husna-en { font-size: 0.72rem; color: var(--text2); font-weight: 600; }
+.husna-meaning { font-size: 0.65rem; color: var(--text3); margin-top: 2px; }
+
+/* ═══ IQRA / ARABIC LEARNING ═══ */
+.arabic-progress-wrap {
+  padding: 16px;
+}
+.arabic-progress-title { font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.arabic-progress-sub { font-size: 0.72rem; color: var(--text2); margin-bottom: 14px; }
+.progress-levels {
+  display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;
+}
+.progress-level {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px; box-shadow: var(--shadow);
+}
+.pl-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.pl-name { font-size: 0.85rem; font-weight: 700; color: var(--text); }
+.pl-pct { font-size: 0.72rem; font-weight: 700; color: var(--teal); }
+.pl-bar-wrap { height: 6px; background: var(--surface2); border-radius: 3px; overflow: hidden; margin-bottom: 6px; }
+.pl-bar { height: 100%; background: linear-gradient(90deg, var(--teal), #4BBFE8); border-radius: 3px; transition: width 0.6s ease; }
+.pl-meta { font-size: 0.68rem; color: var(--text3); }
+.pl-locked .pl-name { color: var(--text3); }
+.pl-locked .pl-bar { background: var(--border); }
+
+.iqra-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 16px;
+}
+.iqra-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+  cursor: pointer; transition: all 0.15s;
+}
+.iqra-card:active { transform: scale(0.97); }
+.iqra-thumb {
+  height: 80px; display: flex; align-items: center; justify-content: center;
+  font-family: 'Scheherazade New','Amiri',serif; font-size: 2rem;
+  color: #fff; background: linear-gradient(135deg, var(--teal), #1A8FC0);
+}
+.iqra-card-body { padding: 10px 12px; }
+.iqra-title { font-size: 0.82rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.iqra-sub { font-size: 0.68rem; color: var(--text2); }
+
+.huruf-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 16px;
+}
+.huruf-cell {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 10px 4px; text-align: center;
+  box-shadow: var(--shadow);
+}
+.huruf-ar {
+  font-family: 'Scheherazade New','Amiri',serif;
+  font-size: 1.6rem; color: var(--teal); display: block; margin-bottom: 3px;
+}
+.huruf-name { font-size: 0.58rem; color: var(--text2); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* ═══ AYAH & HADITH ═══ */
+.ah-item {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 16px; margin-bottom: 10px;
+  box-shadow: var(--shadow);
+}
+.ah-source-badge {
+  display: inline-block; font-size: 0.62rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.09em;
+  padding: 2px 8px; border-radius: 12px; margin-bottom: 8px;
+}
+.badge-quran { background: var(--gold-bg); color: var(--gold); border: 1px solid rgba(168,135,58,0.2); }
+.badge-hadith { background: var(--teal-bg); color: var(--teal); border: 1px solid var(--teal-bg2); }
+.ah-ar {
+  font-family: 'Scheherazade New','Amiri',serif;
+  font-size: 1.3rem; color: var(--text); direction: rtl;
+  text-align: right; line-height: 2; margin-bottom: 10px;
+}
+.ah-en { font-size: 0.84rem; color: var(--text2); line-height: 1.65; }
+.ah-ref { font-size: 0.68rem; color: var(--text3); margin-top: 8px; font-weight: 600; }
+
+[data-theme="dark"] .sect-tabs { background: var(--surface2); }
+[data-theme="dark"] .sect-tab { color: var(--text3); }
+[data-theme="dark"] .sect-tab.active { background: var(--surface); color: var(--teal); }
+[data-theme="dark"] .dua-item, [data-theme="dark"] .husna-card,
+[data-theme="dark"] .progress-level, [data-theme="dark"] .iqra-card,
+[data-theme="dark"] .huruf-cell, [data-theme="dark"] .ah-item {
+  background: var(--surface); border-color: var(--border);
+}
+
 </style>
 </head>
 <body>
@@ -1776,7 +2029,6 @@ body::after {
 <header class="app-header">
   <div class="logo" onclick="switchPage('tracker')" style="cursor:pointer">
     <span class="logo-word">ilm</span>
-    <span class="logo-ar">عِلْم</span>
   </div>
   <div style="display:flex;align-items:center;gap:10px">
     <div class="header-info">
@@ -1895,6 +2147,27 @@ body::after {
         </button>
       </div>
     </div>
+
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+      <div class="footer-reg">IECP 23030466 &nbsp;&middot;&nbsp; UEN 53190796A</div>
+      <div class="footer-links">
+        <a href="#">About</a>
+        <span class="fdot">&#9679;</span>
+        <a href="#">Blog</a>
+        <span class="fdot">&#9679;</span>
+        <a href="#">Shop</a>
+        <span class="fdot">&#9679;</span>
+        <a href="#">Privacy</a>
+        <span class="fdot">&#9679;</span>
+        <a href="#">Terms</a>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy" id="footer-copy">&copy; 2014&ndash;<span id="footer-year"></span> Ilm.sg</div>
+        <div class="footer-made">Made by <a href="#" target="_blank" rel="noopener">Euphorya</a></div>
+      </div>
+    </footer>
 
   </div>
 
@@ -2049,81 +2322,286 @@ body::after {
 
 <!-- ════════════ ZIKIR ════════════ -->
 <div class="page" id="page-zikir">
-  <div class="pg">
-    <div class="page-title">Tasbih Counter</div>
-    <div class="page-sub">Post-prayer remembrance</div>
+  <!-- Sub-tabs -->
+  <div class="sect-tabs" id="zikir-tabs">
+    <button class="sect-tab active" onclick="switchSectTab(this,'zt-tasbih','zikir-tabs')">Tasbih</button>
+    <button class="sect-tab" onclick="switchSectTab(this,'zt-dua','zikir-tabs')">Dua</button>
+    <button class="sect-tab" onclick="switchSectTab(this,'zt-zikir','zikir-tabs')">Zikir List</button>
+    <button class="sect-tab" onclick="switchSectTab(this,'zt-husna','zikir-tabs')">Asmaul Husna</button>
+  </div>
 
-    <div class="zikir-grid">
-      <div class="zikir-chip active" onclick="setZikir(this,'سُبْحَانَ اللهِ','Subhanallah',33)">
-        <div class="zc-ar">سُبْحَانَ اللهِ</div>
-        <div class="zc-en">Subhanallah</div>
-        <div class="zc-n">33 times</div>
+  <!-- TASBIH -->
+  <div class="sect-panel active" id="zt-tasbih">
+    <div class="pg">
+      <div class="page-title">Tasbih Counter</div>
+      <div class="page-sub">Post-prayer remembrance</div>
+      <div class="zikir-grid">
+        <div class="zikir-chip active" onclick="setZikir(this,'سُبْحَانَ اللهِ','Subhanallah',33)">
+          <div class="zc-ar">سُبْحَانَ اللهِ</div><div class="zc-en">Subhanallah</div><div class="zc-n">33 times</div>
+        </div>
+        <div class="zikir-chip" onclick="setZikir(this,'الحَمْدُ للهِ','Alhamdulillah',33)">
+          <div class="zc-ar">الحَمْدُ للهِ</div><div class="zc-en">Alhamdulillah</div><div class="zc-n">33 times</div>
+        </div>
+        <div class="zikir-chip" onclick="setZikir(this,'اللهُ أَكْبَر','Allahu Akbar',34)">
+          <div class="zc-ar">اللهُ أَكْبَر</div><div class="zc-en">Allahu Akbar</div><div class="zc-n">34 times</div>
+        </div>
+        <div class="zikir-chip" onclick="setZikir(this,'لَا إِلَٰهَ إِلَّا الله','La Ilaha Illallah',100)">
+          <div class="zc-ar">لَا إِلَٰهَ إِلَّا الله</div><div class="zc-en">La Ilaha Illallah</div><div class="zc-n">100 times</div>
+        </div>
       </div>
-      <div class="zikir-chip" onclick="setZikir(this,'الحَمْدُ للهِ','Alhamdulillah',33)">
-        <div class="zc-ar">الحَمْدُ للهِ</div>
-        <div class="zc-en">Alhamdulillah</div>
-        <div class="zc-n">33 times</div>
+      <div class="counter-num" id="tc-num">0</div>
+      <div class="counter-goal" id="tc-goal">Goal: 33 &times; Subhanallah</div>
+      <div style="display:flex;justify-content:center">
+        <button class="tap-btn" id="tap-btn" onclick="tapCount()">
+          <div class="tap-ar" id="tap-ar">سُبْحَانَ اللهِ</div>
+          <div class="tap-lbl">Tap to count</div>
+        </button>
       </div>
-      <div class="zikir-chip" onclick="setZikir(this,'اللهُ أَكْبَر','Allahu Akbar',34)">
-        <div class="zc-ar">اللهُ أَكْبَر</div>
-        <div class="zc-en">Allahu Akbar</div>
-        <div class="zc-n">34 times</div>
+      <div class="ctrl-row">
+        <button class="ctrl-btn" onclick="undoCount()">Undo</button>
+        <button class="ctrl-btn danger" onclick="resetCount()">Reset</button>
       </div>
-      <div class="zikir-chip" onclick="setZikir(this,'لَا إِلَٰهَ إِلَّا الله','La Ilaha Illallah',100)">
-        <div class="zc-ar">لَا إِلَٰهَ إِلَّا الله</div>
-        <div class="zc-en">La Ilaha Illallah</div>
-        <div class="zc-n">100 times</div>
-      </div>
-    </div>
-
-    <div class="counter-num" id="tc-num">0</div>
-    <div class="counter-goal" id="tc-goal">Goal: 33 &times; Subhanallah</div>
-
-    <div style="display:flex;justify-content:center">
-      <button class="tap-btn" id="tap-btn" onclick="tapCount()">
-        <div class="tap-ar" id="tap-ar">سُبْحَانَ اللهِ</div>
-        <div class="tap-lbl">Tap to count</div>
-      </button>
-    </div>
-
-    <div class="ctrl-row">
-      <button class="ctrl-btn" onclick="undoCount()">Undo</button>
-      <button class="ctrl-btn danger" onclick="resetCount()">Reset</button>
-    </div>
-
-    <div class="stats-row">
-      <div class="stat-box">
-        <div class="stat-val" id="s-total">0</div>
-        <div class="stat-lbl">Total</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-val" id="s-rounds">0</div>
-        <div class="stat-lbl">Rounds</div>
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-val" id="s-total">0</div><div class="stat-lbl">Total</div></div>
+        <div class="stat-box"><div class="stat-val" id="s-rounds">0</div><div class="stat-lbl">Rounds</div></div>
       </div>
     </div>
   </div>
+
+  <!-- DUA -->
+  <div class="sect-panel" id="zt-dua">
+    <div class="pg">
+      <div class="page-title">Daily Duas</div>
+      <div class="page-sub">Authentic supplications from Quran & Sunnah</div>
+      <div class="dua-item">
+        <div class="dua-tag">Morning</div>
+        <div class="dua-ar">أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ</div>
+        <div class="dua-transliteration">Asbahna wa asbahal mulku lillah, wal hamdu lillah</div>
+        <div class="dua-translation">We have reached the morning and at this very time unto Allah belongs all sovereignty, and all praise is for Allah.</div>
+        <div class="dua-source">Sahih Muslim 2723</div>
+      </div>
+      <div class="dua-item">
+        <div class="dua-tag">Evening</div>
+        <div class="dua-ar">أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ</div>
+        <div class="dua-transliteration">Amsayna wa amsal mulku lillah, wal hamdu lillah</div>
+        <div class="dua-translation">We have reached the evening and at this very time unto Allah belongs all sovereignty, and all praise is for Allah.</div>
+        <div class="dua-source">Sahih Muslim 2723</div>
+      </div>
+      <div class="dua-item">
+        <div class="dua-tag">Before Sleep</div>
+        <div class="dua-ar">بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا</div>
+        <div class="dua-transliteration">Bismika Allahumma amutu wa ahya</div>
+        <div class="dua-translation">In Your name, O Allah, I die and I live.</div>
+        <div class="dua-source">Sahih Bukhari 6324</div>
+      </div>
+      <div class="dua-item">
+        <div class="dua-tag">After Waking</div>
+        <div class="dua-ar">الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ</div>
+        <div class="dua-transliteration">Alhamdulillahil-ladhi ahyana ba&apos;da ma amatana wa ilayhin-nushur</div>
+        <div class="dua-translation">Praise be to Allah who gave us life after having taken it from us and unto Him is the resurrection.</div>
+        <div class="dua-source">Sahih Bukhari 6312</div>
+      </div>
+      <div class="dua-item">
+        <div class="dua-tag">Eating</div>
+        <div class="dua-ar">بِسْمِ اللهِ</div>
+        <div class="dua-transliteration">Bismillah</div>
+        <div class="dua-translation">In the name of Allah. (Said before eating)</div>
+        <div class="dua-source">Sahih Bukhari 5376</div>
+      </div>
+      <div class="dua-item">
+        <div class="dua-tag">Entering Home</div>
+        <div class="dua-ar">بِسْمِ اللهِ وَلَجْنَا، وَبِسْمِ اللهِ خَرَجْنَا، وَعَلَى اللهِ رَبِّنَا تَوَكَّلْنَا</div>
+        <div class="dua-transliteration">Bismillahi walajna, wa bismillahi kharajna, wa &apos;ala Allahi rabbina tawakkalna</div>
+        <div class="dua-translation">In the name of Allah we enter, in the name of Allah we leave, and upon our Lord we place our trust.</div>
+        <div class="dua-source">Abu Dawud 5096</div>
+      </div>
+      <div class="dua-item">
+        <div class="dua-tag">Travel</div>
+        <div class="dua-ar">سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ</div>
+        <div class="dua-transliteration">Subhanalladhi sakhkhara lana hadha wa ma kunna lahu muqrinin, wa inna ila Rabbina lamunqalibun</div>
+        <div class="dua-translation">Glory be to the One Who has subjected this to us, and we could never have [otherwise] subdued it. And indeed, to our Lord we will return.</div>
+        <div class="dua-source">Quran 43:13–14</div>
+      </div>
+      <div class="dua-item">
+        <div class="dua-tag">Distress</div>
+        <div class="dua-ar">لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ</div>
+        <div class="dua-transliteration">La ilaha illa anta subhanaka inni kuntu minaz-zalimin</div>
+        <div class="dua-translation">There is no deity except You; exalted are You. Indeed, I have been of the wrongdoers.</div>
+        <div class="dua-source">Quran 21:87 — Dua of Prophet Yunus</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZIKIR LIST -->
+  <div class="sect-panel" id="zt-zikir">
+    <div class="pg">
+      <div class="page-title">Zikir List</div>
+      <div class="page-sub">Post-prayer & daily remembrance</div>
+      <div class="dua-item">
+        <div class="dua-tag">After Prayer × 33</div>
+        <div class="dua-ar">سُبْحَانَ اللهِ</div>
+        <div class="dua-transliteration">Subhanallah</div>
+        <div class="dua-translation">Glory be to Allah</div>
+        <div class="dua-source">Sahih Muslim 597</div>
+      </div>
+      <div class="dua-item">
+        <div class="dua-tag">After Prayer × 33</div>
+        <div class="dua-ar">الْحَمْدُ لِلَّهِ</div>
+        <div class="dua-transliteration">Alhamdulillah</div>
+        <div class="dua-translation">All praise is due to Allah</div>
+        <div class="dua-source">Sahih Muslim 597</div>
+      </div>
+      <div class="dua-item">
+        <div class="dua-tag">After Prayer × 34</div>
+        <div class="dua-ar">اللهُ أَكْبَرُ</div>
+        <div class="dua-transliteration">Allahu Akbar</div>
+        <div class="dua-translation">Allah is the Greatest</div>
+        <div class="dua-source">Sahih Muslim 597</div>
+      </div>
+      <div class="dua-item">
+        <div class="dua-tag">Daily × 100</div>
+        <div class="dua-ar">لَا إِلَهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ</div>
+        <div class="dua-transliteration">La ilaha illallahu wahdahu la sharika lah, lahul mulku wa lahul hamdu wa huwa ala kulli shay&apos;in qadir</div>
+        <div class="dua-translation">There is no god but Allah alone, He has no partner, His is the dominion and His is the praise and He is able to do all things.</div>
+        <div class="dua-source">Sahih Bukhari 3293</div>
+      </div>
+      <div class="dua-item">
+        <div class="dua-tag">Istighfar</div>
+        <div class="dua-ar">أَسْتَغْفِرُ اللهَ</div>
+        <div class="dua-transliteration">Astaghfirullah</div>
+        <div class="dua-translation">I seek forgiveness from Allah</div>
+        <div class="dua-source">Sahih Bukhari 6307</div>
+      </div>
+      <div class="dua-item">
+        <div class="dua-tag">Salawat</div>
+        <div class="dua-ar">اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ</div>
+        <div class="dua-transliteration">Allahumma salli &apos;ala Muhammad wa &apos;ala ali Muhammad</div>
+        <div class="dua-translation">O Allah, send blessings upon Muhammad and upon the family of Muhammad.</div>
+        <div class="dua-source">Sahih Bukhari 3370</div>
+      </div>
+      <div class="dua-item">
+        <div class="dua-tag">Hasbunallah</div>
+        <div class="dua-ar">حَسْبُنَا اللهُ وَنِعْمَ الْوَكِيلُ</div>
+        <div class="dua-transliteration">Hasbunallahu wa ni&apos;mal wakil</div>
+        <div class="dua-translation">Allah is sufficient for us and He is the best Disposer of affairs.</div>
+        <div class="dua-source">Quran 3:173</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ASMAUL HUSNA -->
+  <div class="sect-panel" id="zt-husna">
+    <div class="pg" style="padding-bottom:8px">
+      <div class="page-title">Asmaul Husna</div>
+      <div class="page-sub">The 99 Beautiful Names of Allah</div>
+    </div>
+    <div class="husna-grid" id="husna-grid"></div>
+  </div>
+
 </div>
 
 <!-- ════════════ QURAN ════════════ -->
 <div class="page" id="page-quran">
-  <div id="qv-list">
-    <div class="search-bar-wrap">
-      <div class="search-bar">
-        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input id="surah-search" type="text" placeholder="Search by name or number" oninput="filterSurahs(this.value)">
+  <!-- Sub-tabs -->
+  <div class="sect-tabs" id="quran-tabs">
+    <button class="sect-tab active" onclick="switchSectTab(this,'qt-quran','quran-tabs')">Quran</button>
+    <button class="sect-tab" onclick="switchSectTab(this,'qt-ayah','quran-tabs')">Ayah &amp; Hadith</button>
+    <button class="sect-tab" onclick="switchSectTab(this,'qt-arabic','quran-tabs')">Arabic</button>
+  </div>
+
+  <!-- QURAN TAB -->
+  <div class="sect-panel active" id="qt-quran">
+    <div id="qv-list">
+      <div class="search-bar-wrap" style="top:calc(var(--header-h) + 44px)">
+        <div class="search-bar">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input id="surah-search" type="text" placeholder="Search by name or number" oninput="filterSurahs(this.value)">
+        </div>
+      </div>
+      <div class="surah-list" id="surah-list"></div>
+    </div>
+    <div id="qv-detail" style="display:none">
+      <button class="back-bar" onclick="backToList()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Surahs
+      </button>
+      <div id="surah-content"></div>
+    </div>
+  </div>
+
+  <!-- AYAH & HADITH TAB -->
+  <div class="sect-panel" id="qt-ayah">
+    <div class="pg">
+      <div class="page-title">Ayah &amp; Hadith</div>
+      <div class="page-sub">Daily verses and authentic narrations</div>
+      <div class="ah-item">
+        <span class="ah-source-badge badge-quran">Quran 2:286</span>
+        <div class="ah-ar">لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا</div>
+        <div class="ah-en">Allah does not burden a soul beyond that it can bear.</div>
+        <div class="ah-ref">Surah Al-Baqarah 2:286</div>
+      </div>
+      <div class="ah-item">
+        <span class="ah-source-badge badge-hadith">Hadith</span>
+        <div class="ah-ar">إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ</div>
+        <div class="ah-en">Actions are but by intention, and every person shall have what they intended.</div>
+        <div class="ah-ref">Sahih Bukhari 1 — Sahih Muslim 1907</div>
+      </div>
+      <div class="ah-item">
+        <span class="ah-source-badge badge-quran">Quran 94:5–6</span>
+        <div class="ah-ar">فَإِنَّ مَعَ الْعُسْرِ يُسْرًا ۝ إِنَّ مَعَ الْعُسْرِ يُسْرًا</div>
+        <div class="ah-en">For indeed, with hardship will be ease. Indeed, with hardship will be ease.</div>
+        <div class="ah-ref">Surah Ash-Sharh 94:5–6</div>
+      </div>
+      <div class="ah-item">
+        <span class="ah-source-badge badge-hadith">Hadith</span>
+        <div class="ah-ar">الدِّينُ النَّصِيحَةُ</div>
+        <div class="ah-en">The religion is sincere advice (nasihah).</div>
+        <div class="ah-ref">Sahih Muslim 55</div>
+      </div>
+      <div class="ah-item">
+        <span class="ah-source-badge badge-quran">Quran 3:173</span>
+        <div class="ah-ar">حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ</div>
+        <div class="ah-en">Sufficient for us is Allah, and He is the best Disposer of affairs.</div>
+        <div class="ah-ref">Surah Ali Imran 3:173</div>
+      </div>
+      <div class="ah-item">
+        <span class="ah-source-badge badge-hadith">Hadith</span>
+        <div class="ah-ar">مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ</div>
+        <div class="ah-en">Whoever believes in Allah and the Last Day should say what is good or remain silent.</div>
+        <div class="ah-ref">Sahih Bukhari 6018 — Sahih Muslim 47</div>
+      </div>
+      <div class="ah-item">
+        <span class="ah-source-badge badge-quran">Quran 13:28</span>
+        <div class="ah-ar">أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ</div>
+        <div class="ah-en">Verily, in the remembrance of Allah do hearts find rest.</div>
+        <div class="ah-ref">Surah Ar-Ra&apos;d 13:28</div>
       </div>
     </div>
-    <div class="surah-list" id="surah-list"></div>
   </div>
-  <div id="qv-detail" style="display:none">
-    <button class="back-bar" onclick="backToList()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      Back to Surahs
-    </button>
-    <div id="surah-content"></div>
+
+  <!-- ARABIC TAB -->
+  <div class="sect-panel" id="qt-arabic">
+    <div class="arabic-progress-wrap">
+      <div class="arabic-progress-title">Your Arabic Journey</div>
+      <div class="arabic-progress-sub">Track your progress through the Iqra curriculum</div>
+      <div class="progress-levels" id="arabic-progress-levels"></div>
+    </div>
+    <div class="pg" style="padding-top:0">
+      <div class="page-title" style="margin-bottom:4px">Iqra Books</div>
+      <div class="page-sub">Tap a book to start learning</div>
+    </div>
+    <div class="iqra-grid" id="iqra-grid"></div>
+    <div class="pg" style="padding-top:8px">
+      <div class="page-title" style="margin-bottom:4px">Huruf Hijaiyah</div>
+      <div class="page-sub">The Arabic alphabet</div>
+    </div>
+    <div class="huruf-grid" id="huruf-grid"></div>
+    <div style="height:20px"></div>
   </div>
+
 </div>
 
+<!-- ════════════ LEARN ════════════ -->
 <!-- ════════════ LEARN ════════════ -->
 <div class="page page-flex" id="page-learn">
   <div class="quick-pills-wrap">
@@ -2395,83 +2873,120 @@ function calcBearing(lat, lng) {
 }
 
 function activateQiblah() {
-  const proceed = (lat, lng) => {
+  document.getElementById('q-hint').textContent = 'Getting your location…';
+  const proceed = function(lat, lng) {
+    uLat = lat; uLng = lng;
     qBearing = calcBearing(lat, lng);
     document.getElementById('q-deg').textContent = Math.round(qBearing) + '° from North';
+    document.getElementById('q-hint').textContent = 'Qiblah direction calculated. Activating compass sensor…';
+
     if (typeof DeviceOrientationEvent !== 'undefined' &&
         typeof DeviceOrientationEvent.requestPermission === 'function') {
+      // iOS 13+ — must explicitly request permission
       DeviceOrientationEvent.requestPermission()
-        .then(r => r === 'granted' ? startCompassListener() : setStaticNeedle())
-        .catch(() => setStaticNeedle());
+        .then(function(r) {
+          if (r === 'granted') startCompassListener();
+          else { setStaticNeedle(); }
+        })
+        .catch(function() { setStaticNeedle(); });
     } else {
+      // Android / desktop
       startCompassListener();
     }
   };
+
   if (uLat && uLng) { proceed(uLat, uLng); return; }
+  if (!navigator.geolocation) { proceed(1.3521, 103.8198); return; }
   navigator.geolocation.getCurrentPosition(
-    p => { uLat = p.coords.latitude; uLng = p.coords.longitude; proceed(uLat, uLng); },
-    ()  => proceed(1.3521, 103.8198)
+    function(p) { proceed(p.coords.latitude, p.coords.longitude); },
+    function()   { proceed(1.3521, 103.8198); },
+    { enableHighAccuracy: true, timeout: 8000 }
   );
 }
 
 function startCompassListener() {
   compassOn = true;
-  document.getElementById('q-hint').textContent = 'Compass active. Move phone in a figure-8 motion to calibrate. The needle points toward the Kaabah.';
-  toast('Compass active');
+  document.getElementById('q-hint').textContent = 'Live compass active. Move phone in a figure-8 to calibrate.';
+  toast('Qiblah compass active');
+
+  // Remove old listeners first to avoid duplicates
+  window.removeEventListener('deviceorientationabsolute', onOrient, true);
+  window.removeEventListener('deviceorientation', onOrient, true);
   window.addEventListener('deviceorientationabsolute', onOrient, true);
   window.addEventListener('deviceorientation', onOrient, true);
 }
 
+let lastHeading = null;
 function onOrient(e) {
   if (qBearing === null) return;
   let heading = null;
-  if (typeof e.webkitCompassHeading === 'number') {
-    heading = e.webkitCompassHeading;
+
+  if (e.type === 'deviceorientationabsolute' && e.absolute === true && e.alpha !== null) {
+    heading = (360 - e.alpha + 360) % 360;
+  } else if (typeof e.webkitCompassHeading === 'number' && e.webkitCompassHeading >= 0) {
+    heading = e.webkitCompassHeading; // iOS — most accurate
   } else if (e.absolute && e.alpha !== null) {
     heading = (360 - e.alpha + 360) % 360;
-  } else if (e.alpha !== null) {
+  } else if (e.alpha !== null && lastHeading === null) {
+    // Non-absolute fallback — less accurate but better than nothing
     heading = (360 - e.alpha + 360) % 360;
   }
+
   if (heading === null) return;
+  lastHeading = heading;
   const rotate = (qBearing - heading + 360) % 360;
   document.getElementById('qneedle').style.transform =
-    `translate(-50%, -100%) rotate(${rotate}deg)`;
-  document.getElementById('q-deg').textContent = Math.round(qBearing) + '° from North';
+    'translate(-50%, -100%) rotate(' + rotate + 'deg)';
 }
 
 function setStaticNeedle() {
-  document.getElementById('qneedle').style.transition = 'transform 1.5s ease';
+  if (qBearing === null) return;
+  document.getElementById('qneedle').style.transition = 'transform 1.8s cubic-bezier(0.34,1.2,0.64,1)';
   document.getElementById('qneedle').style.transform  =
-    `translate(-50%, -100%) rotate(${qBearing}deg)`;
+    'translate(-50%, -100%) rotate(' + qBearing + 'deg)';
   document.getElementById('q-hint').textContent =
-    `Device sensor unavailable. Showing static direction: face ${Math.round(qBearing)}° from North toward Makkah.`;
+    'Device compass unavailable. Face ' + Math.round(qBearing) + '° from North to face the Kaabah.';
 }
 
 // ══════════════════════════════════════
 // MOSQUE — OpenStreetMap Overpass API
 // ══════════════════════════════════════
 function findMosques() {
-  const getAndFetch = (lat, lng) => {
+  const getAndFetch = function(lat, lng) {
     document.getElementById('mosque-results').innerHTML =
-      '<div class="loading-state"><div class="spinner"></div>Searching for mosques…</div>';
-    const q = `[out:json][timeout:20];(node["amenity"="place_of_worship"]["religion"="muslim"](around:10000,${lat},${lng});way["amenity"="place_of_worship"]["religion"="muslim"](around:10000,${lat},${lng});relation["amenity"="place_of_worship"]["religion"="muslim"](around:10000,${lat},${lng}););out center;`;
+      '<div class="loading-state"><div class="spinner"></div>Searching mosques within 10 km&hellip;</div>';
+    // Search nodes, ways AND relations — catches all mosque types
+    const q = '[out:json][timeout:25];(' +
+      'node["amenity"="place_of_worship"]["religion"="muslim"](around:10000,' + lat + ',' + lng + ');' +
+      'way["amenity"="place_of_worship"]["religion"="muslim"](around:10000,' + lat + ',' + lng + ');' +
+      'relation["amenity"="place_of_worship"]["religion"="muslim"](around:10000,' + lat + ',' + lng + ');' +
+      'node["amenity"="place_of_worship"]["religion"="islam"](around:10000,' + lat + ',' + lng + ');' +
+      'node["building"="mosque"](around:10000,' + lat + ',' + lng + ');' +
+      ');out center 100;';
     fetch('https://overpass-api.de/api/interpreter', {
       method: 'POST',
       body: 'data=' + encodeURIComponent(q)
     })
-    .then(r => r.json())
-    .then(data => renderMosques(data.elements || [], lat, lng))
-    .catch(() => {
+    .then(function(r) { return r.json(); })
+    .then(function(data) { renderMosques(data.elements || [], lat, lng); })
+    .catch(function() {
       document.getElementById('mosque-results').innerHTML =
-        '<div class="loading-state">Could not load mosque data. Check your internet connection.</div>';
+        '<div class="loading-state">Could not load mosque data. Please check your internet connection and try again.<br><br>' +
+        '<button onclick="findMosques()" class="btn-primary" style="width:auto;padding:10px 20px">Retry</button></div>';
     });
   };
 
   if (uLat && uLng) { getAndFetch(uLat, uLng); return; }
+  document.getElementById('mosque-results').innerHTML =
+    '<div class="loading-state"><div class="spinner"></div>Getting your location&hellip;</div>';
   navigator.geolocation.getCurrentPosition(
-    p => { uLat = p.coords.latitude; uLng = p.coords.longitude; getAndFetch(uLat, uLng); },
-    ()  => getAndFetch(1.3521, 103.8198),
-    { enableHighAccuracy: true, timeout: 10000 }
+    function(p) {
+      uLat = p.coords.latitude; uLng = p.coords.longitude;
+      document.getElementById('loc-name').textContent = uCity || ('Lat ' + uLat.toFixed(2) + ', Lng ' + uLng.toFixed(2));
+      getAndFetch(uLat, uLng);
+    },
+    function() { getAndFetch(1.3521, 103.8198); },
+    { enableHighAccuracy: true, timeout: 12000 }
   );
 }
 
@@ -2718,27 +3233,79 @@ function openSurah(num) {
   loadAyahs(num);
 }
 
+let currentAudio = null;
+let currentAudioBtn = null;
+
+function playAyahAudio(btn, surahNum, ayahNum) {
+  // Stop any currently playing audio
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio = null;
+    if (currentAudioBtn) {
+      currentAudioBtn.classList.remove('playing');
+      currentAudioBtn.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+    }
+    if (currentAudioBtn === btn) { currentAudioBtn = null; return; }
+  }
+  // Sheikh Mishary Rashid Alafasy — everyayah.com CDN
+  // Format: https://everyayah.com/data/Mishary_Rashid_Alafasy_128kbps/SSSAAA.mp3
+  // SSS = surah 3 digits, AAA = ayah 3 digits
+  const sss = String(surahNum).padStart(3,'0');
+  const aaa = String(ayahNum).padStart(3,'0');
+  const url = 'https://everyayah.com/data/Mishary_Rashid_Alafasy_128kbps/' + sss + aaa + '.mp3';
+
+  const audio = new Audio(url);
+  currentAudio = audio;
+  currentAudioBtn = btn;
+  btn.classList.add('playing');
+  btn.innerHTML = '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+
+  audio.play().catch(function() {
+    btn.classList.remove('playing');
+    btn.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+  });
+  audio.onended = function() {
+    btn.classList.remove('playing');
+    btn.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+    currentAudio = null;
+    currentAudioBtn = null;
+  };
+}
+
 async function loadAyahs(num) {
   try {
     const [arR, enR] = await Promise.all([
-      fetch(`https://api.alquran.cloud/v1/surah/${num}/quran-uthmani`),
-      fetch(`https://api.alquran.cloud/v1/surah/${num}/en.sahih`)
+      fetch('https://api.alquran.cloud/v1/surah/' + num + '/quran-uthmani'),
+      fetch('https://api.alquran.cloud/v1/surah/' + num + '/en.sahih')
     ]);
     const [ar, en] = await Promise.all([arR.json(), enR.json()]);
     if (ar.code !== 200 || en.code !== 200) throw new Error();
 
-    document.getElementById('ayah-list').innerHTML = ar.data.ayahs.map((a, i) =>
-      `<div class="ayah-block">
-        <div class="ayah-ar">${a.text} <span style="font-size:0.9rem;font-family:serif;color:var(--gold)">&#xFD3F;${a.numberInSurah}&#xFD3E;</span></div>
-        <div class="ayah-tr">${en.data.ayahs[i]?.text || ''}</div>
-      </div>`
-    ).join('');
-  } catch {
+    const container = document.getElementById('ayah-list');
+    container.innerHTML = '';
+    ar.data.ayahs.forEach(function(a, i) {
+      const row = document.createElement('div');
+      row.className = 'ayah-block-row';
+      row.innerHTML =
+        '<div class="ayah-num-badge">' + a.numberInSurah + '</div>' +
+        '<div class="ayah-block-body">' +
+          '<div class="ayah-ar uthmani">' + a.text + '</div>' +
+          '<div class="ayah-tr">' + (en.data.ayahs[i] ? en.data.ayahs[i].text : '') + '</div>' +
+        '</div>' +
+        '<button class="ayah-audio-btn" title="Listen — Sheikh Mishary Alafasy">' +
+          '<svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>' +
+        '</button>';
+      const btn = row.querySelector('.ayah-audio-btn');
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        playAyahAudio(btn, num, a.numberInSurah);
+      });
+      container.appendChild(row);
+    });
+  } catch(err) {
     document.getElementById('ayah-list').innerHTML =
-      `<div class="loading-state">
-        Could not load ayahs. Check your internet connection.
-        <button onclick="loadAyahs(${num})" class="btn-primary" style="width:auto;padding:10px 20px;margin-top:12px">Retry</button>
-      </div>`;
+      '<div class="loading-state">Could not load ayahs. Check your internet connection.' +
+      '<br><button onclick="loadAyahs(' + num + ')" class="btn-primary" style="width:auto;padding:10px 20px;margin-top:12px">Retry</button></div>';
   }
 }
 
@@ -3127,8 +3694,222 @@ function closeModal() {
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
 // ══════════════════════════════════════
+// SECTION TABS (Zikir / Quran sub-tabs)
+// ══════════════════════════════════════
+function switchSectTab(btn, panelId, tabsId) {
+  const tabsEl = document.getElementById(tabsId);
+  tabsEl.querySelectorAll('.sect-tab').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  // Find all sect-panels that are siblings of the tabs
+  const page = btn.closest('.page');
+  page.querySelectorAll('.sect-panel').forEach(function(p) { p.classList.remove('active'); });
+  document.getElementById(panelId).classList.add('active');
+}
+
+// ══════════════════════════════════════
+// ASMAUL HUSNA DATA
+// ══════════════════════════════════════
+const HUSNA = [
+  ['الرَّحْمَنُ','Ar-Rahman','The Most Gracious'],
+  ['الرَّحِيمُ','Ar-Rahim','The Most Merciful'],
+  ['الْمَلِكُ','Al-Malik','The King'],
+  ['الْقُدُّوسُ','Al-Quddus','The Most Pure'],
+  ['السَّلَامُ','As-Salam','The Source of Peace'],
+  ['الْمُؤْمِنُ','Al-Mumin','The Guardian of Faith'],
+  ['الْمُهَيْمِنُ','Al-Muhaymin','The Protector'],
+  ['الْعَزِيزُ','Al-Aziz','The Almighty'],
+  ['الْجَبَّارُ','Al-Jabbar','The Compeller'],
+  ['الْمُتَكَبِّرُ','Al-Mutakabbir','The Supreme'],
+  ['الْخَالِقُ','Al-Khaliq','The Creator'],
+  ['الْبَارِئُ','Al-Bari','The Originator'],
+  ['الْمُصَوِّرُ','Al-Musawwir','The Fashioner'],
+  ['الْغَفَّارُ','Al-Ghaffar','The Forgiving'],
+  ['الْقَهَّارُ','Al-Qahhar','The Subduer'],
+  ['الْوَهَّابُ','Al-Wahhab','The Bestower'],
+  ['الرَّزَّاقُ','Ar-Razzaq','The Provider'],
+  ['الْفَتَّاحُ','Al-Fattah','The Opener'],
+  ['الْعَلِيمُ','Al-Alim','The All-Knowing'],
+  ['الْقَابِضُ','Al-Qabid','The Withholder'],
+  ['الْبَاسِطُ','Al-Basit','The Extender'],
+  ['الْخَافِضُ','Al-Khafid','The Abaser'],
+  ['الرَّافِعُ','Ar-Rafi','The Exalter'],
+  ['الْمُعِزُّ','Al-Muizz','The Honourer'],
+  ['الْمُذِلُّ','Al-Mudhill','The Humiliator'],
+  ['السَّمِيعُ','As-Sami','The All-Hearing'],
+  ['الْبَصِيرُ','Al-Basir','The All-Seeing'],
+  ['الْحَكَمُ','Al-Hakam','The Judge'],
+  ['الْعَدْلُ','Al-Adl','The Just'],
+  ['اللَّطِيفُ','Al-Latif','The Subtle One'],
+  ['الْخَبِيرُ','Al-Khabir','The All-Aware'],
+  ['الْحَلِيمُ','Al-Halim','The Forbearing'],
+  ['الْعَظِيمُ','Al-Azim','The Most Great'],
+  ['الْغَفُورُ','Al-Ghafur','The Forgiving'],
+  ['الشَّكُورُ','Ash-Shakur','The Grateful'],
+  ['الْعَلِيُّ','Al-Ali','The Most High'],
+  ['الْكَبِيرُ','Al-Kabir','The Most Grand'],
+  ['الْحَفِيظُ','Al-Hafiz','The Guardian'],
+  ['الْمُقِيتُ','Al-Muqit','The Nourisher'],
+  ['الْحَسِيبُ','Al-Hasib','The Reckoner'],
+  ['الْجَلِيلُ','Al-Jalil','The Majestic'],
+  ['الْكَرِيمُ','Al-Karim','The Generous'],
+  ['الرَّقِيبُ','Ar-Raqib','The Watchful'],
+  ['الْمُجِيبُ','Al-Mujib','The Responsive'],
+  ['الْوَاسِعُ','Al-Wasi','The All-Encompassing'],
+  ['الْحَكِيمُ','Al-Hakim','The All-Wise'],
+  ['الْوَدُودُ','Al-Wadud','The Loving'],
+  ['الْمَجِيدُ','Al-Majid','The Most Glorious'],
+  ['الْبَاعِثُ','Al-Baaith','The Resurrector'],
+  ['الشَّهِيدُ','Ash-Shahid','The Witness'],
+  ['الْحَقُّ','Al-Haqq','The Truth'],
+  ['الْوَكِيلُ','Al-Wakil','The Trustee'],
+  ['الْقَوِيُّ','Al-Qawi','The Most Strong'],
+  ['الْمَتِينُ','Al-Matin','The Firm'],
+  ['الْوَلِيُّ','Al-Wali','The Protecting Friend'],
+  ['الْحَمِيدُ','Al-Hamid','The Praiseworthy'],
+  ['الْمُحْصِي','Al-Muhsi','The Counter'],
+  ['الْمُبْدِئُ','Al-Mubdi','The Originator'],
+  ['الْمُعِيدُ','Al-Muid','The Restorer'],
+  ['الْمُحْيِي','Al-Muhyi','The Giver of Life'],
+  ['الْمُمِيتُ','Al-Mumit','The Taker of Life'],
+  ['الْحَيُّ','Al-Hayy','The Ever-Living'],
+  ['الْقَيُّومُ','Al-Qayyum','The Self-Subsisting'],
+  ['الْوَاجِدُ','Al-Wajid','The Finder'],
+  ['الْمَاجِدُ','Al-Majid','The Noble'],
+  ['الْوَاحِدُ','Al-Wahid','The One'],
+  ['الْأَحَدُ','Al-Ahad','The Unique'],
+  ['الصَّمَدُ','As-Samad','The Eternal'],
+  ['الْقَادِرُ','Al-Qadir','The Capable'],
+  ['الْمُقْتَدِرُ','Al-Muqtadir','The All-Powerful'],
+  ['الْمُقَدِّمُ','Al-Muqaddim','The Expediter'],
+  ['الْمُؤَخِّرُ','Al-Muakhkhir','The Delayer'],
+  ['الْأَوَّلُ','Al-Awwal','The First'],
+  ['الْآخِرُ','Al-Akhir','The Last'],
+  ['الظَّاهِرُ','Az-Zahir','The Manifest'],
+  ['الْبَاطِنُ','Al-Batin','The Hidden'],
+  ['الْوَالِي','Al-Wali','The Governor'],
+  ['الْمُتَعَالِي','Al-Mutaali','The Most Exalted'],
+  ['الْبَرُّ','Al-Barr','The Source of Goodness'],
+  ['التَّوَّابُ','At-Tawwab','The Acceptor of Repentance'],
+  ['الْمُنْتَقِمُ','Al-Muntaqim','The Avenger'],
+  ['الْعَفُوُّ','Al-Afuww','The Pardoner'],
+  ['الرَّؤُوفُ','Ar-Rauf','The Kind'],
+  ['مَالِكُ الْمُلْكِ','Malik-ul-Mulk','The Owner of Sovereignty'],
+  ['ذُو الْجَلَالِ وَالْإِكْرَامِ','Dhul-Jalali-wal-Ikram','Lord of Majesty and Bounty'],
+  ['الْمُقْسِطُ','Al-Muqsit','The Equitable'],
+  ['الْجَامِعُ','Al-Jami','The Gatherer'],
+  ['الْغَنِيُّ','Al-Ghani','The Self-Sufficient'],
+  ['الْمُغْنِي','Al-Mughni','The Enricher'],
+  ['الْمَانِعُ','Al-Mani','The Preventer'],
+  ['الضَّارُّ','Ad-Darr','The Distressor'],
+  ['النَّافِعُ','An-Nafi','The Benefiter'],
+  ['النُّورُ','An-Nur','The Light'],
+  ['الْهَادِي','Al-Hadi','The Guide'],
+  ['الْبَدِيعُ','Al-Badi','The Incomparable'],
+  ['الْبَاقِي','Al-Baqi','The Everlasting'],
+  ['الْوَارِثُ','Al-Warith','The Inheritor'],
+  ['الرَّشِيدُ','Ar-Rashid','The Guide to Right Path'],
+  ['الصَّبُورُ','As-Sabur','The Patient']
+];
+
+function renderHusna() {
+  const grid = document.getElementById('husna-grid');
+  if (!grid) return;
+  grid.innerHTML = HUSNA.map(function(h, i) {
+    return '<div class="husna-card">' +
+      '<div class="husna-num">' + (i+1) + '</div>' +
+      '<div class="husna-ar uthmani">' + h[0] + '</div>' +
+      '<div class="husna-en">' + h[1] + '</div>' +
+      '<div class="husna-meaning">' + h[2] + '</div>' +
+    '</div>';
+  }).join('');
+}
+
+// ══════════════════════════════════════
+// IQRA BOOKS + HURUF HIJAIYAH
+// ══════════════════════════════════════
+const IQRA_BOOKS = [
+  { num: 1, title: 'Iqra Book 1', sub: 'Basic letters — Alif to Ya', letter: 'أ', progress: 0 },
+  { num: 2, title: 'Iqra Book 2', sub: 'Short vowels — Fathah, Kasrah, Dammah', letter: 'ب', progress: 0 },
+  { num: 3, title: 'Iqra Book 3', sub: 'Long vowels — Alif, Waw, Ya', letter: 'ت', progress: 0 },
+  { num: 4, title: 'Iqra Book 4', sub: 'Tanwin & Sukun', letter: 'ث', progress: 0 },
+  { num: 5, title: 'Iqra Book 5', sub: 'Shaddah & Madd', letter: 'ج', progress: 0 },
+  { num: 6, title: 'Iqra Book 6', sub: 'Tajweed rules & full words', letter: 'ح', progress: 0 }
+];
+
+const HURUF = [
+  ['أ','Alif'],['ب','Ba'],['ت','Ta'],['ث','Tha'],
+  ['ج','Jim'],['ح','Ha'],['خ','Kha'],['د','Dal'],
+  ['ذ','Dhal'],['ر','Ra'],['ز','Zay'],['س','Sin'],
+  ['ش','Shin'],['ص','Sad'],['ض','Dad'],['ط','Ta'],
+  ['ظ','Zha'],['ع','Ain'],['غ','Ghain'],['ف','Fa'],
+  ['ق','Qaf'],['ك','Kaf'],['ل','Lam'],['م','Mim'],
+  ['ن','Nun'],['ه','Ha'],['و','Waw'],['ي','Ya']
+];
+
+// Load progress from localStorage
+function getIqraProgress() {
+  try { return JSON.parse(localStorage.getItem('ilm-iqra') || '{}'); } catch(e) { return {}; }
+}
+
+function renderArabicSection() {
+  const progress = getIqraProgress();
+
+  // Progress bars
+  const levelsEl = document.getElementById('arabic-progress-levels');
+  if (levelsEl) {
+    levelsEl.innerHTML = IQRA_BOOKS.map(function(b) {
+      const pct = progress['iqra-' + b.num] || 0;
+      const locked = b.num > 1 && (progress['iqra-' + (b.num-1)] || 0) < 100;
+      return '<div class="progress-level' + (locked ? ' pl-locked' : '') + '">' +
+        '<div class="pl-head">' +
+          '<div class="pl-name">' + b.title + (locked ? ' 🔒' : '') + '</div>' +
+          '<div class="pl-pct">' + pct + '%</div>' +
+        '</div>' +
+        '<div class="pl-bar-wrap"><div class="pl-bar" style="width:' + pct + '%"></div></div>' +
+        '<div class="pl-meta">' + b.sub + '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  // Iqra cards
+  const iqraEl = document.getElementById('iqra-grid');
+  if (iqraEl) {
+    iqraEl.innerHTML = IQRA_BOOKS.map(function(b) {
+      const pct = progress['iqra-' + b.num] || 0;
+      return '<div class="iqra-card" onclick="openIqraBook(' + b.num + ')">' +
+        '<div class="iqra-thumb">' + b.letter + '</div>' +
+        '<div class="iqra-card-body">' +
+          '<div class="iqra-title">' + b.title + '</div>' +
+          '<div class="iqra-sub">' + b.sub + '</div>' +
+          '<div style="margin-top:6px;height:3px;background:var(--surface2);border-radius:2px">' +
+            '<div style="height:100%;width:' + pct + '%;background:var(--teal);border-radius:2px;transition:width 0.5s"></div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  // Huruf grid
+  const hurufEl = document.getElementById('huruf-grid');
+  if (hurufEl) {
+    hurufEl.innerHTML = HURUF.map(function(h) {
+      return '<div class="huruf-cell">' +
+        '<span class="huruf-ar uthmani">' + h[0] + '</span>' +
+        '<div class="huruf-name">' + h[1] + '</div>' +
+      '</div>';
+    }).join('');
+  }
+}
+
+function openIqraBook(num) {
+  // For now: show a modal-style toast — future: full lesson screen
+  toast('Iqra Book ' + num + ' — coming soon with interactive lessons');
+}
+
+// ══════════════════════════════════════
 // THEME TOGGLE
 // ══════════════════════════════════════
+
 function toggleTheme() {
   const html = document.documentElement;
   const isDark = html.getAttribute('data-theme') === 'dark';
@@ -3149,10 +3930,13 @@ function initTheme() {
 // ══════════════════════════════════════
 initTheme();
 updateDates();
+document.getElementById("footer-year").textContent = new Date().getFullYear();
 setInterval(updateDates, 60000);
 renderSurahs(SURAHS);
 initLocation();
 renderPlaylists();
+renderHusna();
+renderArabicSection();
 </script>
 
 <!-- VIDEO MODAL -->
