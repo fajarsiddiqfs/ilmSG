@@ -2154,6 +2154,48 @@ body::after {
 .hdr-ptr-icon.visible { opacity: 1; transform: translateY(0); }
 .hdr-ptr-icon.spinning svg { animation: spin 0.6s linear infinite; }
 
+
+/* ═══ BOTTOM PULL-UP TO REFRESH ═══ */
+.btr-indicator {
+  position: fixed;
+  bottom: calc(var(--nav-h) + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--teal);
+  color: #fff;
+  border-radius: 30px;
+  padding: 8px 18px 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(38,170,225,0.35);
+  z-index: 400;
+  pointer-events: none;
+  transition: transform 0.25s cubic-bezier(0.34,1.1,0.64,1), opacity 0.2s;
+  opacity: 0;
+  white-space: nowrap;
+  max-width: 200px;
+}
+.btr-indicator.peek {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+.btr-indicator svg {
+  width: 16px; height: 16px;
+  fill: none; stroke: #fff;
+  stroke-width: 2.5; stroke-linecap: round;
+  flex-shrink: 0;
+}
+.btr-indicator.spinning svg {
+  animation: spin 0.65s linear infinite;
+}
+.btr-indicator.done {
+  background: #2ecc71;
+}
+
 </style>
 </head>
 <body>
@@ -4359,31 +4401,77 @@ function refreshAll() {
 
 // Pull-to-refresh on all pages
 (function initPullToRefresh() {
-  let startY = 0, pulling = false;
-  const icon = document.getElementById('hdr-ptr-icon');
+  // Pull UP from bottom to refresh
+  // Triggers when user is near the bottom and swipes up further
+  let startY = 0;
+  let active = false;
+  let triggered = false;
+
+  const ind   = document.getElementById('btr-indicator');
+  const label = document.getElementById('btr-label');
+
+  function isNearBottom() {
+    const main = document.querySelector('.main-content');
+    if (!main) return false;
+    // True when within 80px of the scrollable bottom
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    return scrollable <= 0 || (window.scrollY >= scrollable - 80);
+  }
 
   document.addEventListener('touchstart', function(e) {
-    if (window.scrollY === 0) { startY = e.touches[0].clientY; pulling = true; }
+    if (isNearBottom()) {
+      startY   = e.touches[0].clientY;
+      active   = true;
+      triggered = false;
+    }
   }, { passive: true });
 
   document.addEventListener('touchmove', function(e) {
-    if (!pulling || !icon) return;
-    const dy = e.touches[0].clientY - startY;
-    if (dy > 10) {
-      icon.classList.add('visible');
-      if (dy > 60) icon.classList.add('spinning');
+    if (!active || !ind) return;
+    const dy = startY - e.touches[0].clientY; // positive = upward swipe
+    if (dy > 15) {
+      ind.classList.add('peek');
+      ind.classList.remove('done');
+      if (dy > 60) {
+        ind.classList.add('spinning');
+        if (label) label.textContent = 'Release to refresh';
+      } else {
+        ind.classList.remove('spinning');
+        if (label) label.textContent = 'Pull up to refresh';
+      }
+    } else {
+      ind.classList.remove('peek', 'spinning');
     }
   }, { passive: true });
 
   document.addEventListener('touchend', function(e) {
-    if (!pulling) return;
-    pulling = false;
-    const dy = e.changedTouches[0].clientY - startY;
-    if (icon) {
-      icon.classList.remove('spinning');
-      setTimeout(() => icon.classList.remove('visible'), 400);
+    if (!active) return;
+    active = false;
+    const dy = startY - e.changedTouches[0].clientY;
+
+    if (dy > 60 && !triggered) {
+      triggered = true;
+      // Show "Refreshing…" state
+      if (ind) {
+        ind.classList.add('peek', 'spinning');
+        ind.classList.remove('done');
+        if (label) label.textContent = 'Refreshing…';
+      }
+      refreshAll();
+      // Show done state then hide
+      setTimeout(function() {
+        if (ind) {
+          ind.classList.remove('spinning');
+          ind.classList.add('done');
+          if (label) label.textContent = 'Updated';
+          setTimeout(function() { ind.classList.remove('peek', 'done'); }, 1200);
+        }
+      }, 900);
+    } else {
+      if (ind) {
+        ind.classList.remove('peek', 'spinning');
+      }
     }
-    if (dy > 80) refreshAll();
   }, { passive: true });
 })();
 
@@ -4444,5 +4532,12 @@ renderArabicSection();
     </div>
   </div>
 </div>
+
+<!-- BOTTOM PULL-UP REFRESH INDICATOR -->
+<div class="btr-indicator" id="btr-indicator">
+  <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+  <span id="btr-label">Pull up to refresh</span>
+</div>
+
 </body>
 </html>
