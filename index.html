@@ -41,7 +41,7 @@
   --red-bg:     #FEF0EE;
 
   --nav-h:      60px;
-  --header-h:   52px;
+  --header-h:   64px;
 
   --radius:     14px;
   --radius-sm:  8px;
@@ -327,50 +327,158 @@ body::after {
   width: 100%;
   max-width: 430px;
   height: var(--header-h);
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
+  background: var(--teal);
+  border-bottom: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 18px;
+  padding: 0 14px;
   z-index: 300;
   left: 50%;
   transform: translateX(-50%);
+  box-shadow: 0 2px 10px rgba(38,170,225,0.25);
+}
+[data-theme="dark"] .app-header {
+  background: #1A1A1A;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
 }
 
+/* Header left: logo + day/date */
+.hdr-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+}
 .logo {
   display: flex;
   align-items: baseline;
-  gap: 6px;
+  gap: 0;
+  cursor: pointer;
 }
 .logo-word {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.45rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  color: var(--teal);
+  color: #fff;
   letter-spacing: -0.04em;
+  line-height: 1;
 }
-.logo-ar {
-  font-family: 'Amiri', serif;
-  font-size: 0.9rem;
-  color: var(--gold);
-  letter-spacing: 0.01em;
+.hdr-day {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+.hdr-date {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
 }
 
-.header-info {
-  text-align: right;
+/* Header center: location */
+.hdr-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1.2;
+  gap: 2px;
 }
-.header-hijri {
+.hdr-loc-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.hdr-live-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #7fffb0;
+  flex-shrink: 0;
+  animation: livepulse 2s infinite;
+}
+.hdr-loc-name {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  max-width: 110px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hdr-hijri-small {
+  font-size: 0.58rem;
+  color: rgba(255,255,255,0.65);
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Header right: clock + controls */
+.hdr-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  flex: 1;
+}
+.hdr-clock {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.hdr-clock-sec {
   font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--teal);
-  line-height: 1.3;
+  opacity: 0.7;
 }
-.header-gregorian {
-  font-size: 0.65rem;
-  color: var(--text3);
-  margin-top: 1px;
+.hdr-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
+
+/* refresh button */
+.hdr-refresh {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s;
+}
+.hdr-refresh:active { background: rgba(255,255,255,0.25); transform: rotate(180deg); }
+.hdr-refresh svg { width: 13px; height: 13px; fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; }
+.hdr-refresh.spinning svg { animation: spin 0.7s linear infinite; }
+
+.theme-toggle {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.12);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, transform 0.15s;
+  flex-shrink: 0;
+}
+.theme-toggle:active { transform: scale(0.88); }
+.theme-toggle svg { width: 13px; height: 13px; stroke: #fff; stroke-width: 2; }
+.icon-sun  { display: block; }
+.icon-moon { display: none;  }
+[data-theme="dark"] .icon-sun  { display: none;  }
+[data-theme="dark"] .icon-moon { display: block; }
+.logo-ar { display: none; }
+.header-info { display: none; }
+.header-hijri { display: none; }
+.header-gregorian { display: none; }
 
 /* ═══ PAGES ═══ */
 .page { display: none; animation: pageIn 0.22s ease; }
@@ -545,6 +653,11 @@ body::after {
   border-color: var(--teal);
   background: var(--teal-bg);
 }
+.p-cell-icon {
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 3px; color: var(--text3);
+}
+.p-cell.next .p-cell-icon { color: var(--teal); }
 .p-cell-name {
   font-size: 0.58rem;
   font-weight: 700;
@@ -559,7 +672,12 @@ body::after {
   font-weight: 700;
   color: var(--text);
 }
-.p-cell.next .p-cell-name { color: var(--teal); }
+.p-cell.next .p-cell-icon {
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 3px; color: var(--text3);
+}
+.p-cell.next .p-cell-icon { color: var(--teal); }
+.p-cell-name { color: var(--teal); }
 .p-cell.next .p-cell-time { color: var(--teal); }
 
 /* ═══ LOCATION STRIP ═══ */
@@ -2027,33 +2145,41 @@ body::after {
 
 <!-- ══ HEADER ══ -->
 <header class="app-header">
-  <div class="logo" onclick="switchPage('tracker')" style="cursor:pointer">
-    <span class="logo-word">ilm</span>
-  </div>
-  <div style="display:flex;align-items:center;gap:10px">
-    <div class="header-info">
-      <div class="header-hijri" id="hdr-hijri">Loading…</div>
-      <div class="header-gregorian" id="hdr-greg"></div>
+
+  <!-- LEFT: logo + day/date -->
+  <div class="hdr-left">
+    <div class="logo" onclick="switchPage('tracker')">
+      <span class="logo-word">ilm</span>
     </div>
-    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-      <!-- Sun icon (shown in light mode) -->
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="5"/>
-        <line x1="12" y1="1" x2="12" y2="3"/>
-        <line x1="12" y1="21" x2="12" y2="23"/>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-        <line x1="1" y1="12" x2="3" y2="12"/>
-        <line x1="21" y1="12" x2="23" y2="12"/>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-      </svg>
-      <!-- Moon icon (shown in dark mode) -->
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-      </svg>
-    </button>
+    <div class="hdr-day" id="hdr-day">Loading</div>
+    <div class="hdr-date" id="hdr-date-str"></div>
   </div>
+
+  <!-- CENTER: location + hijri -->
+  <div class="hdr-center">
+    <div class="hdr-loc-row">
+      <div class="hdr-live-dot"></div>
+      <div class="hdr-loc-name" id="hdr-loc">Locating…</div>
+    </div>
+    <div class="hdr-hijri-small" id="hdr-hijri-sm"></div>
+  </div>
+
+  <!-- RIGHT: clock + controls -->
+  <div class="hdr-right">
+    <div class="hdr-clock" id="hdr-clock">
+      <span id="hdr-hm">--:--</span><span class="hdr-clock-sec" id="hdr-sec">:--</span>
+    </div>
+    <div class="hdr-controls">
+      <button class="hdr-refresh" id="hdr-refresh-btn" onclick="refreshAll()" title="Refresh all data">
+        <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+      </button>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </div>
+
 </header>
 
 <div class="main-content">
@@ -2090,9 +2216,14 @@ body::after {
         <div class="ph-bar-wrap"><div class="ph-bar" id="ph-bar" style="width:0%"></div></div>
       </div>
       <div class="prayer-grid" id="prayer-grid"></div>
-      <div class="card">
-        <div class="card-label">Sunrise</div>
-        <div style="font-family:'Amiri',serif;font-size:1.3rem;font-weight:700;color:var(--text)" id="sunrise-val">—</div>
+      <div class="card" style="border-left:3px solid var(--gold)">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="color:var(--gold)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/></svg></div>
+          <div>
+            <div class="card-label">Syuruk (Sunrise)</div>
+            <div style="font-family:'Amiri',serif;font-size:1.3rem;font-weight:700;color:var(--text)" id="sunrise-val">—</div>
+          </div>
+        </div>
       </div>
       <div class="card">
         <div class="card-label">Hijri Date</div>
@@ -2732,12 +2863,38 @@ function toHijri(date) {
 function updateDates() {
   const now  = new Date();
   const h    = toHijri(now);
-  const hStr = `${h.day} ${HIJRI_MONTHS[h.month - 1]} ${h.year} AH`;
-  const gStr = `${GREG_DAYS[now.getDay()]}, ${now.getDate()} ${GREG_MONTHS[now.getMonth()]} ${now.getFullYear()}`;
-  document.getElementById('hdr-hijri').textContent  = hStr;
-  document.getElementById('hdr-greg').textContent   = gStr;
-  document.getElementById('hijri-full').textContent = hStr;
-  document.getElementById('hijri-greg').textContent = gStr;
+  const hStr = h.day + ' ' + HIJRI_MONTHS[h.month - 1] + ' ' + h.year + ' AH';
+  const day  = GREG_DAYS[now.getDay()];
+  const date = now.getDate() + ' ' + GREG_MONTHS[now.getMonth()] + ' ' + now.getFullYear();
+
+  // New header fields
+  const dayEl = document.getElementById('hdr-day');
+  const dateEl = document.getElementById('hdr-date-str');
+  const hijriSmEl = document.getElementById('hdr-hijri-sm');
+  if (dayEl)     dayEl.textContent     = day;
+  if (dateEl)    dateEl.textContent    = date;
+  if (hijriSmEl) hijriSmEl.textContent = hStr;
+
+  // Old fields (for prayer tab Hijri card)
+  const hijriFullEl = document.getElementById('hijri-full');
+  const hijriGregEl = document.getElementById('hijri-greg');
+  if (hijriFullEl) hijriFullEl.textContent = hStr;
+  if (hijriGregEl) hijriGregEl.textContent = day + ', ' + date;
+}
+
+// Live clock — updates every second
+function startClock() {
+  function tick() {
+    const now  = new Date();
+    const hm   = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+    const sec  = ':' + String(now.getSeconds()).padStart(2,'0');
+    const hmEl  = document.getElementById('hdr-hm');
+    const secEl = document.getElementById('hdr-sec');
+    if (hmEl)  hmEl.textContent  = hm;
+    if (secEl) secEl.textContent = sec;
+  }
+  tick();
+  setInterval(tick, 1000);
 }
 
 // ══════════════════════════════════════
@@ -2747,11 +2904,11 @@ let uLat = null, uLng = null, uCity = 'Singapore';
 let PT = null; // prayer times object
 
 const PRAYERS = [
-  { key:'Fajr',    label:'Fajr'    },
-  { key:'Dhuhr',   label:'Dhuhr'   },
-  { key:'Asr',     label:'Asr'     },
-  { key:'Maghrib', label:'Maghrib' },
-  { key:'Isha',    label:'Isha'    },
+  { key:'Fajr',    label:'Subuh',   icon:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="9" x2="12" y2="2"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/></svg>' },
+  { key:'Dhuhr',   label:'Zohor',   icon:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>' },
+  { key:'Asr',     label:'Asar',    icon:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><line x1="4" y1="12" x2="2" y2="12"/><line x1="22" y1="12" x2="20" y2="12"/></svg>' },
+  { key:'Maghrib', label:'Maghrib', icon:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="9" x2="12" y2="2"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/></svg>' },
+  { key:'Isha',    label:'Isyak',   icon:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>' },
 ];
 
 function initLocation() {
@@ -2767,7 +2924,7 @@ function initLocation() {
         .then(r => r.json())
         .then(d => {
           uCity = d.address?.city || d.address?.town || d.address?.suburb || d.address?.county || 'Your Location';
-          document.getElementById('loc-name').textContent = uCity;
+          document.getElementById('loc-name').textContent = uCity; const hdrLoc = document.getElementById('hdr-loc'); if(hdrLoc) hdrLoc.textContent = uCity;
           fetchPrayerTimes(uLat, uLng, uCity);
         })
         .catch(() => fetchPrayerTimes(uLat, uLng, 'Your Location'));
@@ -2779,7 +2936,7 @@ function initLocation() {
 
 function fetchPrayerTimes(lat, lng, city) {
   uLat = lat; uLng = lng; uCity = city;
-  document.getElementById('loc-name').textContent = city;
+  document.getElementById('loc-name').textContent = city; const _hl = document.getElementById('hdr-loc'); if(_hl) _hl.textContent = city;
   const now = new Date();
   const d   = `${now.getDate()}-${now.getMonth()+1}-${now.getFullYear()}`;
   // Method 2 = ISNA (widely accepted); works globally
@@ -2829,7 +2986,7 @@ function renderPrayer() {
   if (ni === -1) ni = 0;
   const pi   = (ni - 1 + pts.length) % pts.length;
 
-  document.getElementById('ph-name').textContent = pts[ni].label;
+  document.getElementById('ph-name').innerHTML = pts[ni].icon + ' ' + pts[ni].label;
   document.getElementById('ph-time').textContent = fmt12(PT[pts[ni].key]);
 
   // Progress bar
@@ -2843,6 +3000,7 @@ function renderPrayer() {
   // Prayer grid
   document.getElementById('prayer-grid').innerHTML = PRAYERS.map((p, i) =>
     `<div class="p-cell${i===ni?' next':''}">
+      <div class="p-cell-icon">${p.icon}</div>
       <div class="p-cell-name">${p.label}</div>
       <div class="p-cell-time">${fmt12(PT[p.key])}</div>
     </div>`
@@ -4106,6 +4264,77 @@ function openIqraBook(num) {
 }
 
 // ══════════════════════════════════════
+// REFRESH ALL
+// ══════════════════════════════════════
+function refreshAll() {
+  const btn = document.getElementById('hdr-refresh-btn');
+  if (btn) { btn.classList.add('spinning'); setTimeout(() => btn.classList.remove('spinning'), 800); }
+
+  // Refresh prayer times
+  if (uLat && uLng) {
+    fetchPrayerTimes(uLat, uLng, uCity || 'Your Location');
+  } else {
+    initLocation();
+  }
+
+  // Refresh playlists
+  if (typeof PLAYLISTS !== 'undefined') {
+    PLAYLISTS.forEach(pl => fetchPlaylist(pl));
+  }
+
+  // Refresh date/time display
+  updateDates();
+
+  toast('Refreshed');
+}
+
+// Pull-to-refresh on all pages
+(function initPullToRefresh() {
+  let startY = 0, pulling = false, indicator = null;
+
+  function createIndicator() {
+    if (indicator) return;
+    indicator = document.createElement('div');
+    indicator.id = 'ptr-indicator';
+    indicator.style.cssText =
+      'position:fixed;top:' + (getComputedStyle(document.documentElement).getPropertyValue('--header-h').trim() || '64px') +
+      ';left:50%;transform:translateX(-50%) translateY(-50px);transition:transform 0.2s;' +
+      'width:36px;height:36px;border-radius:50%;background:var(--teal);display:flex;align-items:center;' +
+      'justify-content:center;z-index:250;box-shadow:0 2px 8px rgba(38,170,225,0.35);';
+    indicator.innerHTML =
+      '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round">' +
+      '<polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>' +
+      '<path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>';
+    document.body.appendChild(indicator);
+  }
+
+  document.addEventListener('touchstart', function(e) {
+    if (window.scrollY === 0) { startY = e.touches[0].clientY; pulling = true; createIndicator(); }
+  }, { passive: true });
+
+  document.addEventListener('touchmove', function(e) {
+    if (!pulling) return;
+    const dy = e.touches[0].clientY - startY;
+    if (dy > 0 && indicator) {
+      const pull = Math.min(dy * 0.4, 60);
+      indicator.style.transform = 'translateX(-50%) translateY(' + (pull - 50) + 'px)';
+      if (pull > 40) indicator.querySelector('svg').style.animation = 'spin 0.6s linear infinite';
+    }
+  }, { passive: true });
+
+  document.addEventListener('touchend', function(e) {
+    if (!pulling) return;
+    pulling = false;
+    const dy = e.changedTouches[0].clientY - startY;
+    if (indicator) {
+      indicator.style.transform = 'translateX(-50%) translateY(-50px)';
+      setTimeout(() => { if (indicator) { indicator.remove(); indicator = null; } }, 300);
+    }
+    if (dy > 80) refreshAll();
+  }, { passive: true });
+})();
+
+// ══════════════════════════════════════
 // THEME TOGGLE
 // ══════════════════════════════════════
 
@@ -4129,6 +4358,7 @@ function initTheme() {
 // ══════════════════════════════════════
 initTheme();
 updateDates();
+startClock();
 document.getElementById("footer-year").textContent = new Date().getFullYear();
 setInterval(updateDates, 60000);
 renderSurahs(SURAHS);
