@@ -422,7 +422,7 @@ body::after {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 3px;
+  gap: 4px;
   flex: 1;
 }
 .hdr-clock {
@@ -2138,6 +2138,22 @@ body::after {
   background: var(--surface); border-color: var(--border);
 }
 
+
+/* Pull-to-refresh icon in header center */
+.hdr-ptr-icon {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.2s, transform 0.2s;
+  margin-bottom: 2px;
+  pointer-events: none;
+}
+.hdr-ptr-icon.visible { opacity: 1; transform: translateY(0); }
+.hdr-ptr-icon.spinning svg { animation: spin 0.6s linear infinite; }
+
 </style>
 </head>
 <body>
@@ -2146,17 +2162,17 @@ body::after {
 <!-- ══ HEADER ══ -->
 <header class="app-header">
 
-  <!-- LEFT: logo + day/date -->
+  <!-- LEFT: day + date -->
   <div class="hdr-left">
-    <div class="logo" onclick="switchPage('tracker')">
-      <span class="logo-word">ilm</span>
-    </div>
     <div class="hdr-day" id="hdr-day">Loading</div>
     <div class="hdr-date" id="hdr-date-str"></div>
   </div>
 
-  <!-- CENTER: location + hijri -->
+  <!-- CENTER: pull-to-refresh indicator (hidden) + location + hijri -->
   <div class="hdr-center">
+    <div class="hdr-ptr-icon" id="hdr-ptr-icon">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+    </div>
     <div class="hdr-loc-row">
       <div class="hdr-live-dot"></div>
       <div class="hdr-loc-name" id="hdr-loc">Locating…</div>
@@ -2164,20 +2180,15 @@ body::after {
     <div class="hdr-hijri-small" id="hdr-hijri-sm"></div>
   </div>
 
-  <!-- RIGHT: clock + controls -->
+  <!-- RIGHT: clock + theme toggle -->
   <div class="hdr-right">
-    <div class="hdr-clock" id="hdr-clock">
+    <div class="hdr-clock">
       <span id="hdr-hm">--:--</span><span class="hdr-clock-sec" id="hdr-sec">:--</span>
     </div>
-    <div class="hdr-controls">
-      <button class="hdr-refresh" id="hdr-refresh-btn" onclick="refreshAll()" title="Refresh all data">
-        <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
-      </button>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
   </div>
 
 </header>
@@ -2235,7 +2246,7 @@ body::after {
     <!-- VIDEO PLAYLISTS -->
     <div class="vp-section">
       <div class="vp-section-head">
-        <div class="vp-section-title">ilm Quran</div>
+        <div class="vp-section-title">Ilm Quran</div>
         <div class="vp-section-right">
           <a href="https://www.youtube.com/playlist?list=PLoBuEb7Cp3UOys8bfqhvXQYy-EcuywTy1" target="_blank" rel="noopener" class="vp-see-all">See all</a>
         </div>
@@ -2253,7 +2264,7 @@ body::after {
 
     <div class="vp-section">
       <div class="vp-section-head">
-        <div class="vp-section-title">ilm Podcast</div>
+        <div class="vp-section-title">Ilm Podcast</div>
         <div class="vp-section-right">
           <a href="https://www.youtube.com/playlist?list=PLoBuEb7Cp3UNW1dTseOghgWSdcntZJX-4" target="_blank" rel="noopener" class="vp-see-all">See all</a>
         </div>
@@ -2271,7 +2282,7 @@ body::after {
 
     <div class="vp-section">
       <div class="vp-section-head">
-        <div class="vp-section-title">ilm Original Series</div>
+        <div class="vp-section-title">Ilm Originals</div>
         <div class="vp-section-right">
           <a href="https://www.youtube.com/playlist?list=PLoBuEb7Cp3UMLeNZ9Mo76JqCksERMuvj4" target="_blank" rel="noopener" class="vp-see-all">See all</a>
         </div>
@@ -2298,14 +2309,14 @@ body::after {
         <span class="fdot">&#9679;</span>
         <a href="#">Shop</a>
         <span class="fdot">&#9679;</span>
-        <a href="#">Infaq</a>
+        <a href="#">Support</a>
         <span class="fdot">&#9679;</span>
         <a href="#">Privacy</a>
         <span class="fdot">&#9679;</span>
         <a href="#">Terms</a>
       </div>
       <div class="footer-bottom">
-        <div class="footer-copy" id="footer-copy">&copy; 2014&ndash;<span id="footer-year"></span> Ilm.sg</div>
+        <div class="footer-copy" id="footer-copy">&copy; 2014&ndash;<span id="footer-year"></span> <a href="https://ilm.sg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Ilm.sg</a></div>
         <div class="footer-made">Made by <a href="#" target="_blank" rel="noopener">Euphorya</a></div>
       </div>
     </footer>
@@ -2998,8 +3009,9 @@ function renderPrayer() {
   document.getElementById('ph-bar').style.width = pct + '%';
 
   // Prayer grid
-  document.getElementById('prayer-grid').innerHTML = PRAYERS.map((p, i) =>
-    `<div class="p-cell${i===ni?' next':''}">
+  const grid = document.getElementById('prayer-grid');
+  grid.innerHTML = PRAYERS.map((p, i) =>
+    `<div class="p-cell${i===ni?' next':''}" onclick="selectPrayer(${i})">
       <div class="p-cell-icon">${p.icon}</div>
       <div class="p-cell-name">${p.label}</div>
       <div class="p-cell-time">${fmt12(PT[p.key])}</div>
@@ -3008,6 +3020,38 @@ function renderPrayer() {
 
   document.getElementById('sunrise-val').textContent = fmt12(PT.Sunrise);
 }
+function selectPrayer(idx) {
+  if (!PT) return;
+  const p = PRAYERS[idx];
+  const now  = new Date();
+  const nowM = now.getHours()*60 + now.getMinutes();
+  const pts  = PRAYERS.map(pr => ({ ...pr, mins: parseMin(PT[pr.key]) }));
+  const pMins = pts[idx].mins;
+  let diff = pMins - nowM;
+  if (diff < 0) diff += 1440;
+  const h = Math.floor(diff/60), m = diff%60;
+  const countdownTxt = diff === 0 ? 'Now' : (h > 0 ? 'in ' + h + 'h ' + m + 'm' : 'in ' + m + ' min');
+
+  document.getElementById('ph-name').innerHTML = p.icon + ' ' + p.label;
+  document.getElementById('ph-time').textContent = fmt12(PT[p.key]);
+  document.getElementById('ph-countdown').textContent = countdownTxt;
+
+  // Highlight selected cell
+  document.querySelectorAll('.p-cell').forEach((el, i) => {
+    el.classList.toggle('next', i === idx);
+  });
+
+  // Recalculate progress bar for selected prayer
+  const prevIdx = (idx - 1 + PRAYERS.length) % PRAYERS.length;
+  const pMin = pts[prevIdx].mins;
+  let nMin = pts[idx].mins;
+  if (nMin < pMin) nMin += 1440;
+  let nowA = nowM < pMin ? nowM + 1440 : nowM;
+  const pct = diff === 0 ? 100 : Math.max(0, Math.min(100, (nowA - pMin) / (nMin - pMin) * 100));
+  const bar = document.getElementById('ph-bar');
+  if (bar) bar.style.width = pct + '%';
+}
+
 
 // ── AZAN NOTIFICATION SYSTEM ──────────────────────────────────────────
 // Stores which prayer times have already been notified today
@@ -3133,6 +3177,28 @@ function showNotifBanner() {
   if (Notification.permission === 'granted') return;
   const existing = document.getElementById('notif-banner');
   if (existing) return;
+
+  // Insert date/hijri line above the banner
+  const existingDateBar = document.getElementById('prayer-date-bar');
+  if (!existingDateBar) {
+    const dateBar = document.createElement('div');
+    dateBar.id = 'prayer-date-bar';
+    dateBar.style.cssText = 'display:flex;align-items:center;justify-content:space-between;background:var(--surface2);border-radius:var(--radius-sm);padding:7px 12px;margin-bottom:8px;font-size:0.72rem;font-weight:600;';
+    dateBar.innerHTML =
+      '<span style="color:var(--text2)" id="prayer-date-left"></span>' +
+      '<span style="color:var(--teal)" id="prayer-date-hijri"></span>';
+    const prayerPanel = document.getElementById('t-prayer');
+    const locStrip = prayerPanel ? prayerPanel.querySelector('.loc-strip') : null;
+    if (locStrip) locStrip.after(dateBar);
+    // populate it
+    const now = new Date();
+    const h = toHijri(now);
+    const left_el = document.getElementById('prayer-date-left');
+    const hijri_el = document.getElementById('prayer-date-hijri');
+    if (left_el) left_el.textContent = GREG_DAYS[now.getDay()] + ', ' + now.getDate() + ' ' + GREG_MONTHS[now.getMonth()] + ' ' + now.getFullYear();
+    if (hijri_el) hijri_el.textContent = h.day + ' ' + HIJRI_MONTHS[h.month-1] + ' ' + h.year + ' H';
+  }
+
   const banner = document.createElement('div');
   banner.id = 'notif-banner';
   banner.style.cssText = 'background:var(--teal-bg);border:1px solid var(--teal-bg2);border-radius:var(--radius);padding:12px 14px;margin-bottom:12px;display:flex;align-items:center;gap:10px;cursor:pointer;';
@@ -4267,8 +4333,11 @@ function openIqraBook(num) {
 // REFRESH ALL
 // ══════════════════════════════════════
 function refreshAll() {
-  const btn = document.getElementById('hdr-refresh-btn');
-  if (btn) { btn.classList.add('spinning'); setTimeout(() => btn.classList.remove('spinning'), 800); }
+  const ptrIcon = document.getElementById('hdr-ptr-icon');
+  if (ptrIcon) {
+    ptrIcon.classList.add('visible','spinning');
+    setTimeout(() => ptrIcon.classList.remove('spinning','visible'), 900);
+  }
 
   // Refresh prayer times
   if (uLat && uLng) {
@@ -4290,35 +4359,19 @@ function refreshAll() {
 
 // Pull-to-refresh on all pages
 (function initPullToRefresh() {
-  let startY = 0, pulling = false, indicator = null;
-
-  function createIndicator() {
-    if (indicator) return;
-    indicator = document.createElement('div');
-    indicator.id = 'ptr-indicator';
-    indicator.style.cssText =
-      'position:fixed;top:' + (getComputedStyle(document.documentElement).getPropertyValue('--header-h').trim() || '64px') +
-      ';left:50%;transform:translateX(-50%) translateY(-50px);transition:transform 0.2s;' +
-      'width:36px;height:36px;border-radius:50%;background:var(--teal);display:flex;align-items:center;' +
-      'justify-content:center;z-index:250;box-shadow:0 2px 8px rgba(38,170,225,0.35);';
-    indicator.innerHTML =
-      '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round">' +
-      '<polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>' +
-      '<path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>';
-    document.body.appendChild(indicator);
-  }
+  let startY = 0, pulling = false;
+  const icon = document.getElementById('hdr-ptr-icon');
 
   document.addEventListener('touchstart', function(e) {
-    if (window.scrollY === 0) { startY = e.touches[0].clientY; pulling = true; createIndicator(); }
+    if (window.scrollY === 0) { startY = e.touches[0].clientY; pulling = true; }
   }, { passive: true });
 
   document.addEventListener('touchmove', function(e) {
-    if (!pulling) return;
+    if (!pulling || !icon) return;
     const dy = e.touches[0].clientY - startY;
-    if (dy > 0 && indicator) {
-      const pull = Math.min(dy * 0.4, 60);
-      indicator.style.transform = 'translateX(-50%) translateY(' + (pull - 50) + 'px)';
-      if (pull > 40) indicator.querySelector('svg').style.animation = 'spin 0.6s linear infinite';
+    if (dy > 10) {
+      icon.classList.add('visible');
+      if (dy > 60) icon.classList.add('spinning');
     }
   }, { passive: true });
 
@@ -4326,9 +4379,9 @@ function refreshAll() {
     if (!pulling) return;
     pulling = false;
     const dy = e.changedTouches[0].clientY - startY;
-    if (indicator) {
-      indicator.style.transform = 'translateX(-50%) translateY(-50px)';
-      setTimeout(() => { if (indicator) { indicator.remove(); indicator = null; } }, 300);
+    if (icon) {
+      icon.classList.remove('spinning');
+      setTimeout(() => icon.classList.remove('visible'), 400);
     }
     if (dy > 80) refreshAll();
   }, { passive: true });
