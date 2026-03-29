@@ -41,7 +41,7 @@
   --red-bg:     #FEF0EE;
 
   --nav-h:      60px;
-  --header-h:   64px;
+  --header-h:   70px;
 
   --radius:     14px;
   --radius-sm:  8px;
@@ -329,11 +329,10 @@ body::after {
   height: var(--header-h);
   background: var(--teal);
   border-bottom: none;
-  /* Three equal columns, vertically centred */
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   padding: 0 14px;
   z-index: 300;
   left: 50%;
@@ -345,11 +344,11 @@ body::after {
   box-shadow: 0 2px 10px rgba(0,0,0,0.4);
 }
 
-/* Left column: day + date stacked */
+/* LEFT — Day, Date, Time stacked, left-aligned */
 .hdr-left {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
   align-items: flex-start;
   justify-content: center;
   min-width: 0;
@@ -357,23 +356,32 @@ body::after {
 .logo { display: none; }
 .logo-word { display: none; }
 .hdr-day {
-  font-size: 0.58rem;
+  font-size: 0.6rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.65);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  line-height: 1;
-  white-space: nowrap;
-}
-.hdr-date {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #fff;
   line-height: 1.2;
   white-space: nowrap;
 }
+.hdr-date {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+.hdr-left-time {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
 
-/* Center column: ptr icon + location + hijri */
+/* CENTER — Location + Hijri, centred */
 .hdr-center {
   display: flex;
   flex-direction: column;
@@ -405,41 +413,25 @@ body::after {
   max-width: 120px;
 }
 .hdr-hijri-small {
-  font-size: 0.58rem;
+  font-size: 0.6rem;
   color: rgba(255,255,255,0.65);
   font-weight: 500;
   text-align: center;
   white-space: nowrap;
 }
 
-/* Right column: clock + theme toggle stacked */
+/* RIGHT — only theme toggle, right-aligned, vertically centred */
 .hdr-right {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
-  gap: 4px;
   min-width: 0;
 }
-.hdr-clock {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 0.01em;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
-.hdr-clock-sec {
-  font-size: 0.68rem;
-  opacity: 0.65;
-}
-.hdr-controls {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
+/* hide old clock and controls divs if they still exist */
+.hdr-clock { display: none; }
+.hdr-clock-sec { display: none; }
+.hdr-controls { display: none; }
 
 /* refresh button */
 .hdr-refresh {
@@ -2201,16 +2193,17 @@ body::after {
 <!-- ══ HEADER ══ -->
 <header class="app-header">
 
-  <!-- LEFT: day + date -->
+  <!-- LEFT: Day / Date / Time -->
   <div class="hdr-left">
-    <div class="hdr-day" id="hdr-day">Loading</div>
-    <div class="hdr-date" id="hdr-date-str"></div>
+    <div class="hdr-day" id="hdr-day">Monday</div>
+    <div class="hdr-date" id="hdr-date-str">30 Mar 2026</div>
+    <div class="hdr-left-time" id="hdr-left-time">00:00</div>
   </div>
 
-  <!-- CENTER: pull-to-refresh indicator (hidden) + location + hijri -->
+  <!-- CENTER: ptr icon (hidden) + Location + Hijri -->
   <div class="hdr-center">
     <div class="hdr-ptr-icon" id="hdr-ptr-icon">
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
     </div>
     <div class="hdr-loc-row">
       <div class="hdr-live-dot"></div>
@@ -2219,11 +2212,8 @@ body::after {
     <div class="hdr-hijri-small" id="hdr-hijri-sm"></div>
   </div>
 
-  <!-- RIGHT: clock + theme toggle -->
+  <!-- RIGHT: theme toggle only -->
   <div class="hdr-right">
-    <div class="hdr-clock">
-      <span id="hdr-hm">--:--</span><span class="hdr-clock-sec" id="hdr-sec">:--</span>
-    </div>
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -2254,10 +2244,7 @@ body::after {
   <!-- PRAYER TIMES -->
   <div class="tab-panel active" id="t-prayer">
     <div class="pg">
-      <div class="loc-strip" id="loc-strip">
-        <div class="loc-dot"></div>
-        <span id="loc-name">Detecting location…</span>
-      </div>
+      <span id="loc-name" style="display:none">Detecting location…</span>
       <div class="prayer-hero">
         <div class="ph-eyebrow">Next Prayer</div>
         <div class="ph-prayer-name" id="ph-name">—</div>
@@ -2355,7 +2342,7 @@ body::after {
         <a href="#">Terms</a>
       </div>
       <div class="footer-bottom">
-        <div class="footer-copy" id="footer-copy">&copy; 2014&ndash;<span id="footer-year"></span> <a href="https://ilm.sg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Ilm.sg</a></div>
+        <div class="footer-copy" id="footer-copy">&copy; 2014&ndash;<span id="footer-year"></span> <a href="https://ilm.sg" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:underline;text-underline-offset:2px;">Ilm.sg</a></div>
         <div class="footer-made">Made by <a href="#" target="_blank" rel="noopener">Euphorya</a></div>
       </div>
     </footer>
@@ -2935,9 +2922,13 @@ function updateDates() {
 // Live clock — updates every second
 function startClock() {
   function tick() {
-    const now  = new Date();
-    const hm   = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
-    const sec  = ':' + String(now.getSeconds()).padStart(2,'0');
+    const now = new Date();
+    const hm  = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+    const sec = ':' + String(now.getSeconds()).padStart(2,'0');
+    // Left-column time (HH:MM:SS)
+    const ltEl = document.getElementById('hdr-left-time');
+    if (ltEl) ltEl.textContent = hm + sec;
+    // Legacy elements (now hidden but keep updating so no errors if they exist)
     const hmEl  = document.getElementById('hdr-hm');
     const secEl = document.getElementById('hdr-sec');
     if (hmEl)  hmEl.textContent  = hm;
