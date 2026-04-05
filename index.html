@@ -17,67 +17,110 @@
    Typefaces: Outfit (UI) + Amiri (Arabic)
 ═══════════════════════════════════════════ */
 :root {
-  --bg:         #F5F4EF;
+  /* ── Surfaces ── */
+  --bg:         #F6F5F0;
   --surface:    #FFFFFF;
-  --surface2:   #EEEDE7;
-  --border:     #E2E0D8;
+  --surface2:   #F0EFE9;
+  --border:     #E4E2DA;
   --border2:    #CCCAB8;
 
+  /* ── Brand Blue ── */
   --teal:       #26AAE1;
-  --teal-d:     #1A8FC0;
-  --teal-l:     #4BBFE8;
-  --teal-bg:    #E8F6FD;
-  --teal-bg2:   #C2E8F7;
+  --teal-d:     #1890C4;
+  --teal-l:     #55C3EC;
+  --teal-bg:    #EAF6FD;
+  --teal-bg2:   #C5E8F8;
 
+  /* ── Gold accent ── */
   --gold:       #A8873A;
   --gold-bg:    #FBF5E6;
   --gold-line:  #C9A84C;
 
-  --text:       #1C1B18;
-  --text2:      #595750;
-  --text3:      #9B9890;
+  /* ── Text ── */
+  --text:       #1A1917;
+  --text2:      #5A5750;
+  --text3:      #9C9890;
 
+  /* ── Status ── */
   --red:        #C0392B;
   --red-bg:     #FEF0EE;
+  --green:      #27AE60;
+  --green-bg:   #EAF7EF;
 
+  /* ── Layout ── */
   --nav-h:      60px;
   --header-h:   70px;
 
-  --radius:     14px;
-  --radius-sm:  8px;
-  --radius-lg:  20px;
+  /* ── 8px spacing scale ── */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
 
-  --shadow:     0 1px 3px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
-  --shadow-md:  0 4px 12px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.05);
+  /* ── Radius ── */
+  --radius:     12px;
+  --radius-sm:  8px;
+  --radius-lg:  18px;
+  --radius-xl:  24px;
+
+  /* ── Shadows ── */
+  --shadow:     0 1px 2px rgba(0,0,0,0.05), 0 2px 6px rgba(0,0,0,0.04);
+  --shadow-md:  0 3px 10px rgba(0,0,0,0.07), 0 6px 20px rgba(0,0,0,0.04);
+  --shadow-lg:  0 8px 24px rgba(0,0,0,0.09), 0 16px 40px rgba(0,0,0,0.05);
+
+  /* ── Typography scale ── */
+  --fs-xs:   0.65rem;
+  --fs-sm:   0.75rem;
+  --fs-base: 0.875rem;
+  --fs-md:   1rem;
+  --fs-lg:   1.125rem;
+  --fs-xl:   1.375rem;
+  --fs-2xl:  1.75rem;
+  --fs-3xl:  2.5rem;
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+
+  --lh-tight:   1.2;
+  --lh-normal:  1.45;
+  --lh-relaxed: 1.65;
 }
 
 /* ═══ DARK MODE TOKENS ═══ */
 [data-theme="dark"] {
-  --bg:         #181818;
-  --surface:    #202020;
-  --surface2:   #282828;
-  --border:     #303030;
-  --border2:    #3C3C3C;
+  --bg:         #0F0F0F;
+  --surface:    #1A1A1A;
+  --surface2:   #242424;
+  --border:     #2E2E2E;
+  --border2:    #3A3A3A;
 
   --teal:       #26AAE1;
-  --teal-d:     #1A8FC0;
+  --teal-d:     #1890C4;
   --teal-l:     #5DC5EC;
-  --teal-bg:    #0E2030;
-  --teal-bg2:   #122840;
+  --teal-bg:    #0A1E2E;
+  --teal-bg2:   #0F2840;
 
-  --gold:       #C9A04A;
-  --gold-bg:    #201C10;
+  --gold:       #CCA050;
+  --gold-bg:    #1C1A0E;
   --gold-line:  #D4AC52;
 
-  --text:       #F0EFEB;
-  --text2:      #9A9A9A;
-  --text3:      #585858;
+  --text:       #EEEDE9;
+  --text2:      #888580;
+  --text3:      #504E4A;
 
   --red:        #E05555;
-  --red-bg:     #221212;
+  --red-bg:     #1E0F0F;
+  --green:      #2ECC71;
+  --green-bg:   #0A1C12;
 
-  --shadow:     0 1px 3px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.4);
-  --shadow-md:  0 4px 14px rgba(0,0,0,0.6), 0 8px 28px rgba(0,0,0,0.45);
+  --shadow:     0 1px 3px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.5);
+  --shadow-md:  0 4px 14px rgba(0,0,0,0.65), 0 8px 28px rgba(0,0,0,0.5);
+  --shadow-lg:  0 10px 30px rgba(0,0,0,0.75), 0 20px 50px rgba(0,0,0,0.55);
 }
 
 /* ─── DARK THEME SPECIFIC OVERRIDES ─── */
@@ -351,6 +394,7 @@ body::after {
   gap: 1px;
   align-items: flex-start;
   justify-content: center;
+  align-self: center;
   min-width: 0;
 }
 .logo { display: none; }
@@ -381,7 +425,7 @@ body::after {
   white-space: nowrap;
 }
 
-/* CENTER — Location + Hijri, centred */
+/* CENTER — Location + Hijri, centred, ptr-icon floated above */
 .hdr-center {
   display: flex;
   flex-direction: column;
@@ -389,6 +433,7 @@ body::after {
   justify-content: center;
   gap: 2px;
   min-width: 0;
+  position: relative;
 }
 .hdr-loc-row {
   display: flex;
@@ -426,6 +471,7 @@ body::after {
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
+  align-self: center;
   min-width: 0;
 }
 /* hide old clock and controls divs if they still exist */
@@ -525,17 +571,17 @@ body::after {
 
 /* ═══ TYPOGRAPHY ═══ */
 .page-title {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--text);
-  letter-spacing: -0.02em;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
+  line-height: 1.2;
 }
 .page-sub {
-  font-size: 0.75rem;
-  color: var(--text3);
-  font-weight: 400;
+  font-size: 0.78rem;
+  color: var(--text2);
   margin-bottom: 18px;
+  line-height: 1.45;
 }
 
 /* ═══ CARDS ═══ */
@@ -543,10 +589,12 @@ body::after {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 16px;
-  margin-bottom: 10px;
+  padding: var(--sp-4);
+  margin-bottom: var(--sp-2);
   box-shadow: var(--shadow);
+  transition: transform 0.12s ease;
 }
+.card:active { transform: scale(0.985); }
 .card-label {
   font-size: 0.62rem;
   text-transform: uppercase;
@@ -632,12 +680,15 @@ body::after {
 .p-cell {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 10px 4px;
+  border-radius: var(--radius-sm);
+  padding: var(--sp-2) var(--sp-1);
   text-align: center;
   box-shadow: var(--shadow);
-  transition: all 0.15s;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
 }
+.p-cell:active { transform: scale(0.95); }
 .p-cell.next {
   border-color: var(--teal);
   background: var(--teal-bg);
@@ -1368,6 +1419,8 @@ body::after {
   padding-bottom: env(safe-area-inset-bottom);
   left: 50%;
   transform: translateX(-50%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .nav-item {
   flex: 1;
@@ -1664,16 +1717,15 @@ body::after {
 
 .vp-card {
   flex-shrink: 0;
-  /* ~75% of viewport width so 1.5 cards show at once */
   width: calc(75vw);
   max-width: 280px;
-  border-radius: 14px;
+  border-radius: var(--radius);
   background: var(--surface);
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   cursor: pointer;
   scroll-snap-align: start;
-  transition: transform 0.15s, box-shadow 0.15s;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
   overflow: hidden;
 }
 .vp-card:active {
@@ -1980,20 +2032,21 @@ body::after {
 
 /* ═══ SECTION TABS (reusable for Zikir / Quran) ═══ */
 .sect-tabs {
-  display: flex; background: var(--surface2);
-  border-bottom: 1px solid var(--border);
+  display: flex; background: var(--surface);
+  border-bottom: 1.5px solid var(--border);
   overflow-x: auto; scrollbar-width: none;
   position: sticky; top: var(--header-h); z-index: 150;
 }
 .sect-tabs::-webkit-scrollbar { display: none; }
 .sect-tab {
-  flex-shrink: 0; padding: 11px 14px;
+  flex-shrink: 0; padding: 10px 14px 9px;
   border: none; background: transparent;
   color: var(--text3); font-family: 'Outfit', sans-serif;
-  font-size: 0.72rem; font-weight: 700;
+  font-size: 0.62rem; font-weight: var(--fw-bold);
   text-transform: uppercase; letter-spacing: 0.07em;
-  cursor: pointer; border-bottom: 2px solid transparent;
-  transition: all 0.15s; white-space: nowrap;
+  cursor: pointer; border-bottom: 2.5px solid transparent;
+  transition: all 0.15s ease; white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
 }
 .sect-tab.active { color: var(--teal); border-bottom-color: var(--teal); background: var(--surface); }
 .sect-panel { display: none; }
@@ -2002,7 +2055,7 @@ body::after {
 /* ═══ DUA / ZIKIR LIST ═══ */
 .dua-item {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 16px; margin-bottom: 10px;
+  border-radius: var(--radius); padding: var(--sp-4); margin-bottom: var(--sp-2);
   box-shadow: var(--shadow);
 }
 .dua-tag {
@@ -2032,7 +2085,7 @@ body::after {
 }
 .husna-card {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: 12px; padding: 12px 10px; text-align: center;
+  border-radius: var(--radius-sm); padding: var(--sp-3) var(--sp-2); text-align: center;
   box-shadow: var(--shadow);
 }
 .husna-num { font-size: 0.6rem; color: var(--text3); font-weight: 700; margin-bottom: 4px; }
@@ -2128,19 +2181,21 @@ body::after {
 }
 
 
-/* Pull-to-refresh icon in header center */
+/* Pull-to-refresh icon in header center — absolutely positioned, never affects layout */
 .hdr-ptr-icon {
-  width: 24px; height: 24px;
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px; height: 22px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.2);
   display: flex; align-items: center; justify-content: center;
   opacity: 0;
-  transform: translateY(-8px);
-  transition: opacity 0.2s, transform 0.2s;
-  margin-bottom: 2px;
+  transition: opacity 0.2s, top 0.25s cubic-bezier(0.34,1.1,0.64,1);
   pointer-events: none;
 }
-.hdr-ptr-icon.visible { opacity: 1; transform: translateY(0); }
+.hdr-ptr-icon.visible { opacity: 1; top: -4px; }
 .hdr-ptr-icon.spinning svg { animation: spin 0.6s linear infinite; }
 
 
