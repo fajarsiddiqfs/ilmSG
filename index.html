@@ -2240,6 +2240,134 @@ body::after {
   background: #2ecc71;
 }
 
+
+/* ═══ SHOP ═══ */
+.shop-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 0 16px 24px;
+}
+.shop-cat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.shop-cat-card:active { transform: scale(0.96); box-shadow: none; }
+.shop-cat-thumb {
+  height: 90px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.2rem;
+  position: relative;
+  overflow: hidden;
+}
+.shop-cat-body { padding: 10px 12px 12px; }
+.shop-cat-title { font-size: 0.8rem; font-weight: 700; color: var(--text); margin-bottom: 2px; line-height: 1.3; }
+.shop-cat-sub   { font-size: 0.65rem; color: var(--text3); font-weight: 500; }
+.shop-cat-badge {
+  display: inline-block; margin-top: 6px; font-size: 0.6rem; font-weight: 700;
+  padding: 2px 7px; border-radius: 10px; background: var(--teal-bg); color: var(--teal);
+  border: 1px solid var(--teal-bg2); text-transform: uppercase; letter-spacing: 0.06em;
+}
+/* Product items */
+.shop-product {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px 14px 12px;
+  margin-bottom: 10px; box-shadow: var(--shadow);
+  display: flex; align-items: flex-start; gap: 12px;
+  cursor: pointer; transition: transform 0.12s ease;
+}
+.shop-product:active { transform: scale(0.98); }
+.shop-product-thumb {
+  width: 60px; height: 60px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; background: var(--surface2);
+}
+.shop-product-body { flex: 1; min-width: 0; }
+.shop-product-name { font-size: 0.82rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.shop-product-desc { font-size: 0.7rem; color: var(--text2); line-height: 1.5; margin-bottom: 5px; }
+.shop-product-price { font-size: 0.82rem; font-weight: 700; color: var(--teal); }
+.shop-back-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 20px;
+  background: var(--surface2); border: 1px solid var(--border);
+  font-size: 0.72rem; font-weight: 700; color: var(--text2);
+  cursor: pointer; margin: 12px 16px 0; transition: background 0.12s;
+}
+.shop-back-btn:active { background: var(--border); }
+
+/* ═══ CALENDAR ═══ */
+.cal-month-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px 8px;
+}
+.cal-month-title { font-size: 1rem; font-weight: 700; color: var(--text); }
+.cal-nav-btn {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--surface2); border: 1px solid var(--border);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  color: var(--text2); transition: background 0.12s;
+}
+.cal-nav-btn:active { background: var(--border); }
+.cal-grid {
+  display: grid; grid-template-columns: repeat(7,1fr);
+  gap: 2px; padding: 0 12px 16px;
+}
+.cal-day-header {
+  text-align: center; font-size: 0.58rem; font-weight: 700;
+  color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 4px 0;
+}
+.cal-day {
+  aspect-ratio: 1; border-radius: 8px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; cursor: pointer;
+  transition: background 0.12s; position: relative;
+}
+.cal-day:active { background: var(--surface2); }
+.cal-day.today { background: var(--teal); }
+.cal-day.today .cal-greg, .cal-day.today .cal-hij { color: #fff; }
+.cal-day.has-event::after {
+  content: ''; position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%);
+  width: 4px; height: 4px; border-radius: 50%; background: var(--gold);
+}
+.cal-greg { font-size: 0.8rem; font-weight: 700; color: var(--text); line-height: 1; }
+.cal-hij  { font-size: 0.52rem; color: var(--text3); margin-top: 1px; }
+.cal-day.other-month .cal-greg { color: var(--text3); opacity: 0.4; }
+.event-item {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 12px 14px;
+  margin-bottom: 8px; display: flex; gap: 12px; align-items: flex-start;
+  box-shadow: var(--shadow);
+}
+.event-date-badge {
+  flex-shrink: 0; width: 44px; text-align: center;
+  background: var(--teal-bg); border: 1px solid var(--teal-bg2);
+  border-radius: 8px; padding: 6px 4px;
+}
+.event-month { font-size: 0.58rem; font-weight: 700; color: var(--teal); text-transform: uppercase; }
+.event-day   { font-size: 1.1rem; font-weight: 700; color: var(--teal); line-height: 1; }
+.event-body  { flex: 1; }
+.event-title { font-size: 0.82rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.event-hijri { font-size: 0.68rem; color: var(--text3); font-weight: 500; }
+.event-note  { font-size: 0.7rem; color: var(--text2); margin-top: 4px; line-height: 1.5; }
+
+
+/* ═══ QIBLAH COMPACT ═══ */
+.qiblah-arrow-wrap {
+  width: 48px; height: 48px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.qiblah-arrow {
+  transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.qiblah-mini-card { cursor: default; }
+#qiblah-modal { display: none; }
+#qiblah-modal.open { display: flex !important; }
+
 </style>
 </head>
 <body>
@@ -2281,18 +2409,19 @@ body::after {
 
 <!-- ════════════ TRACKER ════════════ -->
 <div class="page active" id="page-tracker">
+  <!-- HOME TOP MENU: Prayer · Doa · TV · Shop -->
   <div class="sub-tabs" id="tracker-tabs">
     <button class="sub-tab active" onclick="switchTab(this,'t-prayer')">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 3px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Prayer
     </button>
-    <button class="sub-tab" onclick="switchTab(this,'t-qiblah')">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 3px"><circle cx="12" cy="12" r="10"/><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Qiblah
+    <button class="sub-tab" onclick="switchTab(this,'t-doa-home')">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 3px"><path d="M18 11V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3v5"/><path d="M9 11V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3v7"/><path d="M15 11v-2"/><path d="M12 11v-2"/><path d="M3 13v2a9 9 0 0 0 18 0v-2"/></svg>Doa
     </button>
-    <button class="sub-tab" onclick="switchTab(this,'t-mosque')">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 3px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Mosque
+    <button class="sub-tab" onclick="switchTab(this,'t-tv')">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 3px"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>TV
     </button>
-    <button class="sub-tab" onclick="switchTab(this,'t-khutbah')">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 3px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>Khutbah
+    <button class="sub-tab" onclick="switchTab(this,'t-shop')">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 3px"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Shop
     </button>
   </div>
 
@@ -2321,6 +2450,98 @@ body::after {
         <div class="card-label">Hijri Date</div>
         <div style="font-family:'Amiri',serif;font-size:1.15rem;font-weight:700;color:var(--teal)" id="hijri-full">Loading…</div>
         <div style="font-size:0.72rem;color:var(--text3);margin-top:4px" id="hijri-greg"></div>
+      </div>
+    </div>
+
+    <!-- QIBLAH COMPACT WIDGET -->
+    <div style="padding:0 16px 8px">
+      <div class="card qiblah-mini-card" style="margin-bottom:0;display:flex;align-items:center;gap:14px;padding:12px 14px">
+        <!-- Arrow indicator -->
+        <div class="qiblah-arrow-wrap" id="qiblah-arrow-wrap">
+          <div class="qiblah-arrow" id="qiblah-arrow">
+            <svg viewBox="0 0 40 40" width="40" height="40">
+              <circle cx="20" cy="20" r="18" fill="var(--teal-bg)" stroke="var(--teal-bg2)" stroke-width="1.5"/>
+              <polygon points="20,6 25,26 20,22 15,26" fill="var(--teal)" opacity="0.9"/>
+              <polygon points="20,34 15,14 20,18 25,14" fill="var(--text3)" opacity="0.4"/>
+              <circle cx="20" cy="20" r="3" fill="var(--teal)"/>
+            </svg>
+          </div>
+        </div>
+        <!-- Info -->
+        <div style="flex:1;min-width:0">
+          <div style="font-size:0.82rem;font-weight:700;color:var(--text);margin-bottom:2px">Qiblah Direction</div>
+          <div style="font-size:0.68rem;color:var(--text3)" id="q-deg">Tap to activate compass</div>
+        </div>
+        <!-- Activate button -->
+        <button onclick="activateQiblah()" style="flex-shrink:0;padding:7px 14px;background:var(--teal);color:#fff;border:none;border-radius:10px;font-family:Outfit,sans-serif;font-size:0.72rem;font-weight:700;cursor:pointer;-webkit-tap-highlight-color:transparent">
+          Activate
+        </button>
+      </div>
+    </div>
+
+    <!-- QIBLAH MODAL OVERLAY -->
+    <div id="qiblah-modal" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0.65);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);align-items:center;justify-content:center">
+      <div style="background:#1A3A5C;border-radius:20px;padding:28px 24px;max-width:320px;width:90%;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.5)">
+        <div style="width:120px;height:120px;margin:0 auto 20px;position:relative">
+          <div class="compass-container" style="width:120px;height:120px">
+            <span class="c-dir n" style="color:#fff;font-size:0.6rem;font-weight:800">N</span>
+            <span class="c-dir s" style="color:rgba(255,255,255,0.5);font-size:0.6rem">S</span>
+            <span class="c-dir e" style="color:rgba(255,255,255,0.5);font-size:0.6rem">E</span>
+            <span class="c-dir w" style="color:rgba(255,255,255,0.5);font-size:0.6rem">W</span>
+            <div class="compass-needle" id="qneedle"><div class="needle-top"></div><div class="needle-bottom"></div></div>
+            <div class="compass-center"></div>
+            <div class="compass-kaaba-label" style="color:rgba(255,255,255,0.7)">Ka&#x27;bah</div>
+          </div>
+        </div>
+        <div style="font-size:1rem;font-weight:800;color:#fff;margin-bottom:6px">Qiblah Compass Active</div>
+        <div id="q-deg" style="font-size:0.78rem;color:#7dd3fc;margin-bottom:6px;font-weight:600">Detecting…</div>
+        <div id="q-hint" style="font-size:0.72rem;color:rgba(255,255,255,0.65);line-height:1.6;margin-bottom:20px">Move phone in a figure-8 to calibrate. The red needle points toward the Ka&#x27;bah.</div>
+        <button onclick="closeQiblahModal()" style="width:100%;padding:12px;background:#26AAE1;border:none;border-radius:12px;color:#fff;font-family:Outfit,sans-serif;font-size:0.88rem;font-weight:700;cursor:pointer">
+          Done
+        </button>
+      </div>
+    </div>
+
+    <!-- ZIKIR COUNTER ON HOME -->
+    <div style="padding:0 16px 8px">
+      <div class="card" style="padding:14px">
+        <div style="font-size:0.82rem;font-weight:700;color:var(--text);margin-bottom:10px">Tasbih Counter</div>
+        <div class="zikir-grid" style="grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px">
+          <div class="zikir-chip active" onclick="setZikir(this,'سُبْحَانَ اللهِ','Subhanallah',33)">
+            <div class="zc-ar" style="font-size:0.9rem">سُبْحَانَ اللهِ</div>
+            <div class="zc-en">Subhanallah</div>
+            <div class="zc-n">33×</div>
+          </div>
+          <div class="zikir-chip" onclick="setZikir(this,'الحَمْدُ للهِ','Alhamdulillah',33)">
+            <div class="zc-ar" style="font-size:0.9rem">الحَمْدُ للهِ</div>
+            <div class="zc-en">Alhamdulillah</div>
+            <div class="zc-n">33×</div>
+          </div>
+          <div class="zikir-chip" onclick="setZikir(this,'اللهُ أَكْبَرُ','Allahu Akbar',34)">
+            <div class="zc-ar" style="font-size:0.9rem">اللهُ أَكْبَرُ</div>
+            <div class="zc-en">Allahu Akbar</div>
+            <div class="zc-n">34×</div>
+          </div>
+          <div class="zikir-chip" onclick="setZikir(this,'لَا إِلَٰهَ إِلَّا الله','La Ilaha Illallah',100)">
+            <div class="zc-ar" style="font-size:0.85rem">لَا إِلَٰهَ إِلَّا الله</div>
+            <div class="zc-en">La Ilaha Illallah</div>
+            <div class="zc-n">100×</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+          <div style="text-align:center;flex:1">
+            <div class="counter-num" id="tc-num" style="font-size:2.2rem;margin:0">0</div>
+            <div class="counter-goal" id="tc-goal" style="font-size:0.65rem;margin-top:2px">Goal: 33 × Subhanallah</div>
+          </div>
+          <button class="tap-btn" id="tap-btn" onclick="tapCount()" style="width:80px;height:80px;flex-shrink:0">
+            <div class="tap-ar" id="tap-ar" style="font-size:1.1rem">سُبْحَانَ اللهِ</div>
+            <div class="tap-lbl" style="font-size:0.6rem">Tap</div>
+          </button>
+          <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0">
+            <button onclick="undoCount()" style="padding:6px 12px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);font-size:0.68rem;font-weight:700;color:var(--text2);cursor:pointer">Undo</button>
+            <button onclick="resetCount()" style="padding:6px 12px;border-radius:8px;background:var(--red-bg);border:1px solid var(--red);font-size:0.68rem;font-weight:700;color:var(--red);cursor:pointer">Reset</button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -2405,153 +2626,76 @@ body::after {
   </div>
 
   <!-- QIBLAH -->
-  <div class="tab-panel" id="t-qiblah">
-    <div class="compass-section">
-      <div class="compass-container">
-        <span class="c-dir n">N</span>
-        <span class="c-dir s">S</span>
-        <span class="c-dir e">E</span>
-        <span class="c-dir w">W</span>
-        <div class="compass-needle" id="qneedle">
-          <div class="needle-top"></div>
-          <div class="needle-bottom"></div>
-        </div>
-        <div class="compass-center"></div>
-        <div class="compass-kaaba-label">Kaabah</div>
-      </div>
-      <div class="compass-readout">
-        <div class="compass-degree-val" id="q-deg">—°</div>
-        <div class="compass-hint" id="q-hint">Tap the button below to activate the Qiblah compass using your device orientation sensor.</div>
-      </div>
-      <button class="btn-primary" onclick="activateQiblah()" style="max-width:280px">Activate Qiblah Compass</button>
-      <div class="card" style="width:100%;margin-top:4px">
-        <div class="card-label">About Qiblah</div>
-        <div style="font-size:0.8rem;color:var(--text2);line-height:1.65">The Qiblah is the direction toward the Masjid al-Haram in Makkah. Muslims face the Qiblah during the five daily prayers. The golden needle indicates the direction of the Kaabah from your current location. Move your device in a figure-8 motion to calibrate the sensor if the reading seems inaccurate.</div>
-      </div>
+  <!-- DOA ON HOME -->
+  <div class="tab-panel" id="t-doa-home">
+    <div class="pg" style="padding-bottom:4px">
+      <div class="page-title">Doa</div>
+      <div class="page-sub">Hisnul Muslim — Fortress of the Muslim</div>
     </div>
+    <div id="doa-cats-home" style="display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 12px"></div>
+    <div id="doa-list-home" style="padding:0 16px 16px"></div>
   </div>
 
-  <!-- MOSQUE -->
-  <div class="tab-panel" id="t-mosque">
-    <div class="pg">
-      <div class="page-title">Nearby Mosques</div>
-      <div class="page-sub">All mosques within 10 km of your location</div>
-      <button class="btn-primary" onclick="findMosques()">Find Mosques Near Me</button>
-      <div id="mosque-results">
-        <div class="loading-state">Tap the button above to find mosques near your location.</div>
+  <!-- TV PANEL -->
+  <div class="tab-panel" id="t-tv">
+    <!-- ILM PRODUCTION SG FEATURED VIDEO -->
+    <div style="padding:16px 16px 8px">
+      <div style="font-size:0.82rem;font-weight:700;color:var(--text);margin-bottom:8px">
+        <span style="color:var(--teal)">&#9654;</span> Ilm Production SG
       </div>
-    </div>
-  </div>
-
-  <!-- KHUTBAH -->
-  <div class="tab-panel" id="t-khutbah">
-    <!-- MAKKAH LIVE STREAM -->
-    <div class="live-stream-wrap">
-      <div class="live-badge-row">
-        <span class="live-dot-badge"><span class="live-dot-pulse"></span>LIVE</span>
-        <span class="live-source-label">Masjid al-Haram, Makkah &mdash; Saudi Quran TV</span>
-      </div>
-      <div class="yt-frame-wrap" id="yt-wrap">
-        <iframe
-          id="yt-iframe"
-          src="https://www.youtube.com/embed/kYqGbBqmp8g?autoplay=1&mute=1&loop=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          loading="lazy"
-          title="Masjid al-Haram Live — Saudi Quran TV"
-        ></iframe>
-        <div class="stream-offline" id="stream-offline" style="display:none">
-          <div class="offline-inner">
-            <div class="offline-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-            </div>
-            <div class="offline-title">Stream temporarily unavailable</div>
-            <div class="offline-text">The live broadcast will resume shortly. Try reloading or visit the channel directly.</div>
-            <button class="offline-retry" onclick="reloadStream()">Reload Stream</button>
-            <a href="https://www.youtube.com/@SaudiQuranTv/streams" target="_blank" rel="noopener" class="offline-link">Open on YouTube</a>
-          </div>
+      <div id="ilm-featured-video" style="border-radius:var(--radius);overflow:hidden;background:var(--surface2);aspect-ratio:16/9;position:relative;cursor:pointer;display:flex;align-items:center;justify-content:center">
+        <div style="text-align:center;padding:20px">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round" opacity="0.6"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <div style="font-size:0.75rem;color:var(--text3);margin-top:8px">Loading latest video…</div>
         </div>
       </div>
-      <div class="live-desc">
-        <div class="live-desc-title">Live from Masjid al-Haram</div>
-        <div class="live-desc-text">Watch the live stream from Masjid al-Haram in Makkah. Connect spiritually with the holiest site in Islam.</div>
-        <a href="https://www.youtube.com/@SaudiQuranTv/streams" target="_blank" rel="noopener" class="live-yt-link">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          Open full stream on YouTube
-        </a>
+      <a href="https://www.youtube.com/@ilmproductionsg" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:0.72rem;font-weight:600;color:var(--teal);text-decoration:none">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Visit @ilmproductionsg on YouTube
+      </a>
+    </div>
+    <!-- PLAYLISTS -->
+    <div class="vp-section">
+      <div class="vp-section-head"><div class="vp-section-title">Ilm Quran</div>
+        <a href="https://www.youtube.com/playlist?list=PLoBuEb7Cp3UOys8bfqhvXQYy-EcuywTy1" target="_blank" rel="noopener" class="vp-see-all">See all</a>
+      </div>
+      <div class="vp-carousel">
+        <button class="vp-arrow left" onclick="scrollCarousel('vp-quran-tv',-1)" aria-label="left"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <div class="vp-scroll" id="vp-quran-tv"></div>
+        <button class="vp-arrow right" onclick="scrollCarousel('vp-quran-tv',1)" aria-label="right"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
       </div>
     </div>
-
-    <div class="pg">
-      <div class="page-title">Friday Khutbah</div>
-      <div class="page-sub">Weekly sermons from MUIS and JAKIM</div>
-
-      <!-- MUIS -->
-      <div class="divider-line"><span>MUIS — Singapore</span></div>
-      <div class="org-badge badge-sg" style="margin-bottom:12px">Majlis Ugama Islam Singapura</div>
-
-      <div class="khutbah-item">
-        <span class="khutbah-week kw-cur">Current</span>
-        <div class="khutbah-ar">التوكل على الله</div>
-        <div class="khutbah-en">Tawakkul: Complete Reliance on Allah in Times of Trial</div>
-        <div class="khutbah-meta"><span>21 Mar 2025</span><span>All Singapore Mosques</span></div>
+    <div class="vp-section">
+      <div class="vp-section-head"><div class="vp-section-title">Ilm Podcast</div>
+        <a href="https://www.youtube.com/playlist?list=PLoBuEb7Cp3UNW1dTseOghgWSdcntZJX-4" target="_blank" rel="noopener" class="vp-see-all">See all</a>
       </div>
-      <div class="khutbah-item">
-        <span class="khutbah-week kw-prev">14 Mar 2025</span>
-        <div class="khutbah-ar">شُكْرُ النِّعَم</div>
-        <div class="khutbah-en">Gratitude for Allah's Blessings: A Pathway to Contentment</div>
-        <div class="khutbah-meta"><span>All Singapore Mosques</span></div>
+      <div class="vp-carousel">
+        <button class="vp-arrow left" onclick="scrollCarousel('vp-podcast-tv',-1)" aria-label="left"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <div class="vp-scroll" id="vp-podcast-tv"></div>
+        <button class="vp-arrow right" onclick="scrollCarousel('vp-podcast-tv',1)" aria-label="right"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
       </div>
-      <div class="khutbah-item">
-        <span class="khutbah-week kw-prev">7 Mar 2025</span>
-        <div class="khutbah-ar">فَضَائِلُ رَمَضَان</div>
-        <div class="khutbah-en">The Virtues of Ramadan: Mercy, Forgiveness and Salvation</div>
-        <div class="khutbah-meta"><span>All Singapore Mosques</span></div>
+    </div>
+    <div class="vp-section">
+      <div class="vp-section-head"><div class="vp-section-title">Ilm Originals</div>
+        <a href="https://www.youtube.com/playlist?list=PLoBuEb7Cp3UMLeNZ9Mo76JqCksERMuvj4" target="_blank" rel="noopener" class="vp-see-all">See all</a>
       </div>
-      <div class="khutbah-item">
-        <span class="khutbah-week kw-prev">28 Feb 2025</span>
-        <div class="khutbah-ar">تَزْكِيَةُ النَّفْس</div>
-        <div class="khutbah-en">Purifying the Soul: The Path to Spiritual Excellence</div>
-        <div class="khutbah-meta"><span>All Singapore Mosques</span></div>
-      </div>
-      <div style="margin-bottom:16px">
-        <a href="https://www.muis.gov.sg/officeofthemufti/Khutbah" target="_blank" class="source-link">Full MUIS Khutbah Archive — muis.gov.sg</a>
-      </div>
-
-      <!-- JAKIM -->
-      <div class="divider-line"><span>JAKIM — Malaysia</span></div>
-      <div class="org-badge badge-my" style="margin-bottom:12px">Jabatan Kemajuan Islam Malaysia</div>
-
-      <div class="khutbah-item my">
-        <span class="khutbah-week" style="background:var(--gold-bg);color:var(--gold)">Current</span>
-        <div class="khutbah-ar">بِنَاءُ الأُسْرَة الإِسْلَامِيَّة</div>
-        <div class="khutbah-en">Membina Keluarga Islam yang Harmoni dalam Mencapai Mardhatillah</div>
-        <div class="khutbah-meta"><span>21 Mar 2025</span><span>All Malaysia Mosques</span></div>
-      </div>
-      <div class="khutbah-item my">
-        <span class="khutbah-week kw-prev">14 Mar 2025</span>
-        <div class="khutbah-ar">الصِّدْقُ وَالأَمَانَة</div>
-        <div class="khutbah-en">Kemuliaan Sifat Jujur dan Amanah sebagai Teras Akhlak Muslim</div>
-        <div class="khutbah-meta"><span>All Malaysia Mosques</span></div>
-      </div>
-      <div class="khutbah-item my">
-        <span class="khutbah-week kw-prev">7 Mar 2025</span>
-        <div class="khutbah-ar">حُقُوقُ الوَالِدَين</div>
-        <div class="khutbah-en">Berbakti kepada Ibu Bapa: Kewajipan Anak yang Soleh</div>
-        <div class="khutbah-meta"><span>All Malaysia Mosques</span></div>
-      </div>
-      <div class="khutbah-item my">
-        <span class="khutbah-week kw-prev">28 Feb 2025</span>
-        <div class="khutbah-ar">الوَحْدَةُ الإِسْلَامِيَّة</div>
-        <div class="khutbah-en">Perpaduan Ummah: Tanggungjawab Bersama Umat Islam</div>
-        <div class="khutbah-meta"><span>All Malaysia Mosques</span></div>
-      </div>
-      <div style="margin-bottom:16px">
-        <a href="https://www.islam.gov.my/en/khutbah" target="_blank" class="source-link">Full JAKIM Khutbah Archive — islam.gov.my</a>
+      <div class="vp-carousel">
+        <button class="vp-arrow left" onclick="scrollCarousel('vp-series-tv',-1)" aria-label="left"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <div class="vp-scroll" id="vp-series-tv"></div>
+        <button class="vp-arrow right" onclick="scrollCarousel('vp-series-tv',1)" aria-label="right"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
       </div>
     </div>
   </div>
-</div><!-- /tracker -->
+
+  <!-- SHOP PANEL -->
+  <div class="tab-panel" id="t-shop">
+    <div class="pg" style="padding-bottom:8px">
+      <div class="page-title">Shop</div>
+      <div class="page-sub">Official ilm products &amp; essentials</div>
+    </div>
+    <div id="shop-content"></div>
+  </div>
 
 <!-- ════════════ ZIKIR ════════════ -->
 <div class="page" id="page-zikir">
@@ -2602,70 +2746,16 @@ body::after {
   </div>
 
   <!-- DUA -->
+  <!-- DOA HISNUL MUSLIM -->
   <div class="sect-panel" id="zt-dua">
-    <div class="pg">
-      <div class="page-title">Daily Duas</div>
-      <div class="page-sub">Authentic supplications from Quran & Sunnah</div>
-      <div class="dua-item">
-        <div class="dua-tag">Morning</div>
-        <div class="dua-ar">أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ</div>
-        <div class="dua-transliteration">Asbahna wa asbahal mulku lillah, wal hamdu lillah</div>
-        <div class="dua-translation">We have reached the morning and at this very time unto Allah belongs all sovereignty, and all praise is for Allah.</div>
-        <div class="dua-source">Sahih Muslim 2723</div>
-      </div>
-      <div class="dua-item">
-        <div class="dua-tag">Evening</div>
-        <div class="dua-ar">أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ</div>
-        <div class="dua-transliteration">Amsayna wa amsal mulku lillah, wal hamdu lillah</div>
-        <div class="dua-translation">We have reached the evening and at this very time unto Allah belongs all sovereignty, and all praise is for Allah.</div>
-        <div class="dua-source">Sahih Muslim 2723</div>
-      </div>
-      <div class="dua-item">
-        <div class="dua-tag">Before Sleep</div>
-        <div class="dua-ar">بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا</div>
-        <div class="dua-transliteration">Bismika Allahumma amutu wa ahya</div>
-        <div class="dua-translation">In Your name, O Allah, I die and I live.</div>
-        <div class="dua-source">Sahih Bukhari 6324</div>
-      </div>
-      <div class="dua-item">
-        <div class="dua-tag">After Waking</div>
-        <div class="dua-ar">الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ</div>
-        <div class="dua-transliteration">Alhamdulillahil-ladhi ahyana ba&apos;da ma amatana wa ilayhin-nushur</div>
-        <div class="dua-translation">Praise be to Allah who gave us life after having taken it from us and unto Him is the resurrection.</div>
-        <div class="dua-source">Sahih Bukhari 6312</div>
-      </div>
-      <div class="dua-item">
-        <div class="dua-tag">Eating</div>
-        <div class="dua-ar">بِسْمِ اللهِ</div>
-        <div class="dua-transliteration">Bismillah</div>
-        <div class="dua-translation">In the name of Allah. (Said before eating)</div>
-        <div class="dua-source">Sahih Bukhari 5376</div>
-      </div>
-      <div class="dua-item">
-        <div class="dua-tag">Entering Home</div>
-        <div class="dua-ar">بِسْمِ اللهِ وَلَجْنَا، وَبِسْمِ اللهِ خَرَجْنَا، وَعَلَى اللهِ رَبِّنَا تَوَكَّلْنَا</div>
-        <div class="dua-transliteration">Bismillahi walajna, wa bismillahi kharajna, wa &apos;ala Allahi rabbina tawakkalna</div>
-        <div class="dua-translation">In the name of Allah we enter, in the name of Allah we leave, and upon our Lord we place our trust.</div>
-        <div class="dua-source">Abu Dawud 5096</div>
-      </div>
-      <div class="dua-item">
-        <div class="dua-tag">Travel</div>
-        <div class="dua-ar">سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ</div>
-        <div class="dua-transliteration">Subhanalladhi sakhkhara lana hadha wa ma kunna lahu muqrinin, wa inna ila Rabbina lamunqalibun</div>
-        <div class="dua-translation">Glory be to the One Who has subjected this to us, and we could never have [otherwise] subdued it. And indeed, to our Lord we will return.</div>
-        <div class="dua-source">Quran 43:13–14</div>
-      </div>
-      <div class="dua-item">
-        <div class="dua-tag">Distress</div>
-        <div class="dua-ar">لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ</div>
-        <div class="dua-transliteration">La ilaha illa anta subhanaka inni kuntu minaz-zalimin</div>
-        <div class="dua-translation">There is no deity except You; exalted are You. Indeed, I have been of the wrongdoers.</div>
-        <div class="dua-source">Quran 21:87 — Dua of Prophet Yunus</div>
-      </div>
+    <div class="pg" style="padding-bottom:4px">
+      <div class="page-title">Doa</div>
+      <div class="page-sub">Hisnul Muslim — Fortress of the Muslim</div>
     </div>
+    <div id="doa-cats" style="display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 12px"></div>
+    <div id="doa-list" style="padding:0 16px 16px"></div>
   </div>
 
-  <!-- ZIKIR LIST -->
   <div class="sect-panel" id="zt-zikir">
     <div class="pg">
       <div class="page-title">Zikir List</div>
@@ -2863,6 +2953,62 @@ body::after {
       <svg class="send-icon" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
     </button>
   </div>
+
+<!-- ════════════ MOSQUE ════════════ -->
+<div class="page" id="page-mosque">
+  <div class="pg">
+    <div class="page-title">Mosques Near Me</div>
+    <div class="page-sub">Find mosques within 10 km of your location</div>
+    <button class="btn-primary" onclick="findMosques()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      Find Mosques Near Me
+    </button>
+    <div id="mosque-results">
+      <div class="loading-state">Tap the button above to find mosques near your location.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ CALENDAR ════════════ -->
+<div class="page" id="page-calendar">
+  <div class="pg">
+    <div class="page-title">Islamic Calendar</div>
+    <div class="page-sub">Hijri dates &amp; upcoming Islamic events — based on MUIS Singapore</div>
+  </div>
+
+  <!-- Hijri / Gregorian toggle -->
+  <div class="sect-tabs" id="cal-tabs">
+    <button class="sect-tab active" onclick="switchSectTab(this,'cal-hijri','cal-tabs')">Hijri Calendar</button>
+    <button class="sect-tab" onclick="switchSectTab(this,'cal-events','cal-tabs')">Islamic Events</button>
+    <button class="sect-tab" onclick="switchSectTab(this,'cal-muis','cal-tabs')">MUIS Dates</button>
+  </div>
+
+  <!-- HIJRI CALENDAR -->
+  <div class="sect-panel active" id="cal-hijri">
+    <div class="pg" id="hijri-cal-wrap"></div>
+  </div>
+
+  <!-- ISLAMIC EVENTS -->
+  <div class="sect-panel" id="cal-events">
+    <div class="pg">
+      <div id="islamic-events-list"></div>
+    </div>
+  </div>
+
+  <!-- MUIS DATES -->
+  <div class="sect-panel" id="cal-muis">
+    <div class="pg">
+      <div class="card" style="margin-bottom:10px">
+        <div class="card-label">MUIS Singapore 2025/1446–1447H</div>
+        <div style="font-size:0.78rem;color:var(--text2);line-height:1.7;margin-top:6px">
+          Official Islamic dates as announced by MUIS (Majlis Ugama Islam Singapura).
+        </div>
+      </div>
+      <div id="muis-dates-list"></div>
+    </div>
+  </div>
+</div>
+
 </div>
 
 </div><!-- /main-content -->
@@ -2870,20 +3016,20 @@ body::after {
 <!-- ══ BOTTOM NAV ══ -->
 <nav class="bottom-nav">
   <button class="nav-item active" id="ni-tracker" onclick="switchPage('tracker')">
-    <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-    Tracker
-  </button>
-  <button class="nav-item" id="ni-zikir" onclick="switchPage('zikir')">
-    <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-    Zikir
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Home
   </button>
   <button class="nav-item" id="ni-quran" onclick="switchPage('quran')">
-    <svg class="nav-icon" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
     Quran
   </button>
-  <button class="nav-item" id="ni-learn" onclick="switchPage('learn')">
-    <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-    Learn
+  <button class="nav-item" id="ni-mosque" onclick="switchPage('mosque')">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+    Mosque
+  </button>
+  <button class="nav-item" id="ni-calendar" onclick="switchPage('calendar')">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Calendar
   </button>
 </nav>
 
@@ -2901,20 +3047,31 @@ function switchPage(name) {
   });
   document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
   const pg = document.getElementById('page-' + name);
+  if (!pg) return;
   pg.classList.add('active');
   if (pg.classList.contains('page-flex')) pg.style.display = 'flex';
-  document.getElementById('ni-' + name).classList.add('active');
+  // Map to correct nav id
+  const navMap = { tracker:'tracker', quran:'quran', mosque:'mosque', calendar:'calendar', learn:'quran', zikir:'tracker' };
+  const ni = document.getElementById('ni-' + (navMap[name] || name));
+  if (ni) ni.classList.add('active');
   window.scrollTo(0, 0);
+  // Side effects
+  if (name === 'mosque') {
+    const res = document.getElementById('mosque-results');
+    if (res && res.children.length <= 1 && !res.querySelector('.mosque-item')) findMosques();
+  }
+  if (name === 'calendar') initCalendar();
 }
 
 function switchTab(btn, id) {
-  btn.closest('.page').querySelectorAll('.sub-tab').forEach(b => b.classList.remove('active'));
+  const page = btn.closest('.page');
+  page.querySelectorAll('.sub-tab').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  ['t-prayer','t-qiblah','t-mosque','t-khutbah'].forEach(tid => {
-    const el = document.getElementById(tid);
-    if (el) el.classList.toggle('active', tid === id);
+  // Hide all tab-panels in this page, show target
+  page.querySelectorAll('.tab-panel').forEach(function(el) {
+    el.classList.toggle('active', el.id === id);
   });
-  if (id === 't-khutbah') initStreamMonitor();
+  if (id === 't-tv') loadIlmFeaturedVideo();
 }
 
 function toast(msg) {
@@ -3354,6 +3511,9 @@ function calcBearing(lat, lng) {
 }
 
 function activateQiblah() {
+  // Open modal
+  const modal = document.getElementById('qiblah-modal');
+  if (modal) modal.classList.add('open');
   document.getElementById('q-hint').textContent = 'Getting your location…';
   const proceed = function(lat, lng) {
     uLat = lat; uLng = lng;
@@ -3699,16 +3859,17 @@ function openSurah(num) {
   const s = SURAHS.find(x => x[0] === num);
   if (!s) return;
 
-  // Make sure the Quran page and qt-quran panel are visible
+  // Ensure page-quran is active
+  switchPage('quran');
+  // Ensure qt-quran panel is active
   const quranPage = document.getElementById('page-quran');
   if (quranPage) {
-    // Ensure qt-quran sect-panel is active (in case user navigated away)
-    quranPage.querySelectorAll('.sect-panel').forEach(p => p.classList.remove('active'));
-    const qtQuran = document.getElementById('qt-quran');
-    if (qtQuran) qtQuran.classList.add('active');
-    quranPage.querySelectorAll('.sect-tab').forEach(b => b.classList.remove('active'));
-    const firstTab = quranPage.querySelector('.sect-tab');
-    if (firstTab) firstTab.classList.add('active');
+    quranPage.querySelectorAll('.sect-panel').forEach(function(p) { p.classList.remove('active'); });
+    const qtQ = document.getElementById('qt-quran');
+    if (qtQ) qtQ.classList.add('active');
+    quranPage.querySelectorAll('.sect-tab').forEach(function(b) { b.classList.remove('active'); });
+    const ft = quranPage.querySelector('.sect-tab');
+    if (ft) ft.classList.add('active');
   }
 
   // Switch list→detail view
@@ -4186,7 +4347,15 @@ async function fetchPlaylist(pl) {
 }
 
 function renderPlaylists() {
-  PLAYLISTS.forEach(function(pl) { fetchPlaylist(pl); });
+  const ALL_PLAYLISTS = [
+    { id: 'vp-quran',      listId: 'PLoBuEb7Cp3UOys8bfqhvXQYy-EcuywTy1', label: 'Ilm Quran' },
+    { id: 'vp-podcast',    listId: 'PLoBuEb7Cp3UNW1dTseOghgWSdcntZJX-4', label: 'Ilm Podcast' },
+    { id: 'vp-series',     listId: 'PLoBuEb7Cp3UMLeNZ9Mo76JqCksERMuvj4',  label: 'Ilm Originals' },
+    { id: 'vp-quran-tv',   listId: 'PLoBuEb7Cp3UOys8bfqhvXQYy-EcuywTy1', label: 'Ilm Quran' },
+    { id: 'vp-podcast-tv', listId: 'PLoBuEb7Cp3UNW1dTseOghgWSdcntZJX-4', label: 'Ilm Podcast' },
+    { id: 'vp-series-tv',  listId: 'PLoBuEb7Cp3UMLeNZ9Mo76JqCksERMuvj4',  label: 'Ilm Originals' },
+  ];
+  ALL_PLAYLISTS.forEach(function(pl) { fetchPlaylist(pl); });
 }
 
 function openVideo(vid, title, label, listId) {
@@ -4549,6 +4718,940 @@ function refreshAll() {
 })();
 
 // ══════════════════════════════════════
+// DOA HISNUL MUSLIM
+// ══════════════════════════════════════
+
+const DOA_CATEGORIES = [
+  { id:'daily',    icon:'☀️', label:'Daily Dua' },
+  { id:'home',     icon:'🏠', label:'Home' },
+  { id:'prayer',   icon:'🕌', label:'Prayer' },
+  { id:'soul',     icon:'💚', label:'Soul Therapy' },
+  { id:'ruqyah',   icon:'🛡️', label:'Ruqyah' },
+  { id:'death',    icon:'🤲', label:'Death & Condolence' },
+  { id:'nature',   icon:'🌿', label:'Nature' },
+  { id:'ramadan',  icon:'🌙', label:'Ramadan' },
+  { id:'food',     icon:'🍽️', label:'Food' },
+  { id:'marriage', icon:'💍', label:'Marriage' },
+  { id:'travel',   icon:'✈️', label:'Travel' },
+  { id:'hajj',     icon:'🕋', label:'Hajj & Umrah' },
+  { id:'illness',  icon:'🏥', label:'Illness' },
+];
+
+const DOA_DATA = {
+  daily: [
+    {
+      title: `Waking Up`,
+      ar: `الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ`,
+      tr: `Alhamdu lillahil-lazi ahyana ba'da ma amatana wa ilayhin-nushur`,
+      en: `Praise be to Allah Who gave us life after He caused us to die, and to Him is the resurrection.`,
+      ref: 'Al-Bukhari 11/113'
+    },
+    {
+      title: `Morning Remembrance (Sayyidul Istighfar)`,
+      ar: `اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ`,
+      tr: `Allahumma anta Rabbi la ilaha illa anta, khalaqtani wa ana abduka, wa ana 'ala ahdika wa wa'dika mastata'tu`,
+      en: `O Allah, You are my Lord. There is no god but You. You created me and I am Your servant, and I hold to Your covenant and Your promise as much as I can.`,
+      ref: 'Al-Bukhari 7/150'
+    },
+    {
+      title: `Morning Dua (Ayat al-Kursi)`,
+      ar: `اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ`,
+      tr: `Allahu la ilaha illa huwal-Hayyul-Qayyum. La ta'khudhuhu sinatun wa la nawm`,
+      en: `Allah — there is no deity except Him, the Ever-Living, the Sustainer of existence. Neither drowsiness overtakes Him nor sleep.`,
+      ref: 'Quran 2:255'
+    },
+    {
+      title: `Morning & Evening: Protection`,
+      ar: `بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ`,
+      tr: `Bismillahil-lazi la yadurru ma'asmihi shay'un fil-ardi wa la fis-sama'i wa huwas-sami'ul-'alim`,
+      en: `In the name of Allah, with Whose name nothing on earth or in the sky can cause harm, and He is the All-Hearing, the All-Knowing.`,
+      ref: 'Abu Dawud 4/323, Ibn Majah 2/332'
+    },
+    {
+      title: `Evening Remembrance`,
+      ar: `أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ`,
+      tr: `Amsayna wa amsal-mulku lillah, walhamdu lillah, la ilaha illallahu wahdahu la sharika lah`,
+      en: `We have reached the evening and the kingdom of Allah has reached the evening. Praise is to Allah. There is none worthy of worship but Allah alone, with no partner.`,
+      ref: 'Abu Dawud 4/322'
+    },
+    {
+      title: `Before Sleeping`,
+      ar: `بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا`,
+      tr: `Bismika Allahumma amutu wa ahya`,
+      en: `In Your name, O Allah, I die and I live.`,
+      ref: 'Al-Bukhari 11/113'
+    },
+    {
+      title: `Seeking Forgiveness (Istighfar)`,
+      ar: `أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ وَأَتُوبُ إِلَيْهِ`,
+      tr: `Astaghfirullaha al-'azimal-lazi la ilaha illa huwal-Hayyul-Qayyumu wa atubu ilayh`,
+      en: `I seek forgiveness of Allah the Magnificent, whom there is none worthy of worship except Him, the Ever-Living, the Sustainer, and I repent to Him.`,
+      ref: 'Abu Dawud 2/85'
+    },
+  ],
+  home: [
+    {
+      title: `Entering the Home`,
+      ar: `بِسْمِ اللَّهِ وَلَجْنَا، وَبِسْمِ اللَّهِ خَرَجْنَا، وَعَلَى اللَّهِ رَبِّنَا تَوَكَّلْنَا`,
+      tr: `Bismillahi walajna, wa bismillahi kharajna, wa 'alallahi rabbina tawakkalna`,
+      en: `In the name of Allah we enter, in the name of Allah we leave, and upon our Lord we place our trust.`,
+      ref: 'Abu Dawud 4/325'
+    },
+    {
+      title: `Leaving the Home`,
+      ar: `بِسْمِ اللَّهِ، تَوَكَّلْتُ عَلَى اللَّهِ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ`,
+      tr: `Bismillah, tawakkaltu 'alallah, wa la hawla wa la quwwata illa billah`,
+      en: `In the name of Allah, I place my trust in Allah, and there is no might nor power except with Allah.`,
+      ref: 'Abu Dawud 4/325, At-Tirmidhi 5/490'
+    },
+    {
+      title: `Entering the Mosque`,
+      ar: `اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ`,
+      tr: `Allahumm-aftah li abwaba rahmatik`,
+      en: `O Allah, open the gates of Your mercy for me.`,
+      ref: 'Muslim 1/494'
+    },
+    {
+      title: `Leaving the Mosque`,
+      ar: `اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ`,
+      tr: `Allahumma inni as'aluka min fadlik`,
+      en: `O Allah, I ask You of Your bounty.`,
+      ref: 'Muslim 1/494'
+    },
+    {
+      title: `Using the Restroom (Entering)`,
+      ar: `اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبْثِ وَالْخَبَائِثِ`,
+      tr: `Allahumma inni a'udhu bika minal-khubuthi wal-khaba'ith`,
+      en: `O Allah, I seek refuge in You from the male and female unclean spirits.`,
+      ref: 'Al-Bukhari 1/45, Muslim 1/283'
+    },
+    {
+      title: `Using the Restroom (Leaving)`,
+      ar: `غُفْرَانَكَ`,
+      tr: `Ghufranaka`,
+      en: `I seek Your forgiveness.`,
+      ref: 'Abu Dawud 1/30, At-Tirmidhi 1/8'
+    },
+  ],
+  prayer: [
+    {
+      title: `Before Wudu`,
+      ar: `بِسْمِ اللَّهِ`,
+      tr: `Bismillah`,
+      en: `In the name of Allah.`,
+      ref: 'Abu Dawud 1/23, Ibn Majah 1/140'
+    },
+    {
+      title: `After Wudu`,
+      ar: `أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ`,
+      tr: `Ashhadu an la ilaha illallahu wahdahu la sharika lahu, wa ashhadu anna Muhammadan 'abduhu wa rasuluh`,
+      en: `I bear witness that none has the right to be worshipped but Allah alone, who has no partner, and I bear witness that Muhammad is His servant and His Messenger.`,
+      ref: 'Muslim 1/209'
+    },
+    {
+      title: `Opening Dua (Salah)`,
+      ar: `سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، وَتَبَارَكَ اسْمُكَ، وَتَعَالَى جَدُّكَ، وَلَا إِلَهَ غَيْرُكَ`,
+      tr: `Subhanakal-lahumma wa bihamdika, wa tabarakas-muka, wa ta'ala jadduka, wa la ilaha ghayruk`,
+      en: `Glory and praise be to You, O Allah. Blessed be Your name, exalted be Your majesty, and none has the right to be worshipped but You.`,
+      ref: 'Abu Dawud 1/124, At-Tirmidhi 2/9'
+    },
+    {
+      title: `After Adhan`,
+      ar: `اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ وَالصَّلَاةِ الْقَائِمَةِ، آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ`,
+      tr: `Allahumma Rabba hazihid-da'watit-tammati was-salatil-qa'imah, ati Muhammadan al-wasilata wal-fadilah`,
+      en: `O Allah, Lord of this perfect call and of the prayer to be offered, grant Muhammad the privilege (of intercession) and also the eminence.`,
+      ref: 'Al-Bukhari 1/152'
+    },
+    {
+      title: `Du'a of Qunut (Witr)`,
+      ar: `اللَّهُمَّ اهْدِنِي فِيمَنْ هَدَيْتَ، وَعَافِنِي فِيمَنْ عَافَيْتَ، وَتَوَلَّنِي فِيمَنْ تَوَلَّيْتَ`,
+      tr: `Allahumma hdini fiman hadayt, wa 'afini fiman 'afayt, wa tawallani fiman tawallayt`,
+      en: `O Allah, guide me along with those whom You have guided, grant me well-being along with those whom You have granted well-being.`,
+      ref: 'Abu Dawud 2/32, Ibn Majah 1/372'
+    },
+    {
+      title: `After Prayer (General)`,
+      ar: `أَسْتَغْفِرُ اللَّهَ × 3، اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ، تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ`,
+      tr: `Astaghfirullah (×3). Allahumma antas-salam wa minkas-salam, tabarakta ya Dhul-Jalali wal-Ikram`,
+      en: `I seek forgiveness from Allah (×3). O Allah, You are Peace and from You comes peace. Blessed are You, O Possessor of Glory and Honour.`,
+      ref: 'Muslim 1/414'
+    },
+  ],
+  soul: [
+    {
+      title: `Relief from Distress (Dua Yunus)`,
+      ar: `لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ`,
+      tr: `La ilaha illa anta subhanaka inni kuntu minaz-zalimin`,
+      en: `There is none worthy of worship except You, glory be to You, certainly I was of the wrongdoers.`,
+      ref: 'At-Tirmidhi 5/529 (Quran 21:87)'
+    },
+    {
+      title: `For Anxiety & Sorrow`,
+      ar: `اللَّهُمَّ إِنِّي عَبْدُكَ، ابْنُ عَبْدِكَ، ابْنُ أَمَتِكَ، نَاصِيَتِي بِيَدِكَ، مَاضٍ فِيَّ حُكْمُكَ، عَدْلٌ فِيَّ قَضَاؤُكَ`,
+      tr: `Allahumma inni 'abduka, ibnu 'abdika, ibnu amatika, nasiyati biyadika, madin fiyya hukmuka, 'adlun fiyya qada'uk`,
+      en: `O Allah, I am Your servant, son of Your servant, son of Your maidservant. My forelock is in Your hand, Your command over me is forever executed, Your decree is just.`,
+      ref: 'Ahmad 1/391, Ibn Hibban 3/253'
+    },
+    {
+      title: `Tawakkul (Reliance on Allah)`,
+      ar: `حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ`,
+      tr: `Hasbunallahu wa ni'mal-wakil`,
+      en: `Allah is sufficient for us, and He is the best Disposer of affairs.`,
+      ref: 'Quran 3:173, Al-Bukhari 5/172'
+    },
+    {
+      title: `Against Waswas (Evil Whispers)`,
+      ar: `أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ`,
+      tr: `A'udhu billahi minash-shaytanir-rajim`,
+      en: `I seek refuge in Allah from the accursed Satan.`,
+      ref: 'Quran 7:200, Muslim 4/1729'
+    },
+    {
+      title: `When Feeling Overwhelmed`,
+      ar: `لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ`,
+      tr: `La hawla wa la quwwata illa billah`,
+      en: `There is no power nor might except with Allah.`,
+      ref: 'Al-Bukhari 11/213, Muslim 4/2076'
+    },
+    {
+      title: `For Depression & Grief`,
+      ar: `اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَالْعَجْزِ وَالْكَسَلِ، وَالْبُخْلِ وَالْجُبْنِ، وَضَلَعِ الدَّيْنِ وَغَلَبَةِ الرِّجَالِ`,
+      tr: `Allahumma inni a'udhu bika minal-hammi wal-hazan, wal-'ajzi wal-kasal, wal-bukhli wal-jubn, wa dala'id-dayn wa ghalabatir-rijal`,
+      en: `O Allah, I seek refuge in You from worry and grief, weakness and laziness, miserliness and cowardice, the burden of debts and being overcome by men.`,
+      ref: 'Al-Bukhari 7/158'
+    },
+  ],
+  ruqyah: [
+    {
+      title: `Al-Fatiha (Healing Ruqyah)`,
+      ar: `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ ﴿الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ﴾`,
+      tr: `Bismillahir-rahmanir-rahim. Al-hamdu lillahi rabbil-'alamin...`,
+      en: `Recite Surah Al-Fatiha (1:1-7). The Prophet ﷺ confirmed its healing power.`,
+      ref: 'Al-Bukhari 5736, Muslim 2201'
+    },
+    {
+      title: `Ayat al-Kursi (Protection)`,
+      ar: `اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...`,
+      tr: `Allahu la ilaha illa huwal-Hayyul-Qayyum...`,
+      en: `Recite Ayat al-Kursi (2:255). Whoever recites it before sleep, Allah appoints an angel to protect them till morning.`,
+      ref: 'Al-Bukhari 2311'
+    },
+    {
+      title: `Al-Mu'awwidhatayn (Al-Falaq & An-Nas)`,
+      ar: `قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ... قُلْ أَعُوذُ بِرَبِّ النَّاسِ...`,
+      tr: `Qul a'udhu birabbil-falaq... Qul a'udhu birabbin-nas...`,
+      en: `Recite Surah Al-Falaq (113) and Surah An-Nas (114) three times each morning and evening.`,
+      ref: 'Abu Dawud 4/322, At-Tirmidhi 5/567'
+    },
+    {
+      title: `Ruqyah for Illness`,
+      ar: `بِسْمِ اللَّهِ أَرْقِيكَ، مِنْ كُلِّ شَيْءٍ يُؤْذِيكَ، مِنْ شَرِّ كُلِّ نَفْسٍ أَوْ عَيْنٍ حَاسِدٍ، اللَّهُ يَشْفِيكَ`,
+      tr: `Bismillahi arqik, min kulli shay'in yu'dhik, min sharri kulli nafsin aw 'aynin hasid, Allahu yashfik`,
+      en: `In the name of Allah I perform ruqyah for you, from everything that harms you, from the evil of every soul or envious eye, may Allah heal you.`,
+      ref: 'Muslim 4/1718'
+    },
+    {
+      title: `Seeking Refuge from Evil Eye`,
+      ar: `أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّةِ مِنْ كُلِّ شَيْطَانٍ وَهَامَّةٍ، وَمِنْ كُلِّ عَيْنٍ لَامَّةٍ`,
+      tr: `A'udhu bikalimatil-lahit-tammati min kulli shaytanin wa hammah, wa min kulli 'aynin lammah`,
+      en: `I seek refuge in the perfect words of Allah from every devil and harmful thing and from every evil eye.`,
+      ref: 'Al-Bukhari 4/119'
+    },
+  ],
+  death: [
+    {
+      title: `Upon Hearing of Someone's Death`,
+      ar: `إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ، اللَّهُمَّ أْجُرْنِي فِي مُصِيبَتِي، وَأَخْلِفْ لِي خَيْرًا مِنْهَا`,
+      tr: `Inna lillahi wa inna ilayhi raji'un. Allahumma ajurni fi musibati, wa akhlif li khayran minha`,
+      en: `Truly we belong to Allah and to Him shall we return. O Allah, compensate me in my affliction and replace it for me with something better.`,
+      ref: 'Muslim 2/632'
+    },
+    {
+      title: `Condolence (Ta'ziyah)`,
+      ar: `إِنَّ لِلَّهِ مَا أَخَذَ، وَلَهُ مَا أَعْطَى، وَكُلُّ شَيْءٍ عِنْدَهُ بِأَجَلٍ مُسَمًّى`,
+      tr: `Inna lillahi ma akhadha, wa lahu ma a'ta, wa kullu shay'in 'indahu bi'ajalin musamman`,
+      en: `Truly, what Allah took belongs to Him, and what He gave belongs to Him, and everything with Him has a fixed term.`,
+      ref: 'Al-Bukhari 2/80, Muslim 2/636'
+    },
+    {
+      title: `Closing the Eyes of the Deceased`,
+      ar: `اللَّهُمَّ اغْفِرْ لِـ[فُلَانٍ] وَارْفَعْ دَرَجَتَهُ فِي الْمَهْدِيِّينَ`,
+      tr: `Allahumma-ghfir li [name] warfa' darajatahu fil-mahdiyyin`,
+      en: `O Allah, forgive [name] and elevate his station among those who are rightly guided.`,
+      ref: 'Muslim 2/634'
+    },
+    {
+      title: `Funeral Prayer (Janazah)`,
+      ar: `اللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ وَعَافِهِ وَاعْفُ عَنْهُ، وَأَكْرِمْ نُزُلَهُ، وَوَسِّعْ مَدْخَلَهُ`,
+      tr: `Allahumma-ghfir lahu warhamhu wa 'afihi wa'fu 'anhu, wa akrim nuzulahu, wa wassi' madkhalah`,
+      en: `O Allah, forgive him and have mercy on him and give him strength and pardon him, be generous to him and cause his entrance to be wide.`,
+      ref: 'Muslim 2/663'
+    },
+    {
+      title: `Visiting the Graveyard`,
+      ar: `السَّلَامُ عَلَيْكُمْ أَهْلَ الدِّيَارِ مِنَ الْمُؤْمِنِينَ وَالْمُسْلِمِينَ، وَيَرْحَمُ اللَّهُ الْمُسْتَقْدِمِينَ مِنَّا وَالْمُسْتَأْخِرِينَ`,
+      tr: `As-salamu 'alaykum ahlad-diyari minal-mu'minina wal-muslimin, wa yarhamullahul-mustaqidimina minna wal-musta'khirin`,
+      en: `Peace be upon you, O abode of a people who were believers. May Allah have mercy on those of us who have gone ahead and those who come later.`,
+      ref: 'Muslim 2/671'
+    },
+  ],
+  nature: [
+    {
+      title: `When It Rains`,
+      ar: `اللَّهُمَّ صَيِّبًا نَافِعًا`,
+      tr: `Allahumma sayyiban nafi'a`,
+      en: `O Allah, let it be a beneficial rain cloud.`,
+      ref: 'Al-Bukhari 1/206'
+    },
+    {
+      title: `After Rain`,
+      ar: `مُطِرْنَا بِفَضْلِ اللَّهِ وَرَحْمَتِهِ`,
+      tr: `Mutirna bifadlillahi wa rahmatihi`,
+      en: `We have been given rain by the grace and mercy of Allah.`,
+      ref: 'Al-Bukhari 1/205, Muslim 1/83'
+    },
+    {
+      title: `When Hearing Thunder`,
+      ar: `سُبْحَانَ الَّذِي يُسَبِّحُ الرَّعْدُ بِحَمْدِهِ وَالْمَلَائِكَةُ مِنْ خِيفَتِهِ`,
+      tr: `Subhanal-ladhi yusabbihur-ra'du bihamdihi wal-mala'ikatu min khifatih`,
+      en: `Glory is to Him Whom the thunder glorifies with His praise, and the angels too, in awe of Him.`,
+      ref: 'Muwatta Malik 2/992'
+    },
+    {
+      title: `When Seeing a New Moon`,
+      ar: `اللَّهُمَّ أَهِلَّهُ عَلَيْنَا بِالْيُمْنِ وَالْإِيمَانِ، وَالسَّلَامَةِ وَالْإِسْلَامِ، رَبِّي وَرَبُّكَ اللَّهُ`,
+      tr: `Allahumma ahillahu 'alayna bil-yumni wal-iman, was-salamati wal-islam. Rabbi wa rabbukallah`,
+      en: `O Allah, let this moon appear on us with security and faith, with safety and Islam. My Lord and your Lord is Allah.`,
+      ref: 'At-Tirmidhi 5/504'
+    },
+    {
+      title: `When the Wind Blows`,
+      ar: `اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَهَا وَخَيْرَ مَا فِيهَا وَخَيْرَ مَا أُرْسِلَتْ بِهِ`,
+      tr: `Allahumma inni as'aluka khayaraha wa khayra ma fiha wa khayra ma ursilat bih`,
+      en: `O Allah, I ask You for the good of it, the good of what it contains, and the good of what it is sent with.`,
+      ref: 'Muslim 2/616'
+    },
+  ],
+  ramadan: [
+    {
+      title: `Sighting the Ramadan Moon`,
+      ar: `اللَّهُمَّ أَهِلَّهُ عَلَيْنَا بِالْأَمْنِ وَالْإِيمَانِ، وَالسَّلَامَةِ وَالْإِسْلَامِ، وَالتَّوْفِيقِ لِمَا تُحِبُّ وَتَرْضَى`,
+      tr: `Allahumma ahillahu 'alayna bil-amni wal-iman, was-salamati wal-islam, wat-tawfiqi lima tuhibbu wa tarda`,
+      en: `O Allah, let this moon appear on us with security and faith, safety and Islam, and tawfiq for what You love and are pleased with.`,
+      ref: 'Collected by Ad-Darimi 1/336'
+    },
+    {
+      title: `Breaking the Fast (Iftar)`,
+      ar: `ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ، وَثَبَتَ الْأَجْرُ إِنْ شَاءَ اللَّهُ`,
+      tr: `Dhahabaz-zama'u wabtallatil-'uruqu, wa thabatal-ajru insha'Allah`,
+      en: `The thirst has gone, the veins are moistened, and the reward is confirmed, if Allah wills.`,
+      ref: 'Abu Dawud 2/306, Al-Bayhaqi 4/239'
+    },
+    {
+      title: `Dua When Giving Someone Food to Break Fast`,
+      ar: `أَفْطَرَ عِنْدَكُمُ الصَّائِمُونَ، وَأَكَلَ طَعَامَكُمُ الْأَبْرَارُ، وَصَلَّتْ عَلَيْكُمُ الْمَلَائِكَةُ`,
+      tr: `Aftara 'indakumus-sa'imun, wa akala ta'amakumul-abrar, wa sallat 'alaykumul-mala'ikah`,
+      en: `May the fasting (people) break their fast with you, and the righteous eat your food, and may the angels pray for you.`,
+      ref: 'Abu Dawud 3/367, Ibn Majah 1/556'
+    },
+    {
+      title: `Laylat al-Qadr Dua`,
+      ar: `اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي`,
+      tr: `Allahumma innaka 'afuwwun tuhibbul-'afwa fa'fu 'anni`,
+      en: `O Allah, You are Pardoning, You love to pardon, so pardon me.`,
+      ref: 'At-Tirmidhi 3513, Ibn Majah 3850'
+    },
+  ],
+  food: [
+    {
+      title: `Before Eating`,
+      ar: `بِسْمِ اللَّهِ`,
+      tr: `Bismillah`,
+      en: `In the name of Allah.`,
+      ref: 'Abu Dawud 3/347, At-Tirmidhi 4/288'
+    },
+    {
+      title: `If One Forgets to Say Bismillah`,
+      ar: `بِسْمِ اللَّهِ فِي أَوَّلِهِ وَآخِرِهِ`,
+      tr: `Bismillahi fi awwalihi wa akhirihi`,
+      en: `In the name of Allah at its beginning and at its end.`,
+      ref: 'Abu Dawud 3/347, At-Tirmidhi 4/288'
+    },
+    {
+      title: `After Eating`,
+      ar: `الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا، وَجَعَلَنَا مِنَ الْمُسْلِمِينَ`,
+      tr: `Alhamdu lillahil-lazi at'amana wa saqana, wa ja'alana minal-muslimin`,
+      en: `Praise is to Allah Who has given us food and drink and made us Muslims.`,
+      ref: 'Abu Dawud 3/357, At-Tirmidhi 5/507'
+    },
+    {
+      title: `When a Guest Breaks Fast with You`,
+      ar: `أَفْطَرَ عِنْدَكُمُ الصَّائِمُونَ، وَأَكَلَ طَعَامَكُمُ الْأَبْرَارُ`,
+      tr: `Aftara 'indakumus-sa'imun, wa akala ta'amakumul-abrar`,
+      en: `May fasting people break their fast with you, and may the pious eat your food.`,
+      ref: 'Ibn Majah 1/556'
+    },
+    {
+      title: `Before Drinking Milk`,
+      ar: `اللَّهُمَّ بَارِكْ لَنَا فِيهِ وَزِدْنَا مِنْهُ`,
+      tr: `Allahumma barik lana fihi wa zidna minhu`,
+      en: `O Allah, bless it for us and give us more of it.`,
+      ref: 'Abu Dawud 3/340, At-Tirmidhi 3455'
+    },
+  ],
+  marriage: [
+    {
+      title: `Dua for the Newlywed Couple`,
+      ar: `بَارَكَ اللَّهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ`,
+      tr: `Barakallahu laka wa baraka 'alayka wa jama'a baynakuma fi khayr`,
+      en: `May Allah bless you, and shower His blessings upon you, and join you together in goodness.`,
+      ref: 'Abu Dawud 2/241, Ibn Majah 1/615'
+    },
+    {
+      title: `Before Conjugal Relations`,
+      ar: `بِسْمِ اللَّهِ، اللَّهُمَّ جَنِّبْنَا الشَّيْطَانَ، وَجَنِّبِ الشَّيْطَانَ مَا رَزَقْتَنَا`,
+      tr: `Bismillah, Allahumma jannibnas-shaytan, wa jannibish-shaytana ma razaqtana`,
+      en: `In the name of Allah. O Allah, protect us from Satan and protect what You bestow upon us from Satan.`,
+      ref: 'Al-Bukhari 9/167, Muslim 2/1028'
+    },
+    {
+      title: `Dua for Spouse & Children`,
+      ar: `رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا`,
+      tr: `Rabbana hab lana min azwajina wa dhurriyyatina qurrata a'yunin waj'alna lil-muttaqina imama`,
+      en: `Our Lord, grant us from among our wives and offspring comfort to our eyes and make us an example for the righteous.`,
+      ref: 'Quran 25:74'
+    },
+  ],
+  travel: [
+    {
+      title: `When Mounting a Vehicle`,
+      ar: `سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ، وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ`,
+      tr: `Subhanal-lazi sakhkhara lana hadha wa ma kunna lahu muqrinin, wa inna ila Rabbina lamunqalibun`,
+      en: `Glory be to Him Who has subjected this to us, and we could not have done it ourselves. And to our Lord we shall return.`,
+      ref: 'Abu Dawud 3/34, At-Tirmidhi 5/501 (Quran 43:13-14)'
+    },
+    {
+      title: `Dua for Journey (Safar)`,
+      ar: `اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى، وَمِنَ الْعَمَلِ مَا تَرْضَى`,
+      tr: `Allahumma inna nas'aluka fi safarina hadhal-birra wat-taqwa, wa minal-'amali ma tarda`,
+      en: `O Allah, we ask You on this journey for goodness and piety, and for deeds that are pleasing to You.`,
+      ref: 'Muslim 2/978'
+    },
+    {
+      title: `Returning from Travel`,
+      ar: `آيِبُونَ تَائِبُونَ عَابِدُونَ لِرَبِّنَا حَامِدُونَ`,
+      tr: `Ayibuna ta'ibuna 'abiduna liRabbina hamidun`,
+      en: `We return, repent, worship, and praise our Lord.`,
+      ref: 'Muslim 2/980'
+    },
+    {
+      title: `When Entering a New Town`,
+      ar: `اللَّهُمَّ رَبَّ السَّمَاوَاتِ السَّبْعِ وَمَا أَظْلَلْنَ، وَرَبَّ الْأَرَضِينَ السَّبْعِ وَمَا أَقْلَلْنَ`,
+      tr: `Allahumma Rabbas-samawatis-sab'i wa ma azlalna, wa Rabbal-aradinas-sab'i wa ma aqlaln`,
+      en: `O Allah, Lord of the seven heavens and all they overshadow, Lord of the seven earths and all they uphold.`,
+      ref: 'Ibn As-Sunni (Aml al-Yawm) no. 524'
+    },
+  ],
+  hajj: [
+    {
+      title: `Talbiyah`,
+      ar: `لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لَا شَرِيكَ لَكَ`,
+      tr: `Labbayk Allahumma labbayk, labbayka la sharika laka labbayk, innal-hamda wan-ni'mata laka wal-mulk, la sharika lak`,
+      en: `Here I am O Allah, here I am. Here I am, You have no partner, here I am. Verily all praise and blessings are Yours, and all sovereignty. You have no partner.`,
+      ref: 'Al-Bukhari 2/545, Muslim 2/841'
+    },
+    {
+      title: `Upon Seeing the Ka'bah`,
+      ar: `اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ، فَحَيِّنَا رَبَّنَا بِالسَّلَامِ`,
+      tr: `Allahumma antas-salam wa minkas-salam, fa-hayyina Rabbana bis-salam`,
+      en: `O Allah, You are Peace and from You comes peace, so greet us, our Lord, with peace.`,
+      ref: 'Ibn Majah 2/944'
+    },
+    {
+      title: `During Tawaf`,
+      ar: `رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ`,
+      tr: `Rabbana atina fid-dunya hasanatan wa fil-akhirati hasanatan wa qina 'adhaban-nar`,
+      en: `Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.`,
+      ref: 'Al-Bukhari 2/579, Muslim 2/888 (Quran 2:201)'
+    },
+    {
+      title: `Dua at Mount Safa`,
+      ar: `لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ`,
+      tr: `La ilaha illallahu wahdahu la sharika lah, lahul-mulku wa lahul-hamdu wa huwa 'ala kulli shay'in qadir`,
+      en: `There is no deity but Allah alone, with no partner. His is the dominion and His is the praise, and He is able to do all things.`,
+      ref: 'Muslim 2/888'
+    },
+    {
+      title: `Dua on the Day of Arafah`,
+      ar: `لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ`,
+      tr: `La ilaha illallahu wahdahu la sharika lahu, lahul-mulku wa lahul-hamdu, wa huwa 'ala kulli shay'in qadir`,
+      en: `The best supplication is that of the Day of Arafah, and the best of it is: There is no deity but Allah alone.`,
+      ref: 'At-Tirmidhi 5/572'
+    },
+  ],
+  illness: [
+    {
+      title: `When Visiting the Sick`,
+      ar: `لَا بَأْسَ طَهُورٌ إِنْ شَاءَ اللَّهُ`,
+      tr: `La ba'sa tahuru insha'Allah`,
+      en: `Do not worry, it is a purification, if Allah wills.`,
+      ref: 'Al-Bukhari 4/182'
+    },
+    {
+      title: `Dua for the Sick Person`,
+      ar: `اللَّهُمَّ رَبَّ النَّاسِ، أَذْهِبِ الْبَأْسَ، اشْفِهِ وَأَنْتَ الشَّافِي، لَا شِفَاءَ إِلَّا شِفَاؤُكَ، شِفَاءً لَا يُغَادِرُ سَقَمًا`,
+      tr: `Allahumma Rabban-nas, adhhibilba's, ashfihi wa antas-shafi, la shifa'a illa shifa'uk, shifa'an la yughadiru saqama`,
+      en: `O Allah, Lord of mankind, remove this disease and cure him, for You are the Curer. There is no cure except through You — a cure that leaves no illness behind.`,
+      ref: 'Al-Bukhari 7/172, Muslim 4/1721'
+    },
+    {
+      title: `When in Pain (Place hand on pain)`,
+      ar: `بِسْمِ اللَّهِ × 3، أَعُوذُ بِاللَّهِ وَقُدْرَتِهِ مِنْ شَرِّ مَا أَجِدُ وَأُحَاذِرُ × 7`,
+      tr: `Bismillah (×3). A'udhu billahi wa qudratihi min sharri ma ajidu wa uhadhir (×7)`,
+      en: `In the name of Allah (×3). I seek refuge in Allah and in His Power from the evil of what I find and what I guard against (×7).`,
+      ref: 'Muslim 4/1728'
+    },
+    {
+      title: `For One Who is Terminally Ill`,
+      ar: `اللَّهُمَّ اغْفِرْ لِي وَارْحَمْنِي وَأَلْحِقْنِي بِالرَّفِيقِ الْأَعْلَى`,
+      tr: `Allahumma-ghfir li warhamni wa alhiqni bir-rafiqil-a'la`,
+      en: `O Allah, forgive me and have mercy upon me and join me with the highest companions (in Paradise).`,
+      ref: 'Al-Bukhari 5674, Muslim 2444'
+    },
+    {
+      title: `Seven Times Over the Sick`,
+      ar: `أَسْأَلُ اللَّهَ الْعَظِيمَ رَبَّ الْعَرْشِ الْعَظِيمِ أَنْ يَشْفِيَكَ × 7`,
+      tr: `As'alullahul-'azima Rabbal-'arshil-'azimi an yashfiyak (×7)`,
+      en: `I ask Allah the Magnificent, Lord of the Magnificent Throne, to cure you (×7). [Whoever says this seven times over a sick person who does not die, Allah will cure them.]`,
+      ref: 'Abu Dawud 3/187, At-Tirmidhi 2/210'
+    },
+  ],
+};
+
+let currentDoaCategory = 'daily';
+
+function renderDoaCategories() {
+  const container = document.getElementById('doa-cats');
+  if (!container) return;
+  container.innerHTML = '';
+  DOA_CATEGORIES.forEach(function(cat) {
+    const isActive = cat.id === currentDoaCategory;
+    const btn = document.createElement('button');
+    btn.dataset.catId = cat.id;
+    btn.style.display = 'inline-flex';
+    btn.style.alignItems = 'center';
+    btn.style.gap = '5px';
+    btn.style.padding = '7px 12px';
+    btn.style.borderRadius = '20px';
+    btn.style.border = '1.5px solid ' + (isActive ? 'var(--teal)' : 'var(--border)');
+    btn.style.background = isActive ? 'var(--teal-bg)' : 'var(--surface)';
+    btn.style.color = isActive ? 'var(--teal)' : 'var(--text2)';
+    btn.style.fontFamily = 'Outfit, sans-serif';
+    btn.style.fontSize = '0.72rem';
+    btn.style.fontWeight = '700';
+    btn.style.cursor = 'pointer';
+    btn.style.whiteSpace = 'nowrap';
+    btn.style.transition = 'all 0.15s';
+    btn.style.webkitTapHighlightColor = 'transparent';
+    btn.innerHTML = '<span style="font-size:0.85rem">' + cat.icon + '</span>' + cat.label;
+    btn.addEventListener('click', function() { selectDoaCategory(cat.id); });
+    container.appendChild(btn);
+  });
+}
+
+function selectDoaCategory(id) {
+  currentDoaCategory = id;
+  renderDoaCategories();
+  renderDoaList();
+}
+
+function renderDoaList() {
+  const container = document.getElementById('doa-list');
+  if (!container) return;
+  const duas = DOA_DATA[currentDoaCategory] || [];
+  if (!duas.length) { container.innerHTML = '<div class="loading-state">No duas found.</div>'; return; }
+  container.innerHTML = '';
+  duas.forEach(function(d) {
+    const item = document.createElement('div');
+    item.className = 'dua-item';
+    const tag   = document.createElement('div'); tag.className = 'dua-tag';            tag.textContent = d.title;
+    const ar    = document.createElement('div'); ar.className  = 'dua-ar uthmani';     ar.textContent  = d.ar;
+    const tr    = document.createElement('div'); tr.className  = 'dua-transliteration'; tr.textContent = d.tr;
+    const en    = document.createElement('div'); en.className  = 'dua-translation';    en.textContent  = d.en;
+    const ref   = document.createElement('div'); ref.className = 'dua-source';         ref.textContent = d.ref;
+    item.append(tag, ar, tr, en, ref);
+    container.appendChild(item);
+  });
+}
+
+function initDoaSection() {
+  renderDoaAllCategories('doa-all-list');
+  // also init home doa chips+list
+  renderDoaCategories();
+  renderDoaList();
+}
+function initDoaHome() {
+  // Mirror doa cats/list to home tab
+  const catEl  = document.getElementById('doa-cats-home');
+  const listEl = document.getElementById('doa-list-home');
+  if (!catEl || !listEl) return;
+
+  // Render category chips
+  catEl.innerHTML = '';
+  DOA_CATEGORIES.forEach(function(cat) {
+    const isActive = cat.id === currentDoaCategory;
+    const btn = document.createElement('button');
+    btn.style.display = 'inline-flex'; btn.style.alignItems = 'center'; btn.style.gap = '5px';
+    btn.style.padding = '7px 12px'; btn.style.borderRadius = '20px';
+    btn.style.border = '1.5px solid ' + (isActive ? 'var(--teal)' : 'var(--border)');
+    btn.style.background = isActive ? 'var(--teal-bg)' : 'var(--surface)';
+    btn.style.color = isActive ? 'var(--teal)' : 'var(--text2)';
+    btn.style.fontFamily = 'Outfit,sans-serif'; btn.style.fontSize = '0.72rem';
+    btn.style.fontWeight = '700'; btn.style.cursor = 'pointer';
+    btn.style.whiteSpace = 'nowrap'; btn.style.transition = 'all 0.15s';
+    btn.innerHTML = '<span style="font-size:0.85rem">' + cat.icon + '</span>' + cat.label;
+    btn.addEventListener('click', function() {
+      currentDoaCategory = cat.id;
+      initDoaSection(); // refresh main doa tab
+      initDoaHome();    // refresh home doa tab
+    });
+    catEl.appendChild(btn);
+  });
+
+  // Render duas
+  listEl.innerHTML = '';
+  const duas = DOA_DATA[currentDoaCategory] || [];
+  duas.forEach(function(d) {
+    const item = document.createElement('div'); item.className = 'dua-item';
+    const tag = document.createElement('div'); tag.className = 'dua-tag'; tag.textContent = d.title;
+    const ar  = document.createElement('div'); ar.className  = 'dua-ar uthmani'; ar.textContent = d.ar;
+    const tr  = document.createElement('div'); tr.className  = 'dua-transliteration'; tr.textContent = d.tr;
+    const en  = document.createElement('div'); en.className  = 'dua-translation'; en.textContent = d.en;
+    const ref = document.createElement('div'); ref.className = 'dua-source'; ref.textContent = d.ref;
+    item.append(tag, ar, tr, en, ref);
+    listEl.appendChild(item);
+  });
+}
+
+
+
+function closeQiblahModal() {
+  const modal = document.getElementById('qiblah-modal');
+  if (modal) modal.classList.remove('open');
+  // Stop compass listeners
+  window.removeEventListener('deviceorientationabsolute', onOrient, true);
+  window.removeEventListener('deviceorientation', onOrient, true);
+  compassOn = false;
+}
+
+// Override onOrient to also rotate mini arrow
+const _origOnOrient = typeof onOrient === 'function' ? onOrient : null;
+function onOrient(e) {
+  if (qBearing === null) return;
+  let heading = null;
+  if (e.type === 'deviceorientationabsolute' && e.absolute === true && e.alpha !== null) {
+    heading = (360 - e.alpha + 360) % 360;
+  } else if (typeof e.webkitCompassHeading === 'number' && e.webkitCompassHeading >= 0) {
+    heading = e.webkitCompassHeading;
+  } else if (e.absolute && e.alpha !== null) {
+    heading = (360 - e.alpha + 360) % 360;
+  } else if (e.alpha !== null && lastHeading === null) {
+    heading = (360 - e.alpha + 360) % 360;
+  }
+  if (heading === null) return;
+  lastHeading = heading;
+  const rotate = (qBearing - heading + 360) % 360;
+  // Full compass needle
+  const needle = document.getElementById('qneedle');
+  if (needle) needle.style.transform = 'translate(-50%, -100%) rotate(' + rotate + 'deg)';
+  // Mini arrow on home card
+  const arrow = document.getElementById('qiblah-arrow');
+  if (arrow) arrow.style.transform = 'rotate(' + rotate + 'deg)';
+  // Update degree label
+  const degEl = document.getElementById('q-deg');
+  if (degEl) degEl.textContent = Math.round(qBearing) + '° from North toward Makkah';
+}
+
+// ══════════════════════════════════════
+// SHOP
+// ══════════════════════════════════════
+const SHOP_CATEGORIES = [
+  {
+    id: 'infaq', emoji: '💚', label: 'Infaq & Waqf',
+    gradient: 'linear-gradient(135deg,#27AE60,#1E8449)',
+    sub: 'Charity, sadaqah & endowments',
+    items: [
+      { name: 'Sadaqah Jariyah', desc: 'Ongoing charity — mosque building', price: 'From SGD 5', emoji: '🕌' },
+      { name: 'Waqf Quran', desc: 'Donate Quran copies to those in need', price: 'SGD 15', emoji: '📖' },
+      { name: 'Zakat al-Fitr', desc: 'Obligatory Zakat for Ramadan', price: 'SGD 7', emoji: '🌙' },
+      { name: 'Education Waqf', desc: 'Fund Islamic education for youth', price: 'From SGD 10', emoji: '🎓' },
+      { name: 'Feed the Poor', desc: 'Sponsor iftar meals for families', price: 'From SGD 3', emoji: '🍱' },
+      { name: 'Water Waqf', desc: 'Build wells in needy communities', price: 'From SGD 50', emoji: '💧' },
+    ]
+  },
+  {
+    id: 'qurban', emoji: '🐑', label: 'Qurban & Aqiqah',
+    gradient: 'linear-gradient(135deg,#E67E22,#CA6F1E)',
+    sub: 'Sacrifice & celebration services',
+    items: [
+      { name: 'Qurban 1/7 Share', desc: '1/7 share of cow — Eid al-Adha', price: 'SGD 120', emoji: '🐄' },
+      { name: 'Qurban Full Goat', desc: 'Full goat sacrifice — Eid al-Adha', price: 'SGD 350', emoji: '🐑' },
+      { name: 'Aqiqah — Boy', desc: '2 sheep for newborn boy', price: 'SGD 280', emoji: '👶' },
+      { name: 'Aqiqah — Girl', desc: '1 sheep for newborn girl', price: 'SGD 150', emoji: '👧' },
+      { name: 'Qurban Overseas', desc: 'Sacrifice on behalf in needy countries', price: 'From SGD 80', emoji: '🌍' },
+      { name: 'Meat Delivery', desc: 'Fresh qurban meat — home delivery', price: 'SGD 25', emoji: '🥩' },
+    ]
+  },
+  {
+    id: 'essentials', emoji: '🕋', label: 'Muslim Essentials',
+    gradient: 'linear-gradient(135deg,#A8873A,#8E6E2A)',
+    sub: 'Prayer mats, tasbih, attar & more',
+    items: [
+      { name: 'Prayer Mat', desc: 'Premium Turkish mat with compass', price: 'SGD 35', emoji: '🟩' },
+      { name: 'Tasbih Beads', desc: '99-bead hand-knotted dhikr beads', price: 'SGD 18', emoji: '📿' },
+      { name: 'Oud Attar', desc: 'Pure oud oil — alcohol-free', price: 'SGD 45', emoji: '🧴' },
+      { name: 'Quran Stand', desc: 'Laser-engraved wooden holder', price: 'SGD 40', emoji: '📖' },
+      { name: 'Telekung Set', desc: 'Premium cotton telekung for women', price: 'SGD 55', emoji: '🧕' },
+      { name: 'Islamic Kids Set', desc: 'Story books + activity set for kids', price: 'SGD 30', emoji: '📚' },
+    ]
+  },
+];
+
+
+function loadIlmFeaturedVideo() {
+  const wrap = document.getElementById('ilm-featured-video');
+  if (!wrap) return;
+  // Fetch via Anthropic with web_search — get latest video from @ilmproductionsg
+  fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 500,
+      tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+      system: 'Return ONLY a JSON object with keys: videoId (11-char YouTube ID), title. No markdown. No explanation.',
+      messages: [{ role: 'user', content: 'Find the most recent YouTube video ID and title from the channel @ilmproductionsg (https://www.youtube.com/@ilmproductionsg). Return JSON: {"videoId":"XXXXXXXXXXX","title":"Video Title"}' }]
+    })
+  }).then(function(r) { return r.json(); })
+  .then(function(data) {
+    let text = '';
+    if (data.content) data.content.forEach(function(b) { if (b.type === 'text') text += b.text; });
+    const m = text.match(/\{[^{}]*"videoId"[^{}]*\}/);
+    if (m) {
+      try {
+        const parsed = JSON.parse(m[0]);
+        const vid = parsed.videoId;
+        const title = parsed.title || 'Ilm Production SG';
+        if (vid && vid.length === 11) {
+          wrap.innerHTML =
+            '<div style="cursor:pointer;width:100%;height:100%" onclick="openVideo(\'' + vid + '\',\'' + title.replace(/'/g,'') + '\',\'Ilm Production SG\',\'\')">' +
+              '<img src="https://i.ytimg.com/vi/' + vid + '/hqdefault.jpg" style="width:100%;height:100%;object-fit:cover" onerror="this.src=\'https://i.ytimg.com/vi/' + vid + '/mqdefault.jpg\'">' +
+              '<div style="position:absolute;inset:0;background:rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center">' +
+                '<div style="width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,0.3)">' +
+                  '<svg width="20" height="20" viewBox="0 0 24 24" fill="#26AAE1"><polygon points="5 3 19 12 5 21 5 3"/></svg>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div style="position:absolute;bottom:0;left:0;right:0;padding:10px 12px;background:linear-gradient(transparent,rgba(0,0,0,0.7))">' +
+              '<div style="font-size:0.75rem;font-weight:700;color:#fff;line-height:1.4">' + title + '</div>' +
+            '</div>';
+          wrap.style.position = 'relative';
+        }
+      } catch(e) {}
+    }
+  }).catch(function() {});
+}
+
+function initShop() {
+  const el = document.getElementById('shop-content');
+  if (!el) return;
+  el.innerHTML = '';
+
+  SHOP_CATEGORIES.forEach(function(cat) {
+    // Category header
+    const head = document.createElement('div');
+    head.style.cssText = 'padding:16px 16px 10px;display:flex;align-items:center;gap:8px';
+    head.innerHTML =
+      '<div style="width:36px;height:36px;border-radius:10px;background:' + cat.gradient + ';display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">' + cat.emoji + '</div>' +
+      '<div><div class="vp-section-title" style="margin:0">' + cat.label + '</div>' +
+      '<div style="font-size:0.65rem;color:var(--text3);margin-top:1px">' + cat.sub + '</div></div>';
+    el.appendChild(head);
+
+    // 2-column product grid
+    const grid = document.createElement('div');
+    grid.style.cssText = 'display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px 20px';
+
+    cat.items.forEach(function(item) {
+      const card = document.createElement('div');
+      card.style.cssText = 'background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform 0.12s';
+      card.innerHTML =
+        '<div style="height:72px;background:' + cat.gradient + ';display:flex;align-items:center;justify-content:center;font-size:2rem">' + item.emoji + '</div>' +
+        '<div style="padding:10px 10px 12px">' +
+          '<div style="font-size:0.78rem;font-weight:700;color:var(--text);margin-bottom:3px;line-height:1.3">' + item.name + '</div>' +
+          '<div style="font-size:0.65rem;color:var(--text2);line-height:1.45;margin-bottom:6px">' + item.desc + '</div>' +
+          '<div style="font-size:0.78rem;font-weight:700;color:var(--teal)">' + item.price + '</div>' +
+        '</div>';
+      card.addEventListener('click', function() { toast(item.name + ' — Coming soon'); });
+      card.addEventListener('touchstart', function() { card.style.transform = 'scale(0.97)'; }, {passive:true});
+      card.addEventListener('touchend',   function() { card.style.transform = '';             }, {passive:true});
+      grid.appendChild(card);
+    });
+
+    el.appendChild(grid);
+    // Divider
+    const div = document.createElement('div');
+    div.style.cssText = 'height:1px;background:var(--border);margin:0 16px 4px';
+    el.appendChild(div);
+  });
+}
+
+// ══════════════════════════════════════
+// ISLAMIC CALENDAR
+// ══════════════════════════════════════
+let calYear = new Date().getFullYear();
+let calMonth = new Date().getMonth(); // 0-indexed
+
+// MUIS Singapore important Islamic dates 2025/2026 (Gregorian)
+const MUIS_DATES = [
+  // 2025 — 1446H / 1447H
+  { greg: '2025-01-27', hijri: '27 Rejab 1446H',           title: "Isra' Mi'raj",             note: "The Night Journey & Ascension of Prophet Muhammad ﷺ" },
+  { greg: '2025-03-01', hijri: '1 Ramadan 1446H',          title: 'First Day of Ramadan',     note: 'Subject to moon sighting confirmation by MUIS Singapore' },
+  { greg: '2025-03-27', hijri: '27 Ramadan 1446H',         title: 'Nuzul Al-Quran',           note: 'Night of the revelation of the Holy Quran — Public Holiday Singapore' },
+  { greg: '2025-03-30', hijri: '30 Ramadan 1446H',         title: 'Last day of Ramadan',      note: 'Subject to moon sighting' },
+  { greg: '2025-03-31', hijri: '1 Syawal 1446H',           title: 'Hari Raya Aidilfitri',     note: 'Eid al-Fitr — Public Holiday Singapore (subject to moon sighting)' },
+  { greg: '2025-04-01', hijri: '2 Syawal 1446H',           title: 'Hari Raya Aidilfitri (Day 2)', note: 'Public Holiday Singapore' },
+  { greg: '2025-05-12', hijri: '13 Zulkaedah 1446H',       title: 'Awal Muharram preparation', note: 'Final month of Zulkaedah' },
+  { greg: '2025-06-06', hijri: '9 Zulhijjah 1446H',        title: 'Hari Arafah',              note: 'Day of Arafah — highly recommended to fast' },
+  { greg: '2025-06-07', hijri: '10 Zulhijjah 1446H',       title: 'Hari Raya Aidiladha',      note: 'Eid al-Adha — Public Holiday Singapore' },
+  { greg: '2025-06-27', hijri: '1 Muharram 1447H',         title: 'Awal Muharram (Islamic New Year)', note: 'Islamic New Year 1447H — Public Holiday Singapore' },
+  { greg: '2025-07-06', hijri: '10 Muharram 1447H',        title: 'Hari Asyura',              note: 'Day of Ashura — recommended to fast' },
+  { greg: '2025-09-05', hijri: "12 Rabi'ul Awal 1447H",    title: 'Maulidur Rasul',           note: "Birthday of Prophet Muhammad ﷺ — Public Holiday Singapore" },
+  // 2026 — 1447H / 1448H
+  { greg: '2026-01-16', hijri: '17 Rejab 1447H',           title: "Isra' Mi'raj 2026",        note: "Night Journey of Prophet Muhammad ﷺ" },
+  { greg: '2026-02-18', hijri: '1 Ramadan 1447H',          title: 'First Day of Ramadan 2026', note: 'Subject to moon sighting confirmation by MUIS' },
+  { greg: '2026-03-17', hijri: '27 Ramadan 1447H',         title: 'Nuzul Al-Quran 2026',      note: 'Night of the revelation of the Holy Quran' },
+  { greg: '2026-03-20', hijri: '1 Syawal 1447H',           title: 'Hari Raya Aidilfitri 2026', note: 'Subject to moon sighting confirmation by MUIS' },
+  { greg: '2026-03-21', hijri: '2 Syawal 1447H',           title: 'Hari Raya Day 2 (2026)',   note: 'Public Holiday Singapore' },
+  { greg: '2026-05-26', hijri: '9 Zulhijjah 1447H',        title: 'Hari Arafah 2026',         note: 'Day of Arafah — highly recommended to fast' },
+  { greg: '2026-05-27', hijri: '10 Zulhijjah 1447H',       title: 'Hari Raya Aidiladha 2026', note: 'Subject to moon sighting confirmation by MUIS' },
+  { greg: '2026-06-16', hijri: '1 Muharram 1448H',         title: 'Islamic New Year 1448H',   note: 'Awal Muharram — Public Holiday Singapore' },
+  { greg: '2026-08-25', hijri: "12 Rabi'ul Awal 1448H",    title: 'Maulidur Rasul 2026',      note: "Birthday of Prophet Muhammad ﷺ — Public Holiday Singapore" },
+];
+
+const CAL_MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const CAL_DAYS   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+function renderHijriCalendar() {
+  const wrap = document.getElementById('hijri-cal-wrap');
+  if (!wrap) return;
+
+  const firstDay = new Date(calYear, calMonth, 1).getDay();
+  const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+  const today = new Date();
+  const isCurrentMonth = (calYear === today.getFullYear() && calMonth === today.getMonth());
+
+  // Build event set for quick lookup
+  const eventDays = {};
+  MUIS_DATES.forEach(function(ev) {
+    const d = new Date(ev.greg);
+    if (d.getFullYear() === calYear && d.getMonth() === calMonth) {
+      eventDays[d.getDate()] = true;
+    }
+  });
+
+  let html = '<div class="cal-month-header">' +
+    '<button class="cal-nav-btn" onclick="calNav(-1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg></button>' +
+    '<div class="cal-month-title">' + CAL_MONTHS[calMonth] + ' ' + calYear + '</div>' +
+    '<button class="cal-nav-btn" onclick="calNav(1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></button>' +
+    '</div>' +
+    '<div class="cal-grid">';
+
+  CAL_DAYS.forEach(function(d) {
+    html += '<div class="cal-day-header">' + d + '</div>';
+  });
+
+  // Empty cells before month start
+  for (let i = 0; i < firstDay; i++) html += '<div class="cal-day other-month"></div>';
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const date = new Date(calYear, calMonth, d);
+    const h = toHijri(date);
+    const isToday = isCurrentMonth && d === today.getDate();
+    const hasEv = !!eventDays[d];
+    html += '<div class="cal-day' + (isToday ? ' today' : '') + (hasEv ? ' has-event' : '') + '">' +
+      '<div class="cal-greg">' + d + '</div>' +
+      '<div class="cal-hij">' + h.day + '</div>' +
+    '</div>';
+  }
+
+  html += '</div>';
+
+  // Legend
+  html += '<div style="padding:0 16px 8px;display:flex;align-items:center;gap:8px">' +
+    '<span style="width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block"></span>' +
+    '<span style="font-size:0.68rem;color:var(--text3)">Islamic event / holiday</span>' +
+    '</div>';
+
+  wrap.innerHTML = html;
+}
+
+function calNav(dir) {
+  calMonth += dir;
+  if (calMonth > 11) { calMonth = 0; calYear++; }
+  if (calMonth < 0)  { calMonth = 11; calYear--; }
+  renderHijriCalendar();
+}
+
+function renderIslamicEvents() {
+  const el = document.getElementById('islamic-events-list');
+  if (!el) return;
+  const now = new Date();
+  const upcoming = MUIS_DATES.filter(function(ev) {
+    return new Date(ev.greg) >= new Date(now.getFullYear(), now.getMonth(), 1);
+  });
+  el.innerHTML = upcoming.map(function(ev) {
+    const d = new Date(ev.greg);
+    return '<div class="event-item">' +
+      '<div class="event-date-badge">' +
+        '<div class="event-month">' + CAL_MONTHS[d.getMonth()].slice(0,3) + '</div>' +
+        '<div class="event-day">' + d.getDate() + '</div>' +
+      '</div>' +
+      '<div class="event-body">' +
+        '<div class="event-title">' + ev.title + '</div>' +
+        '<div class="event-hijri">' + ev.hijri + '</div>' +
+        (ev.note ? '<div class="event-note">' + ev.note + '</div>' : '') +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function renderMuisDates() {
+  const el = document.getElementById('muis-dates-list');
+  if (!el) return;
+  el.innerHTML = MUIS_DATES.map(function(ev) {
+    const d = new Date(ev.greg);
+    const gregStr = d.getDate() + ' ' + CAL_MONTHS[d.getMonth()] + ' ' + d.getFullYear();
+    return '<div class="event-item">' +
+      '<div class="event-date-badge">' +
+        '<div class="event-month">' + CAL_MONTHS[d.getMonth()].slice(0,3) + '</div>' +
+        '<div class="event-day">' + d.getDate() + '</div>' +
+      '</div>' +
+      '<div class="event-body">' +
+        '<div class="event-title">' + ev.title + '</div>' +
+        '<div class="event-hijri">' + gregStr + ' &bull; ' + ev.hijri + '</div>' +
+        (ev.note ? '<div class="event-note">' + ev.note + '</div>' : '') +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function initCalendar() {
+  renderHijriCalendar();
+  renderIslamicEvents();
+  renderMuisDates();
+}
+
+// ══════════════════════════════════════
 // THEME TOGGLE
 // ══════════════════════════════════════
 
@@ -4580,6 +5683,10 @@ initLocation();
 renderPlaylists();
 renderHusna();
 renderArabicSection();
+initDoaSection();
+initShop();
+initDoaHome();
+if(document.getElementById("ilm-featured-video")) loadIlmFeaturedVideo();
 </script>
 
 <!-- VIDEO MODAL -->
