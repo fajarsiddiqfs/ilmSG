@@ -2356,6 +2356,144 @@ body::after {
 .event-note  { font-size: 0.7rem; color: var(--text2); margin-top: 4px; line-height: 1.5; }
 
 
+/* ═══ TASBIH HOME CARD ═══ */
+.tasbih-home-wrap {
+  margin: 0 16px 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 14px 14px 16px;
+}
+.tasbih-chips {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+/* force chips inside home card to be compact */
+.tasbih-chips .zikir-chip {
+  padding: 10px 8px;
+}
+.tasbih-chips .zc-ar { font-size: 1rem; margin-bottom: 2px; }
+.tasbih-chips .zc-en { font-size: 0.62rem; }
+.tasbih-chips .zc-n  { font-size: 0.6rem; margin-top: 1px; }
+
+.tasbih-counter-display {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.tasbih-num {
+  font-family: 'Amiri', serif;
+  font-size: 3.8rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+  transition: transform 0.1s, color 0.1s;
+}
+.tasbih-num.pop { transform: scale(1.1); color: var(--teal); }
+.tasbih-goal {
+  font-size: 0.68rem;
+  color: var(--text3);
+  font-weight: 500;
+  margin-top: 3px;
+}
+.tasbih-tap-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+.tasbih-tap-btn {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2.5px solid var(--teal);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  box-shadow: 0 4px 16px rgba(38,170,225,0.15);
+  transition: all 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+.tasbih-tap-btn:active {
+  transform: scale(0.9);
+  background: var(--teal);
+  box-shadow: none;
+}
+.tasbih-tap-btn:active .tap-ar  { color: #fff; }
+.tasbih-tap-btn:active .tap-lbl { color: rgba(255,255,255,0.7); }
+.tasbih-tap-btn .tap-ar  { font-family: 'Amiri',serif; font-size: 1.1rem; color: var(--teal); line-height: 1.4; text-align: center; }
+.tasbih-tap-btn .tap-lbl { font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text3); }
+
+.tasbih-presets {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.tasbih-preset-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text3);
+  flex-shrink: 0;
+}
+.tasbih-preset {
+  flex: 1;
+  max-width: 64px;
+  padding: 7px 0;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--surface2);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text2);
+  cursor: pointer;
+  transition: all 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.tasbih-preset.active {
+  border-color: var(--teal);
+  background: var(--teal-bg);
+  color: var(--teal);
+}
+.tasbih-controls {
+  display: flex;
+  gap: 8px;
+}
+.tasbih-ctrl-btn {
+  flex: 1;
+  padding: 9px 0;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text2);
+  cursor: pointer;
+  transition: background 0.12s;
+  -webkit-tap-highlight-color: transparent;
+}
+.tasbih-ctrl-btn.danger {
+  background: var(--red-bg);
+  border-color: var(--red);
+  color: var(--red);
+}
+.tasbih-ctrl-btn:active { opacity: 0.75; }
+
+[data-theme="dark"] .tasbih-tap-btn {
+  background: var(--surface2);
+  border-color: var(--teal);
+}
+
 /* ═══ QIBLAH COMPACT ═══ */
 .qiblah-arrow-wrap {
   width: 48px; height: 48px; flex-shrink: 0;
@@ -2367,6 +2505,45 @@ body::after {
 .qiblah-mini-card { cursor: default; }
 #qiblah-modal { display: none; }
 #qiblah-modal.open { display: flex !important; }
+
+
+/* ═══ CALENDAR TODAY HERO ═══ */
+.cal-today-hero {
+  background: linear-gradient(135deg, var(--teal), var(--teal-d));
+  padding: 28px 20px 22px;
+  text-align: center;
+  color: #fff;
+}
+.cal-today-day {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; opacity: 0.75; margin-bottom: 4px;
+}
+.cal-today-greg {
+  font-size: 1.65rem; font-weight: 800; line-height: 1.1; margin-bottom: 6px;
+}
+.cal-today-hijri {
+  font-size: 0.85rem; font-weight: 600; opacity: 0.85;
+  font-family: 'Scheherazade New','Amiri',serif;
+  margin-bottom: 4px;
+}
+.cal-today-subtitle {
+  font-size: 0.62rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.1em;
+}
+
+/* ═══ MONTH BLOCKS ═══ */
+.cal-month-block { padding: 16px 12px 8px; border-bottom: 1px solid var(--border); }
+.cal-month-label {
+  font-size: 0.9rem; font-weight: 700; color: var(--text);
+  margin-bottom: 8px; padding: 0 4px;
+}
+.cal-day.friday .cal-greg { color: var(--teal); font-weight: 700; }
+.cal-month-events { padding: 6px 4px 4px; }
+.cal-ev-row {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 5px 0; border-top: 1px solid var(--border);
+}
+.cal-ev-date { font-size: 0.65rem; font-weight: 700; color: var(--teal); flex-shrink:0; min-width:44px; padding-top:1px; }
+.cal-ev-title { font-size: 0.72rem; color: var(--text2); line-height: 1.4; }
 
 </style>
 </head>
@@ -2503,46 +2680,60 @@ body::after {
     </div>
 
     <!-- ZIKIR COUNTER ON HOME -->
-    <div style="padding:0 16px 8px">
-      <div class="card" style="padding:14px">
-        <div style="font-size:0.82rem;font-weight:700;color:var(--text);margin-bottom:10px">Tasbih Counter</div>
-        <div class="zikir-grid" style="grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px">
-          <div class="zikir-chip active" onclick="setZikir(this,'سُبْحَانَ اللهِ','Subhanallah',33)">
-            <div class="zc-ar" style="font-size:0.9rem">سُبْحَانَ اللهِ</div>
-            <div class="zc-en">Subhanallah</div>
-            <div class="zc-n">33×</div>
-          </div>
-          <div class="zikir-chip" onclick="setZikir(this,'الحَمْدُ للهِ','Alhamdulillah',33)">
-            <div class="zc-ar" style="font-size:0.9rem">الحَمْدُ للهِ</div>
-            <div class="zc-en">Alhamdulillah</div>
-            <div class="zc-n">33×</div>
-          </div>
-          <div class="zikir-chip" onclick="setZikir(this,'اللهُ أَكْبَرُ','Allahu Akbar',34)">
-            <div class="zc-ar" style="font-size:0.9rem">اللهُ أَكْبَرُ</div>
-            <div class="zc-en">Allahu Akbar</div>
-            <div class="zc-n">34×</div>
-          </div>
-          <div class="zikir-chip" onclick="setZikir(this,'لَا إِلَٰهَ إِلَّا الله','La Ilaha Illallah',100)">
-            <div class="zc-ar" style="font-size:0.85rem">لَا إِلَٰهَ إِلَّا الله</div>
-            <div class="zc-en">La Ilaha Illallah</div>
-            <div class="zc-n">100×</div>
-          </div>
+    <div class="tasbih-home-wrap">
+
+      <!-- Row 1 & 2: 2×2 chip grid -->
+      <div class="tasbih-chips">
+        <div class="zikir-chip active" onclick="setZikir(this,'سُبْحَانَ اللهِ','Subhanallah',33)">
+          <div class="zc-ar">سُبْحَانَ اللهِ</div>
+          <div class="zc-en">Subhanallah</div>
+          <div class="zc-n">33×</div>
         </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
-          <div style="text-align:center;flex:1">
-            <div class="counter-num" id="tc-num" style="font-size:2.2rem;margin:0">0</div>
-            <div class="counter-goal" id="tc-goal" style="font-size:0.65rem;margin-top:2px">Goal: 33 × Subhanallah</div>
-          </div>
-          <button class="tap-btn" id="tap-btn" onclick="tapCount()" style="width:80px;height:80px;flex-shrink:0">
-            <div class="tap-ar" id="tap-ar" style="font-size:1.1rem">سُبْحَانَ اللهِ</div>
-            <div class="tap-lbl" style="font-size:0.6rem">Tap</div>
-          </button>
-          <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0">
-            <button onclick="undoCount()" style="padding:6px 12px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);font-size:0.68rem;font-weight:700;color:var(--text2);cursor:pointer">Undo</button>
-            <button onclick="resetCount()" style="padding:6px 12px;border-radius:8px;background:var(--red-bg);border:1px solid var(--red);font-size:0.68rem;font-weight:700;color:var(--red);cursor:pointer">Reset</button>
-          </div>
+        <div class="zikir-chip" onclick="setZikir(this,'الحَمْدُ للهِ','Alhamdulillah',33)">
+          <div class="zc-ar">الحَمْدُ للهِ</div>
+          <div class="zc-en">Alhamdulillah</div>
+          <div class="zc-n">33×</div>
+        </div>
+        <div class="zikir-chip" onclick="setZikir(this,'اللهُ أَكْبَرُ','Allahu Akbar',34)">
+          <div class="zc-ar">اللهُ أَكْبَرُ</div>
+          <div class="zc-en">Allahu Akbar</div>
+          <div class="zc-n">34×</div>
+        </div>
+        <div class="zikir-chip" onclick="setZikir(this,'لَا إِلَٰهَ إِلَّا الله','La Ilaha Illallah',100)">
+          <div class="zc-ar" style="font-size:0.88rem">لَا إِلَٰهَ إِلَّا الله</div>
+          <div class="zc-en">La Ilaha Illallah</div>
+          <div class="zc-n">100×</div>
         </div>
       </div>
+
+      <!-- Counter number + goal text -->
+      <div class="tasbih-counter-display">
+        <div class="tasbih-num" id="tc-num">0</div>
+        <div class="tasbih-goal" id="tc-goal">Goal: 33 × Subhanallah</div>
+      </div>
+
+      <!-- Big tap button -->
+      <div class="tasbih-tap-row">
+        <button class="tasbih-tap-btn" id="tap-btn" onclick="tapCount()">
+          <div class="tap-ar" id="tap-ar">سُبْحَانَ اللهِ</div>
+          <div class="tap-lbl">Tap</div>
+        </button>
+      </div>
+
+      <!-- Target presets: 33 / 99 / 100 -->
+      <div class="tasbih-presets">
+        <span class="tasbih-preset-label">Target</span>
+        <button class="tasbih-preset active" id="preset-33"  onclick="setGoalPreset(33)">33</button>
+        <button class="tasbih-preset"        id="preset-99"  onclick="setGoalPreset(99)">99</button>
+        <button class="tasbih-preset"        id="preset-100" onclick="setGoalPreset(100)">100</button>
+      </div>
+
+      <!-- Undo / Reset -->
+      <div class="tasbih-controls">
+        <button class="tasbih-ctrl-btn" onclick="undoCount()">Undo</button>
+        <button class="tasbih-ctrl-btn danger" onclick="resetCount()">Reset</button>
+      </div>
+
     </div>
 
     <!-- VIDEO PLAYLISTS -->
@@ -2641,7 +2832,7 @@ body::after {
     <!-- ILM PRODUCTION SG FEATURED VIDEO -->
     <div style="padding:16px 16px 8px">
       <div style="font-size:0.82rem;font-weight:700;color:var(--text);margin-bottom:8px">
-        <span style="color:var(--teal)">&#9654;</span> Ilm Production SG
+        <span style="color:var(--teal)">&#9654;</span> Latest Video
       </div>
       <div id="ilm-featured-video" style="border-radius:var(--radius);overflow:hidden;background:var(--surface2);aspect-ratio:16/9;position:relative;cursor:pointer;display:flex;align-items:center;justify-content:center">
         <div style="text-align:center;padding:20px">
@@ -2649,10 +2840,10 @@ body::after {
           <div style="font-size:0.75rem;color:var(--text3);margin-top:8px">Loading latest video…</div>
         </div>
       </div>
-      <a href="https://www.youtube.com/@ilmproductionsg" target="_blank" rel="noopener"
+      <a href="https://www.youtube.com/ilmproductionsg" target="_blank" rel="noopener"
          style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:0.72rem;font-weight:600;color:var(--teal);text-decoration:none">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        Visit @ilmproductionsg on YouTube
+        Subscribe Ilm Production on YouTube
       </a>
     </div>
     <!-- PLAYLISTS -->
@@ -2971,6 +3162,54 @@ body::after {
 
 <!-- ════════════ CALENDAR ════════════ -->
 <div class="page" id="page-calendar">
+
+  <!-- TODAY HERO HEADER -->
+  <div class="cal-today-hero" id="cal-today-hero">
+    <div class="cal-today-day" id="cal-today-day">Monday</div>
+    <div class="cal-today-greg" id="cal-today-greg">22 April 2026</div>
+    <div class="cal-today-hijri" id="cal-today-hijri">24 Syawal 1447H</div>
+    <div class="cal-today-subtitle">Today</div>
+  </div>
+
+  <!-- TABS -->
+  <div class="sect-tabs" id="cal-tabs">
+    <button class="sect-tab active" onclick="switchSectTab(this,'cal-months','cal-tabs')">Calendar</button>
+    <button class="sect-tab" onclick="switchSectTab(this,'cal-muis','cal-tabs')">MUIS Dates</button>
+  </div>
+
+  <!-- FULL YEAR MONTH-BY-MONTH SCROLL -->
+  <div class="sect-panel active" id="cal-months">
+    <div id="cal-year-grid"></div>
+  </div>
+
+  <!-- MUIS DATES LIST -->
+  <div class="sect-panel" id="cal-muis">
+    <div class="pg">
+      <div class="page-title" style="margin-bottom:4px">MUIS Singapore</div>
+      <div class="page-sub">Official Islamic dates 2025–2026</div>
+      <div id="muis-dates-list"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════ MOSQUE ════════════ -->
+<div class="page" id="page-mosque">
+  <div class="pg">
+    <div class="page-title">Mosques Near Me</div>
+    <div class="page-sub">Find mosques within 10 km of your location</div>
+    <button class="btn-primary" onclick="findMosques()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      Find Mosques Near Me
+    </button>
+    <div id="mosque-results">
+      <div class="loading-state">Tap the button above to find mosques near your location.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ CALENDAR ════════════ -->
+<div class="page" id="page-calendar">
   <div class="pg">
     <div class="page-title">Islamic Calendar</div>
     <div class="page-sub">Hijri dates &amp; upcoming Islamic events — based on MUIS Singapore</div>
@@ -3058,7 +3297,8 @@ function switchPage(name) {
   // Side effects
   if (name === 'mosque') {
     const res = document.getElementById('mosque-results');
-    if (res && res.children.length <= 1 && !res.querySelector('.mosque-item')) findMosques();
+    const hasResults = res && res.querySelector('.mosque-item');
+    if (!hasResults) findMosques();
   }
   if (name === 'calendar') initCalendar();
 }
@@ -3071,7 +3311,21 @@ function switchTab(btn, id) {
   page.querySelectorAll('.tab-panel').forEach(function(el) {
     el.classList.toggle('active', el.id === id);
   });
-  if (id === 't-tv') loadIlmFeaturedVideo();
+  if (id === 't-shop') {
+    var sc = document.getElementById('shop-content');
+    if (sc && !sc.children.length) initShop();
+  }
+  if (id === 't-tv') {
+    loadIlmFeaturedVideo();
+    // Lazy load TV playlists on first open
+    if (!document.getElementById('vp-quran-tv').children.length) {
+      [
+        { id:'vp-quran-tv',   listId:'PLoBuEb7Cp3UOys8bfqhvXQYy-EcuywTy1', label:'Ilm Quran' },
+        { id:'vp-podcast-tv', listId:'PLoBuEb7Cp3UNW1dTseOghgWSdcntZJX-4', label:'Ilm Podcast' },
+        { id:'vp-series-tv',  listId:'PLoBuEb7Cp3UMLeNZ9Mo76JqCksERMuvj4',  label:'Ilm Originals' }
+      ].forEach(function(pl) { fetchPlaylist(pl); });
+    }
+  }
 }
 
 function toast(msg) {
@@ -3632,32 +3886,43 @@ function findMosques() {
 }
 
 function renderMosques(els, lat, lng) {
+  const resultsEl = document.getElementById('mosque-results');
   if (!els.length) {
-    document.getElementById('mosque-results').innerHTML =
-      '<div class="loading-state">No mosques found in your area.</div>';
+    resultsEl.innerHTML = '<div class="loading-state">No mosques found nearby. Try moving to a different location.</div>';
     return;
   }
-  const list = els.map(e => {
-    const elat = e.lat || e.center?.lat;
-    const elng = e.lon || e.center?.lon;
-    const dist = haversine(lat, lng, elat, elng);
+
+  // Filter out elements with no coordinates, extract coords safely
+  const list = [];
+  els.forEach(function(e) {
+    const elat = (e.lat != null) ? e.lat : (e.center ? e.center.lat : null);
+    const elng = (e.lon != null) ? e.lon : (e.center ? e.center.lon : null);
+    if (elat == null || elng == null) return;
     const tags = e.tags || {};
     const name = tags.name || tags['name:en'] || tags['name:ms'] || tags['name:ar'] || 'Masjid / Surau';
     const addr = [tags['addr:street'], tags['addr:city'] || tags['addr:state']].filter(Boolean).join(', ');
-    return { name, addr, dist };
-  }).sort((a,b) => a.dist - b.dist);
+    const dist = haversine(lat, lng, elat, elng);
+    list.push({ name: name, addr: addr, dist: dist });
+  });
+  list.sort(function(a,b) { return a.dist - b.dist; });
 
-  document.getElementById('mosque-results').innerHTML = list.map((m, i) =>
-    `<div class="mosque-item">
-      <div class="mosque-num">${i+1}</div>
-      <div>
-        <div class="mosque-name">${m.name}</div>
-        <div class="mosque-dist">${m.dist < 1 ? Math.round(m.dist*1000)+' m' : m.dist.toFixed(1)+' km'} away</div>
-        ${m.addr ? `<div class="mosque-addr">${m.addr}</div>` : ''}
-      </div>
-    </div>`
-  ).join('');
-  toast(`${list.length} mosques found`);
+  if (!list.length) {
+    resultsEl.innerHTML = '<div class="loading-state">No mosque coordinates found. Please try again.</div>';
+    return;
+  }
+
+  resultsEl.innerHTML = list.slice(0, 50).map(function(m, i) {
+    const distStr = m.dist < 1 ? Math.round(m.dist * 1000) + ' m' : m.dist.toFixed(1) + ' km';
+    return '<div class="mosque-item">' +
+      '<div class="mosque-num">' + (i+1) + '</div>' +
+      '<div style="flex:1;min-width:0">' +
+        '<div class="mosque-name">' + m.name + '</div>' +
+        '<div class="mosque-dist">' + distStr + ' away</div>' +
+        (m.addr ? '<div class="mosque-addr">' + m.addr + '</div>' : '') +
+      '</div>' +
+    '</div>';
+  }).join('');
+  toast(list.length + ' mosques found');
 }
 
 function haversine(a, b, c, d) {
@@ -3672,43 +3937,80 @@ function haversine(a, b, c, d) {
 let tCount=0, tGoal=33, tAr='سُبْحَانَ اللهِ', tName='Subhanallah';
 let sTotal=0, sRounds=0;
 
+function setGoalPreset(n) {
+  tGoal = n;
+  const goalEl = document.getElementById('tc-goal');
+  const arEl   = document.getElementById('tap-ar');
+  if (goalEl) goalEl.innerHTML = 'Goal: ' + n + ' &times; ' + (arEl ? arEl.textContent : '');
+  // Update preset button highlights — use class toggle
+  document.querySelectorAll('.tasbih-preset').forEach(function(b) {
+    b.classList.toggle('active', b.id === 'preset-' + n);
+  });
+}
+
 function setZikir(el, ar, name, goal) {
-  document.querySelectorAll('.zikir-chip').forEach(c => c.classList.remove('active'));
+  // Clear active on all chips in the same grid
+  const grid = el.closest('.tasbih-chips, .zikir-grid');
+  if (grid) grid.querySelectorAll('.zikir-chip').forEach(function(c) { c.classList.remove('active'); });
   el.classList.add('active');
-  tGoal=goal; tAr=ar; tName=name;
-  document.getElementById('tap-ar').textContent = ar;
-  document.getElementById('tc-goal').innerHTML = `Goal: ${goal} &times; ${name}`;
+  tGoal = goal; tAr = ar; tName = name;
+  const arEl   = document.getElementById('tap-ar');
+  const goalEl = document.getElementById('tc-goal');
+  if (arEl)   arEl.textContent     = ar;
+  if (goalEl) goalEl.innerHTML     = 'Goal: ' + goal + ' &times; ' + name;
   resetCount(false);
+  // Also update preset highlight to match default goal
+  document.querySelectorAll('.tasbih-preset').forEach(function(b) {
+    b.classList.toggle('active', b.id === 'preset-' + goal);
+  });
 }
 
 function tapCount() {
   tCount++; sTotal++;
-  const el = document.getElementById('tc-num');
-  el.textContent = tCount;
-  el.classList.add('pop');
-  setTimeout(() => el.classList.remove('pop'), 130);
-  document.getElementById('s-total').textContent = sTotal;
+  const numEl = document.getElementById('tc-num');
+  if (numEl) {
+    numEl.textContent = tCount;
+    numEl.classList.remove('pop');
+    // Force reflow then add pop
+    void numEl.offsetWidth;
+    numEl.classList.add('pop');
+    setTimeout(function() { numEl.classList.remove('pop'); }, 130);
+  }
+  // Also animate tasbih-num class
+  const tasNum = document.querySelector('.tasbih-num');
+  if (tasNum && tasNum !== numEl) {
+    tasNum.textContent = tCount;
+    tasNum.classList.add('pop');
+    setTimeout(function() { tasNum.classList.remove('pop'); }, 130);
+  }
+  const totalEl  = document.getElementById('s-total');
+  if (totalEl) totalEl.textContent = sTotal;
   if (navigator.vibrate) navigator.vibrate(18);
   if (tCount >= tGoal) {
     sRounds++;
     tCount = 0;
-    el.textContent = '0';
-    document.getElementById('s-rounds').textContent = sRounds;
+    if (numEl)  numEl.textContent  = '0';
+    if (tasNum) tasNum.textContent = '0';
+    const roundsEl = document.getElementById('s-rounds');
+    if (roundsEl) roundsEl.textContent = sRounds;
     if (navigator.vibrate) navigator.vibrate([80,40,80]);
-    toast(`Round ${sRounds} complete — Alhamdulillah`);
+    toast('Round ' + sRounds + ' complete \u2014 Alhamdulillah');
   }
 }
 
 function undoCount() {
-  if (tCount > 0) { tCount--; sTotal = Math.max(0,sTotal-1); }
-  document.getElementById('tc-num').textContent = tCount;
-  document.getElementById('s-total').textContent = sTotal;
+  if (tCount > 0) { tCount--; sTotal = Math.max(0, sTotal - 1); }
+  const numEl   = document.getElementById('tc-num');
+  const totalEl = document.getElementById('s-total');
+  if (numEl)   numEl.textContent   = tCount;
+  if (totalEl) totalEl.textContent = sTotal;
 }
 
-function resetCount(notify=true) {
+function resetCount(notify) {
   tCount = 0;
-  document.getElementById('tc-num').textContent = '0';
-  if (notify) toast('Counter reset');
+  const numEl = document.getElementById('tc-num');
+  if (numEl) numEl.textContent = '0';
+  if (notify !== false) toast('Counter reset');
 }
 
 // ══════════════════════════════════════
@@ -3856,37 +4158,36 @@ function filterSurahs(q) {
 }
 
 function openSurah(num) {
-  const s = SURAHS.find(x => x[0] === num);
+  const s = SURAHS.find(function(x) { return x[0] === num; });
   if (!s) return;
 
-  // Ensure page-quran is active
-  switchPage('quran');
-  // Ensure qt-quran panel is active
+  // Navigate to quran page only if not already there
   const quranPage = document.getElementById('page-quran');
-  if (quranPage) {
-    quranPage.querySelectorAll('.sect-panel').forEach(function(p) { p.classList.remove('active'); });
-    const qtQ = document.getElementById('qt-quran');
-    if (qtQ) qtQ.classList.add('active');
-    quranPage.querySelectorAll('.sect-tab').forEach(function(b) { b.classList.remove('active'); });
-    const ft = quranPage.querySelector('.sect-tab');
-    if (ft) ft.classList.add('active');
-  }
+  if (!quranPage.classList.contains('active')) switchPage('quran');
 
-  // Switch list→detail view
+  // Show the qt-quran sect-panel
+  quranPage.querySelectorAll('.sect-panel').forEach(function(p) { p.classList.remove('active'); });
+  const qtQ = document.getElementById('qt-quran');
+  if (qtQ) qtQ.classList.add('active');
+  quranPage.querySelectorAll('.sect-tab').forEach(function(b) { b.classList.remove('active'); });
+  const ft = quranPage.querySelector('[onclick*="qt-quran"]');
+  if (ft) ft.classList.add('active');
+
+  // Switch list → detail
   const listEl   = document.getElementById('qv-list');
   const detailEl = document.getElementById('qv-detail');
   if (listEl)   listEl.style.display   = 'none';
-  if (detailEl) detailEl.style.display = 'block';
+  if (detailEl) { detailEl.style.display = 'block'; detailEl.style.visibility = 'visible'; }
 
-  const hasBism = num !== 1 && num !== 9;
+  const hasBism = (num !== 1 && num !== 9);
   document.getElementById('surah-content').innerHTML =
-    `<div class="detail-header">
-       <div class="dh-ar">${s[5]}</div>
-       <div class="dh-en">${s[1]}</div>
-       <div class="dh-meta">${s[2]} &middot; ${s[3]} Ayahs &middot; ${s[4]}</div>
-     </div>
-     ${hasBism ? '<div class="bismillah-block">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>' : ''}
-     <div id="ayah-list"><div class="loading-state"><div class="spinner"></div>Loading ayahs…</div></div>`;
+    '<div class="detail-header">' +
+      '<div class="dh-ar">' + s[5] + '</div>' +
+      '<div class="dh-en">' + s[1] + '</div>' +
+      '<div class="dh-meta">' + s[2] + ' &middot; ' + s[3] + ' Ayahs &middot; ' + s[4] + '</div>' +
+    '</div>' +
+    (hasBism ? '<div class="bismillah-block">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>' : '') +
+    '<div id="ayah-list"><div class="loading-state"><div class="spinner"></div>Loading ayahs…</div></div>';
 
   window.scrollTo(0, 0);
   loadAyahs(num);
@@ -4347,15 +4648,12 @@ async function fetchPlaylist(pl) {
 }
 
 function renderPlaylists() {
-  const ALL_PLAYLISTS = [
-    { id: 'vp-quran',      listId: 'PLoBuEb7Cp3UOys8bfqhvXQYy-EcuywTy1', label: 'Ilm Quran' },
-    { id: 'vp-podcast',    listId: 'PLoBuEb7Cp3UNW1dTseOghgWSdcntZJX-4', label: 'Ilm Podcast' },
-    { id: 'vp-series',     listId: 'PLoBuEb7Cp3UMLeNZ9Mo76JqCksERMuvj4',  label: 'Ilm Originals' },
-    { id: 'vp-quran-tv',   listId: 'PLoBuEb7Cp3UOys8bfqhvXQYy-EcuywTy1', label: 'Ilm Quran' },
-    { id: 'vp-podcast-tv', listId: 'PLoBuEb7Cp3UNW1dTseOghgWSdcntZJX-4', label: 'Ilm Podcast' },
-    { id: 'vp-series-tv',  listId: 'PLoBuEb7Cp3UMLeNZ9Mo76JqCksERMuvj4',  label: 'Ilm Originals' },
-  ];
-  ALL_PLAYLISTS.forEach(function(pl) { fetchPlaylist(pl); });
+  // Only fetch home playlists on load — TV fetched lazily on tab open
+  [
+    { id: 'vp-quran',   listId: 'PLoBuEb7Cp3UOys8bfqhvXQYy-EcuywTy1', label: 'Ilm Quran' },
+    { id: 'vp-podcast', listId: 'PLoBuEb7Cp3UNW1dTseOghgWSdcntZJX-4', label: 'Ilm Podcast' },
+    { id: 'vp-series',  listId: 'PLoBuEb7Cp3UMLeNZ9Mo76JqCksERMuvj4',  label: 'Ilm Originals' }
+  ].forEach(function(pl) { fetchPlaylist(pl); });
 }
 
 function openVideo(vid, title, label, listId) {
@@ -4722,19 +5020,19 @@ function refreshAll() {
 // ══════════════════════════════════════
 
 const DOA_CATEGORIES = [
-  { id:'daily',    icon:'☀️', label:'Daily Dua' },
-  { id:'home',     icon:'🏠', label:'Home' },
-  { id:'prayer',   icon:'🕌', label:'Prayer' },
-  { id:'soul',     icon:'💚', label:'Soul Therapy' },
-  { id:'ruqyah',   icon:'🛡️', label:'Ruqyah' },
-  { id:'death',    icon:'🤲', label:'Death & Condolence' },
-  { id:'nature',   icon:'🌿', label:'Nature' },
-  { id:'ramadan',  icon:'🌙', label:'Ramadan' },
-  { id:'food',     icon:'🍽️', label:'Food' },
-  { id:'marriage', icon:'💍', label:'Marriage' },
-  { id:'travel',   icon:'✈️', label:'Travel' },
-  { id:'hajj',     icon:'🕋', label:'Hajj & Umrah' },
-  { id:'illness',  icon:'🏥', label:'Illness' },
+  { id:'daily', icon:`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`, label:'Daily Dua' },
+  { id:'home', icon:`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`, label:'Home' },
+  { id:'prayer', icon:`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>`, label:'Prayer' },
+  { id:'soul', icon:`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`, label:'Soul Therapy' },
+  { id:'ruqyah', icon:`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`, label:'Ruqyah' },
+  { id:'death', icon:`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`, label:'Death & Condolence' },
+  { id:'nature', icon:`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.17 3.82 21"/><path d="M9.04 13.47C6.88 12 5.36 10 3.82 5.1 7.17 4.06 11.36 4.39 15 7c3.64 2.61 4.39 6.24 3.33 9.74A10 10 0 0 0 11.07 14"/></svg>`, label:'Nature' },
+  { id:'ramadan', icon:`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`, label:'Ramadan' },
+  { id:'food', icon:`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>`, label:'Food' },
+  { id:'marriage', icon:`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`, label:'Marriage' },
+  { id:'travel', icon:`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><line x1="13" y1="16" x2="13" y2="16"/><line x1="17" y1="16" x2="17" y2="16"/></svg>`, label:'Travel' },
+  { id:'hajj', icon:`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3l-4 4-4-4"/></svg>`, label:'Hajj & Umrah' },
+  { id:'illness', icon:`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`, label:'Illness' },
 ];
 
 const DOA_DATA = {
@@ -5231,31 +5529,28 @@ const DOA_DATA = {
 let currentDoaCategory = 'daily';
 
 function renderDoaCategories() {
-  const container = document.getElementById('doa-cats');
-  if (!container) return;
-  container.innerHTML = '';
-  DOA_CATEGORIES.forEach(function(cat) {
-    const isActive = cat.id === currentDoaCategory;
-    const btn = document.createElement('button');
-    btn.dataset.catId = cat.id;
-    btn.style.display = 'inline-flex';
-    btn.style.alignItems = 'center';
-    btn.style.gap = '5px';
-    btn.style.padding = '7px 12px';
-    btn.style.borderRadius = '20px';
-    btn.style.border = '1.5px solid ' + (isActive ? 'var(--teal)' : 'var(--border)');
-    btn.style.background = isActive ? 'var(--teal-bg)' : 'var(--surface)';
-    btn.style.color = isActive ? 'var(--teal)' : 'var(--text2)';
-    btn.style.fontFamily = 'Outfit, sans-serif';
-    btn.style.fontSize = '0.72rem';
-    btn.style.fontWeight = '700';
-    btn.style.cursor = 'pointer';
-    btn.style.whiteSpace = 'nowrap';
-    btn.style.transition = 'all 0.15s';
-    btn.style.webkitTapHighlightColor = 'transparent';
-    btn.innerHTML = '<span style="font-size:0.85rem">' + cat.icon + '</span>' + cat.label;
-    btn.addEventListener('click', function() { selectDoaCategory(cat.id); });
-    container.appendChild(btn);
+  // Render into ALL doa category containers on the page
+  ['doa-cats', 'doa-cats-home'].forEach(function(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = '';
+    DOA_CATEGORIES.forEach(function(cat) {
+      const isActive = cat.id === currentDoaCategory;
+      const btn = document.createElement('button');
+      btn.style.cssText = 'display:inline-flex;align-items:center;gap:5px;padding:7px 12px;border-radius:20px;' +
+        'border:1.5px solid ' + (isActive ? 'var(--teal)' : 'var(--border)') + ';' +
+        'background:' + (isActive ? 'var(--teal-bg)' : 'var(--surface)') + ';' +
+        'color:' + (isActive ? 'var(--teal)' : 'var(--text2)') + ';' +
+        'font-family:Outfit,sans-serif;font-size:0.72rem;font-weight:700;cursor:pointer;' +
+        'white-space:nowrap;transition:all 0.15s;-webkit-tap-highlight-color:transparent;margin-bottom:4px';
+      btn.innerHTML = '<span style="display:inline-flex;align-items:center;margin-right:4px">' + cat.icon + '</span><span>' + cat.label + '</span>';
+      btn.addEventListener('click', function() {
+        currentDoaCategory = cat.id;
+        renderDoaCategories();
+        renderDoaList();
+      });
+      container.appendChild(btn);
+    });
   });
 }
 
@@ -5266,71 +5561,34 @@ function selectDoaCategory(id) {
 }
 
 function renderDoaList() {
-  const container = document.getElementById('doa-list');
-  if (!container) return;
   const duas = DOA_DATA[currentDoaCategory] || [];
-  if (!duas.length) { container.innerHTML = '<div class="loading-state">No duas found.</div>'; return; }
-  container.innerHTML = '';
-  duas.forEach(function(d) {
-    const item = document.createElement('div');
-    item.className = 'dua-item';
-    const tag   = document.createElement('div'); tag.className = 'dua-tag';            tag.textContent = d.title;
-    const ar    = document.createElement('div'); ar.className  = 'dua-ar uthmani';     ar.textContent  = d.ar;
-    const tr    = document.createElement('div'); tr.className  = 'dua-transliteration'; tr.textContent = d.tr;
-    const en    = document.createElement('div'); en.className  = 'dua-translation';    en.textContent  = d.en;
-    const ref   = document.createElement('div'); ref.className = 'dua-source';         ref.textContent = d.ref;
-    item.append(tag, ar, tr, en, ref);
-    container.appendChild(item);
+  ['doa-list', 'doa-list-home'].forEach(function(cid) {
+    const container = document.getElementById(cid);
+    if (!container) return;
+    if (!duas.length) { container.innerHTML = '<div class="loading-state">No duas found.</div>'; return; }
+    container.innerHTML = '';
+    duas.forEach(function(d) {
+      const item = document.createElement('div');
+      item.className = 'dua-item';
+      const tag = document.createElement('div'); tag.className = 'dua-tag';             tag.textContent = d.title;
+      const ar  = document.createElement('div'); ar.className  = 'dua-ar uthmani';      ar.textContent  = d.ar;
+      const tr  = document.createElement('div'); tr.className  = 'dua-transliteration'; tr.textContent  = d.tr;
+      const en  = document.createElement('div'); en.className  = 'dua-translation';     en.textContent  = d.en;
+      const ref = document.createElement('div'); ref.className = 'dua-source';          ref.textContent = d.ref;
+      item.append(tag, ar, tr, en, ref);
+      container.appendChild(item);
+    });
   });
 }
 
 function initDoaSection() {
-  renderDoaAllCategories('doa-all-list');
-  // also init home doa chips+list
   renderDoaCategories();
   renderDoaList();
 }
 function initDoaHome() {
-  // Mirror doa cats/list to home tab
-  const catEl  = document.getElementById('doa-cats-home');
-  const listEl = document.getElementById('doa-list-home');
-  if (!catEl || !listEl) return;
-
-  // Render category chips
-  catEl.innerHTML = '';
-  DOA_CATEGORIES.forEach(function(cat) {
-    const isActive = cat.id === currentDoaCategory;
-    const btn = document.createElement('button');
-    btn.style.display = 'inline-flex'; btn.style.alignItems = 'center'; btn.style.gap = '5px';
-    btn.style.padding = '7px 12px'; btn.style.borderRadius = '20px';
-    btn.style.border = '1.5px solid ' + (isActive ? 'var(--teal)' : 'var(--border)');
-    btn.style.background = isActive ? 'var(--teal-bg)' : 'var(--surface)';
-    btn.style.color = isActive ? 'var(--teal)' : 'var(--text2)';
-    btn.style.fontFamily = 'Outfit,sans-serif'; btn.style.fontSize = '0.72rem';
-    btn.style.fontWeight = '700'; btn.style.cursor = 'pointer';
-    btn.style.whiteSpace = 'nowrap'; btn.style.transition = 'all 0.15s';
-    btn.innerHTML = '<span style="font-size:0.85rem">' + cat.icon + '</span>' + cat.label;
-    btn.addEventListener('click', function() {
-      currentDoaCategory = cat.id;
-      initDoaSection(); // refresh main doa tab
-      initDoaHome();    // refresh home doa tab
-    });
-    catEl.appendChild(btn);
-  });
-
-  // Render duas
-  listEl.innerHTML = '';
-  const duas = DOA_DATA[currentDoaCategory] || [];
-  duas.forEach(function(d) {
-    const item = document.createElement('div'); item.className = 'dua-item';
-    const tag = document.createElement('div'); tag.className = 'dua-tag'; tag.textContent = d.title;
-    const ar  = document.createElement('div'); ar.className  = 'dua-ar uthmani'; ar.textContent = d.ar;
-    const tr  = document.createElement('div'); tr.className  = 'dua-transliteration'; tr.textContent = d.tr;
-    const en  = document.createElement('div'); en.className  = 'dua-translation'; en.textContent = d.en;
-    const ref = document.createElement('div'); ref.className = 'dua-source'; ref.textContent = d.ref;
-    item.append(tag, ar, tr, en, ref);
-    listEl.appendChild(item);
-  });
+  // renderDoaCategories and renderDoaList already write to both home and zikir containers
+  renderDoaCategories();
+  renderDoaList();
 }
 
 
@@ -5377,90 +5635,56 @@ function onOrient(e) {
 // ══════════════════════════════════════
 const SHOP_CATEGORIES = [
   {
-    id: 'infaq', emoji: '💚', label: 'Infaq & Waqf',
+    id: 'infaq',
+    icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+    label: 'Infaq & Waqf',
     gradient: 'linear-gradient(135deg,#27AE60,#1E8449)',
     sub: 'Charity, sadaqah & endowments',
     items: [
-      { name: 'Sadaqah Jariyah', desc: 'Ongoing charity — mosque building', price: 'From SGD 5', emoji: '🕌' },
-      { name: 'Waqf Quran', desc: 'Donate Quran copies to those in need', price: 'SGD 15', emoji: '📖' },
-      { name: 'Zakat al-Fitr', desc: 'Obligatory Zakat for Ramadan', price: 'SGD 7', emoji: '🌙' },
-      { name: 'Education Waqf', desc: 'Fund Islamic education for youth', price: 'From SGD 10', emoji: '🎓' },
-      { name: 'Feed the Poor', desc: 'Sponsor iftar meals for families', price: 'From SGD 3', emoji: '🍱' },
-      { name: 'Water Waqf', desc: 'Build wells in needy communities', price: 'From SGD 50', emoji: '💧' },
+      { name: 'Sadaqah Jariyah', desc: 'Ongoing charity — mosque building', price: 'From SGD 5',  image: '', link: '#' },
+      { name: 'Waqf Quran',      desc: 'Donate Quran copies to those in need', price: 'SGD 15',   image: '', link: '#' },
+      { name: 'Zakat al-Fitr',   desc: 'Obligatory Zakat for Ramadan',       price: 'SGD 7',    image: '', link: '#' },
+      { name: 'Education Waqf',  desc: 'Fund Islamic education for youth',    price: 'From SGD 10', image: '', link: '#' },
+      { name: 'Feed the Poor',   desc: 'Sponsor iftar meals for families',    price: 'From SGD 3',  image: '', link: '#' },
+      { name: 'Water Waqf',      desc: 'Build wells in needy communities',    price: 'From SGD 50', image: '', link: '#' },
     ]
   },
   {
-    id: 'qurban', emoji: '🐑', label: 'Qurban & Aqiqah',
+    id: 'qurban',
+    icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20v-1a8 8 0 0 1 16 0v1"/></svg>',
+    label: 'Qurban & Aqiqah',
     gradient: 'linear-gradient(135deg,#E67E22,#CA6F1E)',
     sub: 'Sacrifice & celebration services',
     items: [
-      { name: 'Qurban 1/7 Share', desc: '1/7 share of cow — Eid al-Adha', price: 'SGD 120', emoji: '🐄' },
-      { name: 'Qurban Full Goat', desc: 'Full goat sacrifice — Eid al-Adha', price: 'SGD 350', emoji: '🐑' },
-      { name: 'Aqiqah — Boy', desc: '2 sheep for newborn boy', price: 'SGD 280', emoji: '👶' },
-      { name: 'Aqiqah — Girl', desc: '1 sheep for newborn girl', price: 'SGD 150', emoji: '👧' },
-      { name: 'Qurban Overseas', desc: 'Sacrifice on behalf in needy countries', price: 'From SGD 80', emoji: '🌍' },
-      { name: 'Meat Delivery', desc: 'Fresh qurban meat — home delivery', price: 'SGD 25', emoji: '🥩' },
+      { name: 'Qurban 1/7 Share', desc: '1/7 share of cow — Eid al-Adha',     price: 'SGD 120',      image: '', link: '#' },
+      { name: 'Qurban Full Goat', desc: 'Full goat sacrifice — Eid al-Adha',  price: 'SGD 350',      image: '', link: '#' },
+      { name: 'Aqiqah — Boy',     desc: '2 sheep for newborn boy',             price: 'SGD 280',      image: '', link: '#' },
+      { name: 'Aqiqah — Girl',    desc: '1 sheep for newborn girl',            price: 'SGD 150',      image: '', link: '#' },
+      { name: 'Qurban Overseas',  desc: 'Sacrifice in needy countries',        price: 'From SGD 80',  image: '', link: '#' },
+      { name: 'Meat Delivery',    desc: 'Fresh qurban meat — home delivery',   price: 'SGD 25',       image: '', link: '#' },
     ]
   },
   {
-    id: 'essentials', emoji: '🕋', label: 'Muslim Essentials',
+    id: 'essentials',
+    icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+    label: 'Muslim Essentials',
     gradient: 'linear-gradient(135deg,#A8873A,#8E6E2A)',
     sub: 'Prayer mats, tasbih, attar & more',
     items: [
-      { name: 'Prayer Mat', desc: 'Premium Turkish mat with compass', price: 'SGD 35', emoji: '🟩' },
-      { name: 'Tasbih Beads', desc: '99-bead hand-knotted dhikr beads', price: 'SGD 18', emoji: '📿' },
-      { name: 'Oud Attar', desc: 'Pure oud oil — alcohol-free', price: 'SGD 45', emoji: '🧴' },
-      { name: 'Quran Stand', desc: 'Laser-engraved wooden holder', price: 'SGD 40', emoji: '📖' },
-      { name: 'Telekung Set', desc: 'Premium cotton telekung for women', price: 'SGD 55', emoji: '🧕' },
-      { name: 'Islamic Kids Set', desc: 'Story books + activity set for kids', price: 'SGD 30', emoji: '📚' },
+      { name: 'Prayer Mat',       desc: 'Premium Turkish mat with compass',    price: 'SGD 35',  image: '', link: '#' },
+      { name: 'Tasbih Beads',     desc: '99-bead hand-knotted dhikr beads',    price: 'SGD 18',  image: '', link: '#' },
+      { name: 'Oud Attar',        desc: 'Pure oud oil — alcohol-free',         price: 'SGD 45',  image: '', link: '#' },
+      { name: 'Quran Stand',      desc: 'Laser-engraved wooden holder',        price: 'SGD 40',  image: '', link: '#' },
+      { name: 'Telekung Set',     desc: 'Premium cotton telekung for women',   price: 'SGD 55',  image: '', link: '#' },
+      { name: 'Islamic Kids Set', desc: 'Story books + activity set for kids', price: 'SGD 30',  image: '', link: '#' },
     ]
   },
 ];
 
+// ── To add a product: add an entry to items[] with name, desc, price, image (URL), link (URL)
+// ── image: '' uses the category gradient as background fallback
+// ── image: 'https://...' shows a thumbnail photo
 
-function loadIlmFeaturedVideo() {
-  const wrap = document.getElementById('ilm-featured-video');
-  if (!wrap) return;
-  // Fetch via Anthropic with web_search — get latest video from @ilmproductionsg
-  fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: 500,
-      tools: [{ type: 'web_search_20250305', name: 'web_search' }],
-      system: 'Return ONLY a JSON object with keys: videoId (11-char YouTube ID), title. No markdown. No explanation.',
-      messages: [{ role: 'user', content: 'Find the most recent YouTube video ID and title from the channel @ilmproductionsg (https://www.youtube.com/@ilmproductionsg). Return JSON: {"videoId":"XXXXXXXXXXX","title":"Video Title"}' }]
-    })
-  }).then(function(r) { return r.json(); })
-  .then(function(data) {
-    let text = '';
-    if (data.content) data.content.forEach(function(b) { if (b.type === 'text') text += b.text; });
-    const m = text.match(/\{[^{}]*"videoId"[^{}]*\}/);
-    if (m) {
-      try {
-        const parsed = JSON.parse(m[0]);
-        const vid = parsed.videoId;
-        const title = parsed.title || 'Ilm Production SG';
-        if (vid && vid.length === 11) {
-          wrap.innerHTML =
-            '<div style="cursor:pointer;width:100%;height:100%" onclick="openVideo(\'' + vid + '\',\'' + title.replace(/'/g,'') + '\',\'Ilm Production SG\',\'\')">' +
-              '<img src="https://i.ytimg.com/vi/' + vid + '/hqdefault.jpg" style="width:100%;height:100%;object-fit:cover" onerror="this.src=\'https://i.ytimg.com/vi/' + vid + '/mqdefault.jpg\'">' +
-              '<div style="position:absolute;inset:0;background:rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center">' +
-                '<div style="width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,0.3)">' +
-                  '<svg width="20" height="20" viewBox="0 0 24 24" fill="#26AAE1"><polygon points="5 3 19 12 5 21 5 3"/></svg>' +
-                '</div>' +
-              '</div>' +
-            '</div>' +
-            '<div style="position:absolute;bottom:0;left:0;right:0;padding:10px 12px;background:linear-gradient(transparent,rgba(0,0,0,0.7))">' +
-              '<div style="font-size:0.75rem;font-weight:700;color:#fff;line-height:1.4">' + title + '</div>' +
-            '</div>';
-          wrap.style.position = 'relative';
-        }
-      } catch(e) {}
-    }
-  }).catch(function() {});
-}
 
 function initShop() {
   const el = document.getElementById('shop-content');
@@ -5472,7 +5696,7 @@ function initShop() {
     const head = document.createElement('div');
     head.style.cssText = 'padding:16px 16px 10px;display:flex;align-items:center;gap:8px';
     head.innerHTML =
-      '<div style="width:36px;height:36px;border-radius:10px;background:' + cat.gradient + ';display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">' + cat.emoji + '</div>' +
+      '<div style="width:36px;height:36px;border-radius:10px;background:' + cat.gradient + ';display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff">' + (cat.icon || '') + '</div>' +
       '<div><div class="vp-section-title" style="margin:0">' + cat.label + '</div>' +
       '<div style="font-size:0.65rem;color:var(--text3);margin-top:1px">' + cat.sub + '</div></div>';
     el.appendChild(head);
@@ -5484,16 +5708,24 @@ function initShop() {
     cat.items.forEach(function(item) {
       const card = document.createElement('div');
       card.style.cssText = 'background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform 0.12s';
-      card.innerHTML =
-        '<div style="height:72px;background:' + cat.gradient + ';display:flex;align-items:center;justify-content:center;font-size:2rem">' + item.emoji + '</div>' +
+
+      // Thumbnail: use image URL if provided, else gradient with icon
+      const thumbHtml = item.image
+        ? '<div style="height:90px;overflow:hidden;position:relative"><img src="' + item.image + '" alt="' + item.name + '" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML=\'<div style=\\\"height:90px;background:' + cat.gradient + ';display:flex;align-items:center;justify-content:center;color:#fff\\\">' + (cat.icon||'') + '</div>\'"></div>'
+        : '<div style="height:90px;background:' + cat.gradient + ';display:flex;align-items:center;justify-content:center;color:#fff">' + (cat.icon||'') + '</div>';
+
+      card.innerHTML = thumbHtml +
         '<div style="padding:10px 10px 12px">' +
           '<div style="font-size:0.78rem;font-weight:700;color:var(--text);margin-bottom:3px;line-height:1.3">' + item.name + '</div>' +
           '<div style="font-size:0.65rem;color:var(--text2);line-height:1.45;margin-bottom:6px">' + item.desc + '</div>' +
           '<div style="font-size:0.78rem;font-weight:700;color:var(--teal)">' + item.price + '</div>' +
         '</div>';
-      card.addEventListener('click', function() { toast(item.name + ' — Coming soon'); });
+      card.addEventListener('click', function() {
+        if (item.link && item.link !== '#') { window.open(item.link, '_blank', 'noopener'); }
+        else { toast(item.name + ' — Coming soon'); }
+      });
       card.addEventListener('touchstart', function() { card.style.transform = 'scale(0.97)'; }, {passive:true});
-      card.addEventListener('touchend',   function() { card.style.transform = '';             }, {passive:true});
+      card.addEventListener('touchend',   function() { card.style.transform = ''; }, {passive:true});
       grid.appendChild(card);
     });
 
@@ -5541,59 +5773,87 @@ const MUIS_DATES = [
 const CAL_MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const CAL_DAYS   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
-function renderHijriCalendar() {
-  const wrap = document.getElementById('hijri-cal-wrap');
+function renderTodayHero() {
+  const now   = new Date();
+  const h     = toHijri(now);
+  const days  = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months= ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const hijriMonths = ['Muharram','Safar',"Rabi' al-Awwal","Rabi' al-Akhir","Jumada al-Awwal","Jumada al-Akhirah",'Rajab',"Sha'ban",'Ramadan','Shawwal',"Dhu al-Qi'dah","Dhu al-Hijjah"];
+  const dayEl   = document.getElementById('cal-today-day');
+  const gregEl  = document.getElementById('cal-today-greg');
+  const hijriEl = document.getElementById('cal-today-hijri');
+  if (dayEl)   dayEl.textContent   = days[now.getDay()];
+  if (gregEl)  gregEl.textContent  = now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
+  if (hijriEl) hijriEl.textContent = h.day + ' ' + (hijriMonths[h.month-1] || '') + ' ' + h.year + 'H';
+}
+
+function renderFullYearCalendar() {
+  const wrap = document.getElementById('cal-year-grid');
   if (!wrap) return;
+  const now = new Date();
+  const yearStart = now.getFullYear();
+  let html = '';
 
-  const firstDay = new Date(calYear, calMonth, 1).getDay();
-  const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
-  const today = new Date();
-  const isCurrentMonth = (calYear === today.getFullYear() && calMonth === today.getMonth());
+  // Render current month + 11 months ahead
+  for (let mi = 0; mi < 12; mi++) {
+    let yr = yearStart, mn = now.getMonth() + mi;
+    while (mn > 11) { mn -= 12; yr++; }
 
-  // Build event set for quick lookup
-  const eventDays = {};
-  MUIS_DATES.forEach(function(ev) {
-    const d = new Date(ev.greg);
-    if (d.getFullYear() === calYear && d.getMonth() === calMonth) {
-      eventDays[d.getDate()] = true;
+    const firstDay    = new Date(yr, mn, 1).getDay();
+    const daysInMonth = new Date(yr, mn + 1, 0).getDate();
+    const isCurrentMo = (yr === now.getFullYear() && mn === now.getMonth());
+
+    // Collect event days for this month
+    const evDays = {};
+    MUIS_DATES.forEach(function(ev) {
+      const d = new Date(ev.greg);
+      if (d.getFullYear() === yr && d.getMonth() === mn) evDays[d.getDate()] = ev.title;
+    });
+
+    html += '<div class="cal-month-block">';
+    html += '<div class="cal-month-label">' + CAL_MONTHS[mn] + ' ' + yr + '</div>';
+    html += '<div class="cal-grid">';
+    CAL_DAYS.forEach(function(d) { html += '<div class="cal-day-header">' + d.slice(0,1) + '</div>'; });
+    for (let i=0; i < firstDay; i++) html += '<div class="cal-day other-month"></div>';
+    for (let d = 1; d <= daysInMonth; d++) {
+      const date   = new Date(yr, mn, d);
+      const h      = toHijri(date);
+      const isToday= isCurrentMo && d === now.getDate();
+      const hasEv  = !!evDays[d];
+      const isFri  = (date.getDay() === 5);
+      html += '<div class="cal-day' + (isToday ? ' today' : '') + (hasEv ? ' has-event' : '') + (isFri ? ' friday' : '') + '" ' +
+        (hasEv ? 'title="' + evDays[d] + '"' : '') + '>' +
+        '<div class="cal-greg">' + d + '</div>' +
+        '<div class="cal-hij">' + h.day + '</div>' +
+      '</div>';
     }
-  });
-
-  let html = '<div class="cal-month-header">' +
-    '<button class="cal-nav-btn" onclick="calNav(-1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg></button>' +
-    '<div class="cal-month-title">' + CAL_MONTHS[calMonth] + ' ' + calYear + '</div>' +
-    '<button class="cal-nav-btn" onclick="calNav(1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></button>' +
-    '</div>' +
-    '<div class="cal-grid">';
-
-  CAL_DAYS.forEach(function(d) {
-    html += '<div class="cal-day-header">' + d + '</div>';
-  });
-
-  // Empty cells before month start
-  for (let i = 0; i < firstDay; i++) html += '<div class="cal-day other-month"></div>';
-
-  for (let d = 1; d <= daysInMonth; d++) {
-    const date = new Date(calYear, calMonth, d);
-    const h = toHijri(date);
-    const isToday = isCurrentMonth && d === today.getDate();
-    const hasEv = !!eventDays[d];
-    html += '<div class="cal-day' + (isToday ? ' today' : '') + (hasEv ? ' has-event' : '') + '">' +
-      '<div class="cal-greg">' + d + '</div>' +
-      '<div class="cal-hij">' + h.day + '</div>' +
-    '</div>';
+    html += '</div>'; // cal-grid
+    // Event list for this month
+    const monthEvs = MUIS_DATES.filter(function(ev) {
+      const d = new Date(ev.greg);
+      return d.getFullYear() === yr && d.getMonth() === mn;
+    });
+    if (monthEvs.length) {
+      html += '<div class="cal-month-events">';
+      monthEvs.forEach(function(ev) {
+        const d   = new Date(ev.greg);
+        html += '<div class="cal-ev-row">' +
+          '<div class="cal-ev-date">' + d.getDate() + ' ' + CAL_MONTHS[mn].slice(0,3) + '</div>' +
+          '<div class="cal-ev-title">' + ev.title + '</div>' +
+        '</div>';
+      });
+      html += '</div>';
+    }
+    html += '</div>'; // cal-month-block
   }
-
-  html += '</div>';
-
-  // Legend
-  html += '<div style="padding:0 16px 8px;display:flex;align-items:center;gap:8px">' +
-    '<span style="width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block"></span>' +
-    '<span style="font-size:0.68rem;color:var(--text3)">Islamic event / holiday</span>' +
-    '</div>';
 
   wrap.innerHTML = html;
 }
+
+function renderHijriCalendar() {
+  renderFullYearCalendar();
+}
+
 
 function calNav(dir) {
   calMonth += dir;
@@ -5646,8 +5906,8 @@ function renderMuisDates() {
 }
 
 function initCalendar() {
-  renderHijriCalendar();
-  renderIslamicEvents();
+  renderTodayHero();
+  renderFullYearCalendar();
   renderMuisDates();
 }
 
@@ -5687,6 +5947,8 @@ initDoaSection();
 initShop();
 initDoaHome();
 if(document.getElementById("ilm-featured-video")) loadIlmFeaturedVideo();
+// Pre-render calendar so it's instant when user opens it
+try { initCalendar(); } catch(e) {}
 </script>
 
 <!-- VIDEO MODAL -->
